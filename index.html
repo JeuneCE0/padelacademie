@@ -415,15 +415,19 @@ function openModal(){document.getElementById('optinModal').classList.add('show')
 function closeModal(){document.getElementById('optinModal').classList.remove('show');}
 function submitOptin(e){
   e.preventDefault();
-  var f=document.getElementById('optinForm');
   var p=document.getElementById('optin-prenom').value.trim();
   var n=document.getElementById('optin-nom').value.trim();
   var m=document.getElementById('optin-email').value.trim();
   var t=document.getElementById('optin-tel').value.trim();
   if(!p||!n||!m||!t)return false;
   userData={prenom:p,nom:n,email:m,tel:t};
-  closeModal();
-  go();
+  var btn=document.querySelector('.modal-btn');
+  btn.disabled=true;btn.textContent='Envoi en cours...';
+  fetch('/api/optin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(userData)})
+  .then(function(r){return r.json();})
+  .then(function(){closeModal();go();})
+  .catch(function(){closeModal();go();})
+  .finally(function(){btn.disabled=false;btn.innerHTML='C\'est parti &rarr;';});
   return false;
 }
 function go(){document.getElementById('intro').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');render();}
