@@ -177,7 +177,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;background:repeating-con
     <div class="prog-bar"><div class="prog-fill" id="pf" style="width:5%"></div></div>
   </div>
   <div id="qb" class="qb"></div>
-  <button class="btnn" id="bn" onclick="nxt()">Question suivante &rarr;</button>
 </div>
 
 <div id="result" class="hidden res"></div>
@@ -394,15 +393,13 @@ function render(){
   var sh=q.tp==='p'?shuffle(q.os.slice()):q.os;
   var opts=sh.map(function(o,i){var val=q.tp==='p'?o.p:o.v;return '<div class="opt" onclick="sel(this,\''+val+'\',\''+q.tp+'\')"><div class="ol">'+L[i]+'</div><div class="otxt">'+o.t+'</div></div>';}).join('');
   b.innerHTML=div+'<div class="qcat">'+q.cat+'</div><div class="qtxt">'+q.q+'</div><div class="opts">'+opts+'</div>';
-  var bn=document.getElementById('bn');bn.classList.remove('vis');
-  bn.textContent=cur===Qs.length-1?'Voir mon diagnostic':'Question suivante';
   ans[cur]=null;
 }
 
 function sel(el,v,t){
-  var all=document.querySelectorAll('.opt');for(var i=0;i<all.length;i++)all[i].classList.remove('sel');
+  var all=document.querySelectorAll('.opt');for(var i=0;i<all.length;i++){all[i].classList.remove('sel');all[i].style.pointerEvents='none';}
   el.classList.add('sel');ans[cur]={v:v,t:t};
-  document.getElementById('bn').classList.add('vis');
+  setTimeout(function(){nxt();},400);
 }
 
 function nxt(){
