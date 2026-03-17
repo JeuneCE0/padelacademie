@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Champs manquants' });
   }
 
-  const GHL_API_KEY = process.env.GHL_API_KEY || 'pit-068265b7-b794-4fd1-9e48-df7bc42f34bc';
-  const LOCATION_ID = process.env.GHL_LOCATION_ID || 'Bmh1baR6hW6ztwCmelWO';
+  const GHL_API_KEY = process.env.GHL_API_KEY;
+  const LOCATION_ID = process.env.GHL_LOCATION_ID;
   const headers = {
     'Authorization': 'Bearer ' + GHL_API_KEY,
     'Version': '2021-07-28',
