@@ -36,7 +36,8 @@ export default async function handler(req, res) {
         lastName: nom,
         email: email,
         phone: tel,
-        source: 'Quizz Padel Academie'
+        source: 'Quizz Padel Academie',
+        tags: ['QUIZZ']
       })
     });
     const contactData = await contactRes.json();
@@ -99,10 +100,11 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         pipelineId: pipeline.id,
         locationId: LOCATION_ID,
-        name: prenom + ' ' + nom + ' - Quizz Padel',
+        name: prenom + ' ' + nom,
         pipelineStageId: firstStage.id,
         contactId: contactId,
-        status: 'open'
+        status: 'open',
+        source: 'QUIZZ PADEL'
       })
     });
     const oppData = await oppRes.json();
