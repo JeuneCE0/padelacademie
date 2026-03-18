@@ -100,7 +100,7 @@ export default async function handler(req, res) {
         pipelineId: pipeline.id,
         locationId: LOCATION_ID,
         name: prenom + ' ' + nom + ' - Quizz Padel',
-        stageId: firstStage.id,
+        pipelineStageId: firstStage.id,
         contactId: contactId,
         status: 'open'
       })
