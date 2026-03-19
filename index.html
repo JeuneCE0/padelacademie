@@ -3,118 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quel joueur es-tu vraiment ? — Padel Academie</title>
-<meta name="description" content="Découvre ton profil de joueur de padel et ton niveau réel entre 1 et 8 en 19 questions. Diagnostic complet par Padel Academie.">
-<meta property="og:title" content="Quel joueur es-tu vraiment ? — Padel Academie">
+<title>Quizz Padel Académie</title>
+<meta name="description" content="Découvre ton profil de joueur de padel et ton niveau réel entre 1 et 8 en 19 questions. Diagnostic complet par Padel Académie.">
+<meta property="og:title" content="Quizz Padel Académie">
 <meta property="og:description" content="En 19 questions, découvre ton profil de joueur et ton niveau réel entre 1 et 8.">
 <meta property="og:type" content="website">
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/jpeg" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 :root{--lime:#D9F12C;--dark:#0C0E01;--dark2:#141601;--dark3:#1c1e04;--white:#fff;--wd:rgba(255,255,255,.55);--wf:rgba(255,255,255,.1);--lg:rgba(217,241,44,.07)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle at 10% 90%,rgba(217,241,44,.06) 0%,transparent 50%),radial-gradient(circle at 90% 10%,rgba(217,241,44,.04) 0%,transparent 45%);pointer-events:none}
-.wrap{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:36px 22px 80px}
-.logo{display:flex;align-items:center;gap:12px;margin-bottom:48px}
-.logo img{width:38px;height:38px;border-radius:9px;object-fit:cover}
-.logo-txt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
-.prog-wrap{margin-bottom:36px}
-.prog-meta{display:flex;justify-content:space-between;margin-bottom:9px}
-.prog-lbl{font-family:'League Spartan',sans-serif;font-size:10px;color:var(--wd);letter-spacing:3px;text-transform:uppercase}
-.prog-num{font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;color:var(--lime)}
-.prog-bar{height:2px;background:var(--wf);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;background:var(--lime);border-radius:2px;transition:width .5s cubic-bezier(.4,0,.2,1)}
-.sdiv{display:flex;align-items:center;gap:12px;margin:4px 0 22px}
-.sdiv span{font-family:'League Spartan',sans-serif;font-size:10px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;white-space:nowrap}
-.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:rgba(217,241,44,.2)}
-.qb{animation:up .4s ease forwards}
-@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-.qcat{display:inline-block;font-family:'League Spartan',sans-serif;font-size:10px;color:var(--lime);letter-spacing:4px;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(217,241,44,.22);border-radius:20px;margin-bottom:16px}
-.qtxt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:22px;line-height:1.25;margin-bottom:26px}
-.opts{display:flex;flex-direction:column;gap:9px}
-.opt{display:flex;align-items:flex-start;gap:13px;padding:15px 17px;background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-radius:11px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
-.opt::before{content:'';position:absolute;inset:0;background:var(--lg);opacity:0;transition:opacity .18s}
-.opt:hover{border-color:rgba(217,241,44,.22)}.opt:hover::before{opacity:1}
-.opt.sel{border-color:var(--lime);background:var(--dark3)}.opt.sel::before{opacity:1}
-.ol{width:29px;height:29px;flex-shrink:0;border:1px solid rgba(255,255,255,.16);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:700;font-size:12px;color:var(--wd);transition:all .18s;margin-top:1px}
-.opt.sel .ol{background:var(--lime);border-color:var(--lime);color:var(--dark)}
-.otxt{font-size:15px;line-height:1.5;position:relative;z-index:1}
-.btnn{margin-top:26px;width:100%;padding:16px;background:var(--lime);border:none;border-radius:11px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:14px;color:var(--dark);cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all .2s;opacity:0;pointer-events:none}
-.btnn.vis{opacity:1;pointer-events:all;animation:up .3s ease forwards}
-.btnn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,241,44,.22)}
-.intro{text-align:center;animation:up .5s ease forwards}
-.itag{display:inline-block;font-family:'League Spartan',sans-serif;font-size:10px;color:var(--lime);letter-spacing:4px;text-transform:uppercase;padding:4px 12px;border:1px solid rgba(217,241,44,.22);border-radius:20px;margin-bottom:20px}
-.intro h1{font-family:'League Spartan',sans-serif;font-weight:900;font-size:38px;line-height:1.1;margin-bottom:16px}
-.intro h1 span{color:var(--lime)}
-.intro p{color:var(--wd);font-size:15px;line-height:1.7;max-width:480px;margin:0 auto 28px}
-.dbadge{display:inline-flex;align-items:stretch;border:1px solid rgba(217,241,44,.25);border-radius:10px;overflow:hidden;margin-bottom:32px}
-.dbadge .d1{padding:10px 18px;background:rgba(217,241,44,.12);color:var(--lime);font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700}
-.dbadge .d2{padding:10px 18px;color:var(--wd);font-family:'League Spartan',sans-serif;font-size:13px;font-weight:700;border-left:1px solid rgba(217,241,44,.2)}
-.pg{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:30px;text-align:left}
-.pc{background:var(--dark2);border:1px solid rgba(255,255,255,.07);border-radius:11px;padding:15px}
-.pc .em{font-size:22px;margin-bottom:7px;display:block}
-.pc .pn{font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;margin-bottom:3px}
-.pc .pd{font-size:12px;color:var(--wd);line-height:1.5}
-.lvlp{display:flex;justify-content:center;gap:6px;margin-bottom:30px;flex-wrap:wrap}
-.ld{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:900;font-size:11px}
-.bstart{padding:16px 44px;background:var(--lime);border:none;border-radius:11px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:14px;color:var(--dark);cursor:pointer;letter-spacing:1px;text-transform:uppercase;transition:all .2s}
-.bstart:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(217,241,44,.28)}
-.stats{display:flex;justify-content:center;gap:36px;margin-top:40px;padding-top:32px;border-top:1px solid var(--wf)}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'League Spartan',sans-serif;font-weight:400;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle at 10% 90%,rgba(217,241,44,.08) 0%,transparent 55%),radial-gradient(circle at 90% 10%,rgba(217,241,44,.06) 0%,transparent 50%),radial-gradient(circle at 50% 50%,rgba(217,241,44,.03) 0%,transparent 60%);pointer-events:none;animation:bgPulse 8s ease-in-out infinite alternate}
+@keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+body::after{content:'';position:fixed;inset:0;z-index:0;background:repeating-conic-gradient(rgba(217,241,44,.015) 0% 25%,transparent 0% 50%) 0 0/60px 60px;pointer-events:none;opacity:.5}
+.wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:48px 28px 100px}
+.logo{display:flex;align-items:center;gap:14px;margin-bottom:56px;opacity:0;animation:fadeSlideDown .6s ease .1s forwards}
+@keyframes fadeSlideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.logo img{width:44px;height:44px;border-radius:11px;object-fit:cover;box-shadow:0 0 20px rgba(217,241,44,.15)}
+.logo-txt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase}
+.prog-wrap{margin-bottom:40px}
+.prog-meta{display:flex;justify-content:space-between;margin-bottom:10px}
+.prog-lbl{font-family:'League Spartan',sans-serif;font-size:11px;color:var(--wd);letter-spacing:3px;text-transform:uppercase}
+.prog-num{font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--lime)}
+.prog-bar{height:3px;background:var(--wf);border-radius:3px;overflow:hidden;position:relative}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--lime),#e8ff6a);border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1);position:relative}
+.prog-fill::after{content:'';position:absolute;right:0;top:-2px;width:7px;height:7px;background:var(--lime);border-radius:50%;box-shadow:0 0 12px var(--lime)}
+.sdiv{display:flex;align-items:center;gap:14px;margin:6px 0 26px}
+.sdiv span{font-family:'League Spartan',sans-serif;font-size:11px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;white-space:nowrap}
+.sdiv::before,.sdiv::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(217,241,44,.3),transparent)}
+.qb{animation:up .5s ease forwards}
+@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.qcat{display:inline-block;font-family:'League Spartan',sans-serif;font-size:11px;color:var(--lime);letter-spacing:4px;text-transform:uppercase;padding:6px 14px;border:1px solid rgba(217,241,44,.22);border-radius:20px;margin-bottom:18px;backdrop-filter:blur(8px);background:rgba(217,241,44,.05)}
+.qtxt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:26px;line-height:1.25;margin-bottom:30px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:15px;padding:18px 20px;background:rgba(20,22,1,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:13px;cursor:pointer;transition:all .25s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden}
+.opt::before{content:'';position:absolute;inset:0;background:var(--lg);opacity:0;transition:opacity .25s}
+.opt:hover{border-color:rgba(217,241,44,.3);transform:translateX(4px)}.opt:hover::before{opacity:1}
+.opt.sel{border-color:var(--lime);background:var(--dark3);transform:translateX(6px);box-shadow:0 0 30px rgba(217,241,44,.08)}.opt.sel::before{opacity:1}
+.ol{width:32px;height:32px;flex-shrink:0;border:1px solid rgba(255,255,255,.16);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;color:var(--wd);transition:all .25s;margin-top:1px}
+.opt.sel .ol{background:var(--lime);border-color:var(--lime);color:var(--dark);box-shadow:0 0 16px rgba(217,241,44,.3)}
+.otxt{font-size:15.5px;line-height:1.55;position:relative;z-index:1}
+.btnn{margin-top:30px;width:100%;padding:18px;background:var(--lime);border:none;border-radius:13px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:15px;color:var(--dark);cursor:pointer;letter-spacing:1.5px;text-transform:uppercase;transition:all .25s;opacity:0;pointer-events:none;position:relative;overflow:hidden}
+.btnn.vis{opacity:1;pointer-events:all;animation:up .35s ease forwards}
+.btnn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(217,241,44,.28)}
+.btnn::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.2);border-radius:50%;transform:translate(-50%,-50%);transition:width .4s,height .4s}
+.btnn:active::after{width:300px;height:300px}
+.intro{text-align:center;min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.intro>*{opacity:0;animation:fadeUp .6s ease forwards}
+.intro>*:nth-child(1){animation-delay:.1s}
+.intro>*:nth-child(2){animation-delay:.2s}
+.intro>*:nth-child(3){animation-delay:.35s}
+.intro>*:nth-child(4){animation-delay:.45s}
+.intro>*:nth-child(5){animation-delay:.55s}
+.intro>*:nth-child(6){animation-delay:.65s}
+.intro>*:nth-child(7){animation-delay:.75s}
+.intro>*:nth-child(8){animation-delay:.85s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.itag{display:inline-block;font-family:'League Spartan',sans-serif;font-size:11px;color:var(--lime);letter-spacing:4px;text-transform:uppercase;padding:6px 16px;border:1px solid rgba(217,241,44,.25);border-radius:24px;margin-bottom:24px;backdrop-filter:blur(8px);background:rgba(217,241,44,.06)}
+.intro h1{font-family:'League Spartan',sans-serif;font-weight:900;font-size:52px;line-height:1.08;margin-bottom:20px;letter-spacing:-0.5px}
+.intro h1 span{color:var(--lime);text-shadow:0 0 40px rgba(217,241,44,.3)}
+.intro p{color:var(--wd);font-size:17px;line-height:1.75;max-width:540px;margin:0 auto 32px}
+.dbadge{display:inline-flex;align-items:stretch;border:1px solid rgba(217,241,44,.25);border-radius:12px;overflow:hidden;margin-bottom:36px;backdrop-filter:blur(8px)}
+.dbadge .d1{padding:12px 22px;background:rgba(217,241,44,.12);color:var(--lime);font-family:'League Spartan',sans-serif;font-size:14px;font-weight:700}
+.dbadge .d2{padding:12px 22px;color:var(--wd);font-family:'League Spartan',sans-serif;font-size:14px;font-weight:700;border-left:1px solid rgba(217,241,44,.2)}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:36px;text-align:left;width:100%}
+.pc{background:rgba(20,22,1,.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:20px;transition:all .3s cubic-bezier(.4,0,.2,1)}
+.pc:hover{border-color:rgba(217,241,44,.25);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+.pc .em{font-size:30px;margin-bottom:9px;display:block}
+.pc .pn{font-family:'League Spartan',sans-serif;font-weight:700;font-size:15px;margin-bottom:4px}
+.pc .pd{font-size:13px;color:var(--wd);line-height:1.55}
+.lvlp{display:flex;justify-content:center;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.ld{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;transition:all .3s;cursor:default}
+.ld:hover{transform:scale(1.15);box-shadow:0 4px 16px rgba(0,0,0,.3)}
+.bstart{padding:20px 56px;background:var(--lime);border:none;border-radius:14px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:16px;color:var(--dark);cursor:pointer;letter-spacing:1.5px;text-transform:uppercase;transition:all .25s;position:relative;overflow:hidden}
+.bstart:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(217,241,44,.32)}
+.bstart::before{content:'';position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transition:none;animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%{left:-100%}50%{left:100%}100%{left:100%}}
+.stats{display:flex;justify-content:center;gap:48px;margin-top:48px;padding-top:36px;border-top:1px solid var(--wf);width:100%}
 .st{text-align:center}
-.sn{font-family:'League Spartan',sans-serif;font-weight:900;font-size:24px;color:var(--lime);display:block}
-.sl{font-size:11px;color:var(--wd);text-transform:uppercase;letter-spacing:1px}
+.sn{font-family:'League Spartan',sans-serif;font-weight:900;font-size:30px;color:var(--lime);display:block;text-shadow:0 0 20px rgba(217,241,44,.2)}
+.sl{font-size:12px;color:var(--wd);text-transform:uppercase;letter-spacing:1.5px}
 .res{animation:up .5s ease forwards}
-.rtop{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
-.rp{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px;text-align:center}
-.rl{border-radius:14px;padding:22px;text-align:center}
-.rem{font-size:48px;margin-bottom:10px;display:block}
-.rtag2{font-family:'League Spartan',sans-serif;font-size:9px;color:var(--wd);letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
-.rname{font-family:'League Spartan',sans-serif;font-weight:900;font-size:20px;line-height:1.1;margin-bottom:4px}
-.rsub{font-size:12px;color:var(--wd);line-height:1.5}
-.rlnum{font-family:'League Spartan',sans-serif;font-weight:900;font-size:56px;line-height:1;margin-bottom:2px}
-.rlname{font-family:'League Spartan',sans-serif;font-weight:700;font-size:16px;margin-bottom:6px}
-.rc{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:13px;padding:22px;margin-bottom:12px}
-.rc h3{font-family:'League Spartan',sans-serif;font-weight:700;font-size:10px;color:var(--lime);margin-bottom:13px;text-transform:uppercase;letter-spacing:3px}
-.rc p{color:rgba(255,255,255,.72);font-size:14px;line-height:1.75}
-.tg{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.tr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:9px 13px;font-size:13px;display:flex;align-items:center;gap:7px}
-.tr::before{content:'';width:5px;height:5px;background:var(--lime);border-radius:50%;flex-shrink:0}
+.res>*{opacity:0;animation:fadeUp .5s ease forwards}
+.res>*:nth-child(1){animation-delay:.1s}
+.res>*:nth-child(2){animation-delay:.25s}
+.res>*:nth-child(3){animation-delay:.4s}
+.res>*:nth-child(4){animation-delay:.55s}
+.res>*:nth-child(5){animation-delay:.7s}
+.res>*:nth-child(6){animation-delay:.85s}
+.res>*:nth-child(7){animation-delay:1s}
+.rtop{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.rp{background:rgba(20,22,1,.7);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:32px 24px;text-align:center;transition:transform .3s}
+.rp:hover{transform:scale(1.02)}
+.rl{border-radius:18px;padding:32px 24px;text-align:center;transition:transform .3s}
+.rl:hover{transform:scale(1.02)}
+.rem{font-size:64px;margin-bottom:14px;display:block;animation:bounce 2s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.rtag2{font-family:'League Spartan',sans-serif;font-size:10px;color:var(--wd);letter-spacing:3px;text-transform:uppercase;margin-bottom:8px}
+.rname{font-family:'League Spartan',sans-serif;font-weight:900;font-size:24px;line-height:1.1;margin-bottom:6px}
+.rsub{font-size:13px;color:var(--wd);line-height:1.55}
+.rlnum{font-family:'League Spartan',sans-serif;font-weight:900;font-size:72px;line-height:1;margin-bottom:4px;animation:countPop .6s cubic-bezier(.2,.8,.3,1.2) .3s both}
+@keyframes countPop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.rlname{font-family:'League Spartan',sans-serif;font-weight:700;font-size:18px;margin-bottom:8px}
+.rc{background:rgba(20,22,1,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:14px;transition:all .3s}
+.rc:hover{border-color:rgba(255,255,255,.15)}
+.rc h3{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;color:var(--lime);margin-bottom:16px;text-transform:uppercase;letter-spacing:3px}
+.rc p{color:rgba(255,255,255,.72);font-size:15px;line-height:1.8}
+.tg{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.tr{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:11px 15px;font-size:14px;display:flex;align-items:center;gap:8px;transition:all .2s}
+.tr:hover{background:rgba(217,241,44,.06);border-color:rgba(217,241,44,.2)}
+.tr::before{content:'';width:6px;height:6px;background:var(--lime);border-radius:50%;flex-shrink:0;box-shadow:0 0 8px rgba(217,241,44,.4)}
 .rc ul{list-style:none}
-.rc ul li{padding:7px 0;border-bottom:1px solid var(--wf);font-size:14px;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+.rc ul li{padding:9px 0;border-bottom:1px solid var(--wf);font-size:15px;display:flex;align-items:flex-start;gap:10px;line-height:1.6}
 .rc ul li:last-child{border-bottom:none}
 .rc ul li::before{content:'>';color:var(--lime);flex-shrink:0;margin-top:1px;font-weight:900}
-.rcta{margin-top:22px;background:linear-gradient(135deg,rgba(217,241,44,.1) 0%,rgba(217,241,44,.03) 100%);border:1px solid rgba(217,241,44,.2);border-radius:13px;padding:24px;text-align:center}
-.rcta h3{font-family:'League Spartan',sans-serif;font-weight:900;font-size:18px;margin-bottom:9px}
-.rcta p{color:var(--wd);font-size:13px;line-height:1.6;margin-bottom:16px}
-.ctab{display:flex;flex-direction:column;gap:9px}
-.c1{padding:14px;background:var(--lime);border:none;border-radius:9px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--dark);cursor:pointer;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:block;transition:all .2s}
-.c1:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(217,241,44,.22)}
-.c2{padding:14px;background:transparent;border:1px solid rgba(255,255,255,.13);border-radius:9px;font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;color:var(--white);cursor:pointer;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:block;transition:all .2s}
-.c2:hover{border-color:rgba(217,241,44,.32)}
+.rcta{margin-top:26px;background:linear-gradient(135deg,rgba(217,241,44,.12) 0%,rgba(217,241,44,.03) 100%);border:1px solid rgba(217,241,44,.25);border-radius:16px;padding:32px;text-align:center;position:relative;overflow:hidden}
+.rcta::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(217,241,44,.06) 0%,transparent 60%);animation:ctaGlow 4s ease-in-out infinite alternate;pointer-events:none}
+@keyframes ctaGlow{0%{transform:translate(0,0)}100%{transform:translate(10%,10%)}}
+.rcta h3{font-family:'League Spartan',sans-serif;font-weight:900;font-size:22px;margin-bottom:12px;position:relative}
+.rcta p{color:var(--wd);font-size:14px;line-height:1.7;margin-bottom:20px;position:relative}
+.ctab{display:flex;flex-direction:column;gap:10px;position:relative}
+.c1{padding:16px;background:var(--lime);border:none;border-radius:11px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:14px;color:var(--dark);cursor:pointer;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:block;transition:all .25s}
+.c1:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(217,241,44,.28)}
+.c2{padding:16px;background:transparent;border:1px solid rgba(255,255,255,.15);border-radius:11px;font-family:'League Spartan',sans-serif;font-weight:700;font-size:14px;color:var(--white);cursor:pointer;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:block;transition:all .25s}
+.c2:hover{border-color:rgba(217,241,44,.4);background:rgba(217,241,44,.05)}
 .hidden{display:none!important}
-@media(max-width:500px){.rtop,.pg,.tg{grid-template-columns:1fr}}
+@media(max-width:600px){.wrap{padding:32px 18px 70px}.intro h1{font-size:36px}.qtxt{font-size:22px}.rtop,.pg,.tg{grid-template-columns:1fr}.stats{gap:28px}.sn{font-size:24px}.rem{font-size:52px}.rlnum{font-size:56px}.rp,.rl{padding:24px 18px}.rc{padding:22px}.rcta{padding:24px}}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;animation:fadeIn .25s ease}
+.modal-overlay.show{display:flex}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:var(--dark2);border:1px solid rgba(217,241,44,.2);border-radius:20px;padding:40px 32px;max-width:440px;width:90%;position:relative;animation:modalUp .35s cubic-bezier(.4,0,.2,1)}
+@keyframes modalUp{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--wd);font-size:22px;cursor:pointer;transition:color .2s;line-height:1}
+.modal-close:hover{color:var(--white)}
+.modal h2{font-weight:900;font-size:22px;margin-bottom:6px;text-align:center}
+.modal .modal-sub{color:var(--wd);font-size:14px;text-align:center;margin-bottom:28px;line-height:1.6}
+.modal form{display:flex;flex-direction:column;gap:12px}
+.modal input{width:100%;padding:14px 16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:11px;color:var(--white);font-family:'League Spartan',sans-serif;font-size:15px;outline:none;transition:border-color .2s}
+.modal input::placeholder{color:rgba(255,255,255,.35)}
+.modal input:focus{border-color:rgba(217,241,44,.5)}
+.modal input.err{border-color:#E74C3C}
+.modal-btn{margin-top:6px;width:100%;padding:16px;background:var(--lime);border:none;border-radius:12px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:15px;color:var(--dark);cursor:pointer;letter-spacing:1.5px;text-transform:uppercase;transition:all .25s}
+.modal-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,241,44,.3)}
+.modal-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 </style>
 </head>
 <body>
+
+<div id="optinModal" class="modal-overlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2>Avant de commencer</h2>
+    <p class="modal-sub">Renseigne tes infos pour recevoir ton diagnostic complet par mail.</p>
+    <form id="optinForm" onsubmit="return submitOptin(event)">
+      <input type="text" id="optin-prenom" placeholder="Prénom" required>
+      <input type="text" id="optin-nom" placeholder="Nom" required>
+      <input type="email" id="optin-email" placeholder="Email" required>
+      <input type="tel" id="optin-tel" placeholder="Téléphone" required>
+      <button type="submit" class="modal-btn">C'est parti &rarr;</button>
+    </form>
+  </div>
+</div>
+
 <div class="wrap">
 <div class="logo">
-  <img id="logo-img" alt="Padel Academie">
-  <span class="logo-txt">Padel Academie</span>
+  <img src="logo.png" alt="Padel Académie">
+  <span class="logo-txt">Padel Académie</span>
 </div>
 
 <div id="intro" class="intro">
   <div class="itag">Diagnostic complet &middot; 19 questions</div>
   <h1>Quel joueur es-tu <span>vraiment</span>&nbsp;?</h1>
-  <p>En 19 questions, tu obtiens deux choses : ton profil de joueur tel que les autres te voient sur le terrain, et ton niveau reel entre 1 et 8.</p>
+  <p>En 19 questions, tu obtiens deux choses : ton profil de joueur tel que les autres te voient sur le terrain, et ton niveau r&eacute;el entre 1 et 8.</p>
   <div class="dbadge">
     <div class="d1">Profil terrain</div>
-    <div class="d2">Niveau reel 1 &rarr; 8</div>
+    <div class="d2">Niveau r&eacute;el 1 &rarr; 8</div>
   </div>
   <div class="pg">
     <div class="pc"><span class="em">&#129522;</span><div class="pn">La Muraille</div><div class="pd">Remet tout. Ne gagne rien. Passif mais imbattable.</div></div>
-    <div class="pc"><span class="em">&#128165;</span><div class="pn">Le Brute</div><div class="pd">Tape sur tout. Fort 5 min, mort ensuite.</div></div>
-    <div class="pc"><span class="em">&#128012;</span><div class="pn">Le Pousseur</div><div class="pd">Pousse sans intention. Le plus frustrant a affronter.</div></div>
-    <div class="pc"><span class="em">&#9889;</span><div class="pn">La Pile electrique</div><div class="pd">Court partout. Tout donne, rien controle.</div></div>
+    <div class="pc"><span class="em">&#128165;</span><div class="pn">La Brute</div><div class="pd">Tape sur tout. Fort 5 min, mort ensuite.</div></div>
+    <div class="pc"><span class="em">&#128012;</span><div class="pn">Le Pousseur</div><div class="pd">Pousse sans intention. Le plus frustrant &agrave; affronter.</div></div>
+    <div class="pc"><span class="em">&#9889;</span><div class="pn">La Pile &eacute;lectrique</div><div class="pd">Court partout. Tout donn&eacute;, rien contr&ocirc;l&eacute;.</div></div>
   </div>
   <div class="lvlp">
     <div class="ld" style="background:#9B59B6;color:#fff">1</div>
@@ -126,11 +197,11 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial
     <div class="ld" style="background:#566573;color:#fff">7</div>
     <div class="ld" style="background:#D9F12C;color:#0C0E01">8</div>
   </div>
-  <button class="bstart" onclick="go()">Demarrer le diagnostic &rarr;</button>
+  <button class="bstart" onclick="openModal()">D&eacute;marrer le diagnostic &rarr;</button>
   <div class="stats">
-    <div class="st"><span class="sn">450+</span><span class="sl">joueurs coaches</span></div>
+    <div class="st"><span class="sn">450+</span><span class="sl">joueurs coach&eacute;s</span></div>
     <div class="st"><span class="sn">4 ans</span><span class="sl">de coaching</span></div>
-    <div class="st"><span class="sn">3 min</span><span class="sl">resultat</span></div>
+    <div class="st"><span class="sn">3 min</span><span class="sl">r&eacute;sultat</span></div>
   </div>
 </div>
 
@@ -140,208 +211,225 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial
     <div class="prog-bar"><div class="prog-fill" id="pf" style="width:5%"></div></div>
   </div>
   <div id="qb" class="qb"></div>
-  <button class="btnn" id="bn" onclick="nxt()">Question suivante &rarr;</button>
 </div>
 
 <div id="result" class="hidden res"></div>
 </div>
 
 <script>
-document.getElementById('logo-img').src='data:image/png;base64,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';
-
 var Qs=[
 // ======= BLOC PROFIL (6 questions) =======
 {tp:'p',sec:1,cat:'Profil - 1/6',
-q:"Tu recois un smash dans le fond du court. Qu'est-ce qui se passe naturellement ?",
+q:"Tu re\u00e7ois un smash dans le fond du court. Qu\u2019est-ce qui se passe naturellement ?",
 os:[
-{t:"Je cours et je remets coute que coute, meme une balle molle au milieu",p:'muraille'},
+{t:"Je cours et je remets co\u00fbte que co\u00fbte, m\u00eame une balle molle au milieu",p:'muraille'},
 {t:"Je contre-frappe le plus fort possible pour riposter",p:'brute'},
-{t:"Je leve une balle douce au fond pour remettre en jeu sans risque",p:'pousseur'},
-{t:"Je sprinte, je plonge si besoin - je veux sauver le point a tout prix",p:'pile'}]},
+{t:"Je l\u00e8ve une balle douce au fond pour remettre en jeu sans risque",p:'pousseur'},
+{t:"Je sprinte, je plonge si besoin - je veux sauver le point \u00e0 tout prix",p:'pile'}]},
 
 {tp:'p',cat:'Profil - 2/6',
-q:"Ton equipe est menee 5-2. Quelle est ta reaction instinctive ?",
+q:"Ton \u00e9quipe est men\u00e9e 5-2. Quelle est ta r\u00e9action instinctive ?",
 os:[
-{t:"Je reste calme, je remets tout, j'attends que ca tourne",p:'muraille'},
-{t:"Je tape encore plus fort pour essayer d'inverser",p:'brute'},
+{t:"Je reste calme, je remets tout, j\u2019attends que \u00e7a tourne",p:'muraille'},
+{t:"Je tape encore plus fort pour essayer d\u2019inverser",p:'brute'},
 {t:"Je joue encore plus safe - surtout pas faire de faute directe",p:'pousseur'},
-{t:"Je cours sur tout, je booste l'equipe, j'essaie de tout recuperer",p:'pile'}]},
+{t:"Je cours sur tout, je booste l\u2019\u00e9quipe, j\u2019essaie de tout r\u00e9cup\u00e9rer",p:'pile'}]},
 
 {tp:'p',cat:'Profil - 3/6',
 q:"Une balle lente arrive au centre du terrain. Tu fais quoi naturellement ?",
 os:[
 {t:"Je la renvoie calmement au centre - on verra ce qui se passe",p:'muraille'},
-{t:"Je la frappe fort pour prendre l'initiative tout de suite",p:'brute'},
+{t:"Je la frappe fort pour prendre l\u2019initiative tout de suite",p:'brute'},
 {t:"Je la pousse doucement dans le milieu adverse - pas de prise de risque",p:'pousseur'},
-{t:"Je sprinte dessus et j'essaie quelque chose d'ambitieux",p:'pile'}]},
+{t:"Je sprinte dessus et j\u2019essaie quelque chose d\u2019ambitieux",p:'pile'}]},
 
 {tp:'p',cat:'Profil - 4/6',
-q:"Tu fais une faute directe sur une balle facile. Ta reaction ?",
+q:"Tu fais une faute directe sur une balle facile. Ta r\u00e9action ?",
 os:[
-{t:"Je decide de jouer encore plus safe sur la prochaine - zero risque",p:'muraille'},
-{t:"Je m'enerve et je frappe encore plus fort le point suivant",p:'brute'},
-{t:"Je me rappelle de ne prendre aucun risque - rester le plus regulier possible",p:'pousseur'},
-{t:"Je cours encore plus sur les prochaines balles pour rattraper ca",p:'pile'}]},
+{t:"Je d\u00e9cide de jouer encore plus safe sur la prochaine - z\u00e9ro risque",p:'muraille'},
+{t:"Je m\u2019\u00e9nerve et je frappe encore plus fort le point suivant",p:'brute'},
+{t:"Je me rappelle de ne prendre aucun risque - rester le plus r\u00e9gulier possible",p:'pousseur'},
+{t:"Je cours encore plus sur les prochaines balles pour rattraper \u00e7a",p:'pile'}]},
 
 {tp:'p',cat:'Profil - 5/6',
-q:"Qu'est-ce que tes partenaires te reprochent le plus souvent ?",
+q:"Qu\u2019est-ce que tes partenaires te reprochent le plus souvent ?",
 os:[
-{t:"Que je joue trop passivement - je renvoie sans chercher a gagner le point",p:'muraille'},
+{t:"Que je joue trop passivement - je renvoie sans chercher \u00e0 gagner le point",p:'muraille'},
 {t:"Que je frappe trop fort et que je fais trop de fautes directes",p:'brute'},
-{t:"Que je joue trop lentement, sans intention, que j'offre des balles faciles",p:'pousseur'},
+{t:"Que je joue trop lentement, sans intention, que j\u2019offre des balles faciles",p:'pousseur'},
 {t:"Que je prends leurs balles ou que je cours partout sans organisation",p:'pile'}]},
 
 {tp:'p',cat:'Profil - 6/6',
-q:"Apres un match perdu, qu'est-ce que tu te dis en rentrant ?",
+q:"Apr\u00e8s un match perdu, qu\u2019est-ce que tu te dis en rentrant ?",
 os:[
-{t:"J'ai tout remis mais ils etaient meilleurs - je comprends pas trop pourquoi",p:'muraille'},
-{t:"J'aurais du frapper encore plus fort sur certaines balles - j'ai hesite",p:'brute'},
-{t:"J'ai joue trop lentement et sans intention - ils ont eu le temps de construire",p:'pousseur'},
-{t:"J'ai tout donne physiquement mais c'etait pas suffisant - je comprends pas",p:'pile'}]},
+{t:"J\u2019ai tout remis mais ils \u00e9taient meilleurs - je comprends pas trop pourquoi",p:'muraille'},
+{t:"J\u2019aurais d\u00fb frapper encore plus fort sur certaines balles - j\u2019ai h\u00e9sit\u00e9",p:'brute'},
+{t:"J\u2019ai jou\u00e9 trop lentement et sans intention - ils ont eu le temps de construire",p:'pousseur'},
+{t:"J\u2019ai tout donn\u00e9 physiquement mais c\u2019\u00e9tait pas suffisant - je comprends pas",p:'pile'}]},
 
 // ======= BLOC NIVEAU (13 questions, 5 options, max 52 pts) =======
-// --- Regles & bases ---
+// --- R\u00e8gles & bases ---
 {tp:'l',sec:2,cat:'Niveau - 1/13',
 q:"Comment fonctionne le service au padel ?",
 os:[
 {t:"Je sers par en haut comme au tennis",v:0},
 {t:"Je sers par en dessous - la balle doit rebondir avant de la frapper",v:1},
 {t:"Je sers par en dessous, la balle rebondit, je la frappe sous la hanche, en diagonale dans la case adverse",v:2},
-{t:"Tout ca + je sais gerer le let, la faute de pied, et les cas speciaux de rebond sur la grille",v:3},
-{t:"Maitrise totale des regles du service + connaissance du nouveau systeme Star Point en vigueur depuis 2026",v:4}]},
+{t:"Tout \u00e7a + je sais g\u00e9rer le let, la faute de pied, et les cas sp\u00e9ciaux de rebond sur la grille",v:3},
+{t:"Ma\u00eetrise totale des r\u00e8gles du service + connaissance du nouveau syst\u00e8me Star Point en vigueur depuis 2026",v:4}]},
 
 {tp:'l',cat:'Niveau - 2/13',
-q:"Quels coups tu maitrises vraiment en match ?",
+q:"Quels coups tu ma\u00eetrises vraiment en match ?",
 os:[
-{t:"Je connais 1-2 coups basiques, je me debrouille pour remettre la balle",v:0},
-{t:"Je maitrise le coup droit, le revers et quelques volees simples",v:1},
-{t:"Je controle plusieurs effets (lift, slice), le smash et je commence les volees basses",v:2},
-{t:"Je maitrise la bandeja, la vibora et les coups specifiques du padel",v:3},
-{t:"Execution technique complete de tous les coups, avec variation d'effets et de vitesses selon la situation",v:4}]},
+{t:"Je connais 1-2 coups basiques, je me d\u00e9brouille pour remettre la balle",v:0},
+{t:"Je ma\u00eetrise le coup droit, le revers et quelques vol\u00e9es simples",v:1},
+{t:"Je contr\u00f4le plusieurs effets (lift, slice), le smash et je commence les vol\u00e9es basses",v:2},
+{t:"Je ma\u00eetrise la bandeja, la vibora et les coups sp\u00e9cifiques du padel",v:3},
+{t:"Ex\u00e9cution technique compl\u00e8te de tous les coups, avec variation d\u2019effets et de vitesses selon la situation",v:4}]},
 
 {tp:'l',cat:'Niveau - 3/13',
-q:"Comment tu geres les vitres en defense ?",
+q:"Comment tu g\u00e8res les vitres en d\u00e9fense ?",
 os:[
-{t:"Je les fuis - je sais pas encore gerer le rebond sur vitre",v:0},
+{t:"Je les fuis - je ne sais pas encore g\u00e9rer le rebond sur vitre",v:0},
 {t:"Je comprends le principe mais je rate encore souvent le timing",v:1},
-{t:"Je joue correctement la vitre du fond sur des balles normales - environ 70% de reussite",v:2},
-{t:"Je gere vitre du fond et laterales, et je commence a faire la bajada (rebond vers le bas pour attaquer)",v:3},
-{t:"Maitrise completes des vitres simples, doubles et 360 degres - utilisation fluide en attaque et en defense",v:4}]},
+{t:"Je joue correctement la vitre du fond sur des balles normales - environ 70% de r\u00e9ussite",v:2},
+{t:"Je g\u00e8re vitre du fond et lat\u00e9rales, et je commence \u00e0 faire la bajada (rebond vers le bas pour attaquer)",v:3},
+{t:"Ma\u00eetrise compl\u00e8te des vitres simples, doubles et 360 degr\u00e9s - utilisation fluide en attaque et en d\u00e9fense",v:4}]},
 
 {tp:'l',cat:'Niveau - 4/13',
-q:"C'est quoi la difference entre une bandeja et une vibora ?",
+q:"C\u2019est quoi la diff\u00e9rence entre une bandeja et une vibora ?",
 os:[
-{t:"Je connais pas ces termes",v:0},
-{t:"La bandeja c'est le smash normal, la vibora c'est plus agressive",v:1},
-{t:"La bandeja conserve le filet en controlant lateralement, la vibora est plus agressive avec effet",v:2},
-{t:"La bandeja sort peu et garde le filet, la vibora attaque avec un fort effet lateral qui fait sortir la balle - deux intentions differentes",v:3},
-{t:"Je les maitrise toutes les deux + leurs variantes (bandera, gancho, rouleau) et je choisis selon la position de balle et l'adversaire",v:4}]},
+{t:"Je ne connais pas ces termes",v:0},
+{t:"La bandeja c\u2019est le smash normal, la vibora c\u2019est plus agressive",v:1},
+{t:"La bandeja conserve le filet en contr\u00f4lant lat\u00e9ralement, la vibora est plus agressive avec effet",v:2},
+{t:"La bandeja sort peu et garde le filet, la vibora attaque avec un fort effet lat\u00e9ral qui fait sortir la balle - deux intentions diff\u00e9rentes",v:3},
+{t:"Je les ma\u00eetrise toutes les deux + leurs variantes (bandera, gancho, rouleau) et je choisis selon la position de balle et l\u2019adversaire",v:4}]},
 
 {tp:'l',cat:'Niveau - 5/13',
-q:"Tu sais ce qu'est un 'par 3' et un 'par 4' et quand les utiliser ?",
+q:"Tu sais ce qu\u2019est un \u2018par 3\u2019 et un \u2018par 4\u2019 et quand les utiliser ?",
 os:[
-{t:"Non - je connais pas ces termes",v:0},
-{t:"Je connais le nom mais je sais pas vraiment les executer",v:1},
-{t:"Le par 3 sort par la vitre laterale, le par 4 par le fond - ce sont des coups de finition apres smash",v:2},
-{t:"Je les utilise en match et je sais quelle option choisir selon l'angle de la balle",v:3},
-{t:"Maitrise complete : je varie par 3, par 4, selon la position de balle, l'adversaire et l'angle - avec un fort taux de reussite",v:4}]},
+{t:"Non - je ne connais pas ces termes",v:0},
+{t:"Je connais le nom mais je ne sais pas vraiment les ex\u00e9cuter",v:1},
+{t:"Le par 3 sort par la vitre lat\u00e9rale, le par 4 par le fond - ce sont des coups de finition apr\u00e8s smash",v:2},
+{t:"Je les utilise en match et je sais quelle option choisir selon l\u2019angle de la balle",v:3},
+{t:"Ma\u00eetrise compl\u00e8te : je varie par 3, par 4, selon la position de balle, l\u2019adversaire et l\u2019angle - avec un fort taux de r\u00e9ussite",v:4}]},
 
 {tp:'l',cat:'Niveau - 6/13',
-q:"Comment tu joues en equipe et tu communiques avec ton partenaire ?",
+q:"Comment tu joues en \u00e9quipe et tu communiques avec ton partenaire ?",
 os:[
 {t:"Je ne communique pas vraiment - chacun joue son jeu",v:0},
-{t:"Je communique les bases : 'moi', 'toi', 'laisse'",v:1},
-{t:"Je communique sur la tactique et notre placement est organise de facon simple",v:2},
-{t:"Notre placement est coordonne et dynamique - on se couvre mutuellement et on s'ajuste en temps reel",v:3},
-{t:"Notre jeu est fluide, on communique sans meme parler - on a nos tactiques, nos schemas de jeu, et on s'adapte au point par point",v:4}]},
+{t:"Je communique les bases : \u2018moi\u2019, \u2018toi\u2019, \u2018laisse\u2019",v:1},
+{t:"Je communique sur la tactique et notre placement est organis\u00e9 de fa\u00e7on simple",v:2},
+{t:"Notre placement est coordonn\u00e9 et dynamique - on se couvre mutuellement et on s\u2019ajuste en temps r\u00e9el",v:3},
+{t:"Notre jeu est fluide, on communique sans m\u00eame parler - on a nos tactiques, nos sch\u00e9mas de jeu, et on s\u2019adapte au point par point",v:4}]},
 
 {tp:'l',cat:'Niveau - 7/13',
-q:"Comment tu decrirais la qualite de ta defense ?",
+q:"Comment tu d\u00e9crirais la qualit\u00e9 de ta d\u00e9fense ?",
 os:[
-{t:"Je panique en defense - je suis souvent en difficulte dans le fond du court",v:0},
-{t:"J'utilise le lob de defense pour me donner du temps quand je suis sous pression",v:1},
-{t:"Je defends avec patience en variant balles basses et lobs selon la situation",v:2},
-{t:"Je maitrise la contre-attaque apres la vitre - ma defense peut devenir offensive",v:3},
-{t:"Ma defense est une arme : je fais mal a l'adversaire depuis la defense, je force la faute et je reprends le filet",v:4}]},
+{t:"Je panique en d\u00e9fense - je suis souvent en difficult\u00e9 dans le fond du court",v:0},
+{t:"J\u2019utilise le lob de d\u00e9fense pour me donner du temps quand je suis sous pression",v:1},
+{t:"Je d\u00e9fends avec patience en variant balles basses et lobs selon la situation",v:2},
+{t:"Je ma\u00eetrise la contre-attaque apr\u00e8s la vitre - ma d\u00e9fense peut devenir offensive",v:3},
+{t:"Ma d\u00e9fense est une arme : je fais mal \u00e0 l\u2019adversaire depuis la d\u00e9fense, je force la faute et je reprends le filet",v:4}]},
 
 {tp:'l',cat:'Niveau - 8/13',
-q:"Quelle est ta regularite et combien de fautes directes tu fais ?",
+q:"Quelle est ta r\u00e9gularit\u00e9 et combien de fautes directes tu fais ?",
 os:[
-{t:"Je fais beaucoup de fautes directes - meme sur des balles faciles",v:0},
-{t:"Je tiens un court echange mais je manque de consistance sur la duree",v:1},
-{t:"Je suis regulier sur les coups simples mais je faute encore sous pression",v:2},
-{t:"Je fais tres peu de fautes directes - je force l'adversaire a gagner le point",v:3},
-{t:"Ma regularite est exceptionnelle meme a haute vitesse - mes fautes directes sont rarissimes",v:4}]},
+{t:"Je fais beaucoup de fautes directes - m\u00eame sur des balles faciles",v:0},
+{t:"Je tiens un court \u00e9change mais je manque de consistance sur la dur\u00e9e",v:1},
+{t:"Je suis r\u00e9gulier sur les coups simples mais je faute encore sous pression",v:2},
+{t:"Je fais tr\u00e8s peu de fautes directes - je force l\u2019adversaire \u00e0 gagner le point",v:3},
+{t:"Ma r\u00e9gularit\u00e9 est exceptionnelle m\u00eame \u00e0 haute vitesse - mes fautes directes sont rarissimes",v:4}]},
 
 {tp:'l',cat:'Niveau - 9/13',
-q:"Comment tu decrirais ta condition physique et tes deplacements sur le terrain ?",
+q:"Comment tu d\u00e9crirais ta condition physique et tes d\u00e9placements sur le terrain ?",
 os:[
-{t:"Mon jeu de jambes est limite - je suis souvent mal place",v:0},
-{t:"Je me deplace pour frapper mais je n'anticipe pas encore (pas de split-step)",v:1},
-{t:"J'ai une bonne endurance et un jeu de jambes intentionnel",v:2},
+{t:"Mon jeu de jambes est limit\u00e9 - je suis souvent mal plac\u00e9",v:0},
+{t:"Je me d\u00e9place pour frapper mais je n\u2019anticipe pas encore (pas de split-step)",v:1},
+{t:"J\u2019ai une bonne endurance et un jeu de jambes intentionnel",v:2},
 {t:"Je suis rapide et explosif - mon physique est un vrai point fort sur le terrain",v:3},
-{t:"J'ai une preparation physique specifique padel (explosivite, endurance, split-step) - ma condition est optimale sur un match de 3 sets",v:4}]},
+{t:"J\u2019ai une pr\u00e9paration physique sp\u00e9cifique padel (explosivit\u00e9, endurance, split-step) - ma condition est optimale sur un match de 3 sets",v:4}]},
 
 {tp:'l',cat:'Niveau - 10/13',
-q:"Comment tu decrirais ton sens tactique et ta lecture du jeu ?",
+q:"Comment tu d\u00e9crirais ton sens tactique et ta lecture du jeu ?",
 os:[
-{t:"Je renvoie la balle sans intention precise - je joue en reactif",v:0},
-{t:"J'ai mes premieres intentions tactiques (jouer dans les pieds, lober pour reprendre le filet)",v:1},
-{t:"J'identifie et j'exploite le point faible adverse",v:2},
-{t:"Je construis le point avec des schemas de jeu et je varie mes intentions selon la situation",v:3},
-{t:"Je dicte le rythme, j'anticipe les intentions adverses et je les contre - je suis dans leur tete avant qu'ils jouent",v:4}]},
+{t:"Je renvoie la balle sans intention pr\u00e9cise - je joue en r\u00e9actif",v:0},
+{t:"J\u2019ai mes premi\u00e8res intentions tactiques (jouer dans les pieds, lober pour reprendre le filet)",v:1},
+{t:"J\u2019identifie et j\u2019exploite le point faible adverse",v:2},
+{t:"Je construis le point avec des sch\u00e9mas de jeu et je varie mes intentions selon la situation",v:3},
+{t:"Je dicte le rythme, j\u2019anticipe les intentions adverses et je les contre - je suis dans leur t\u00eate avant qu\u2019ils jouent",v:4}]},
 
 {tp:'l',cat:'Niveau - 11/13',
-q:"Ou te positionnes-tu quand ton equipe est au filet ?",
+q:"O\u00f9 te positionnes-tu quand ton \u00e9quipe est au filet ?",
 os:[
-{t:"Je sais pas vraiment - je me place instinctivement",v:0},
-{t:"Pres du filet pour pouvoir intercepter les balles",v:1},
-{t:"A environ 1 metre du filet, centre sur ma moitie de terrain",v:2},
-{t:"A 1m du filet, en miroir avec mon partenaire, on se deplace ensemble selon la balle jouee",v:3},
-{t:"Position et timing parfaits - mouvement lateral synchronise, je couvre centre et couloir selon la situation, je suis dangereux des la premiere volee",v:4}]},
+{t:"Je ne sais pas vraiment - je me place instinctivement",v:0},
+{t:"Pr\u00e8s du filet pour pouvoir intercepter les balles",v:1},
+{t:"\u00c0 environ 1 m\u00e8tre du filet, centr\u00e9 sur ma moiti\u00e9 de terrain",v:2},
+{t:"\u00c0 1m du filet, en miroir avec mon partenaire, on se d\u00e9place ensemble selon la balle jou\u00e9e",v:3},
+{t:"Position et timing parfaits - mouvement lat\u00e9ral synchronis\u00e9, je couvre centre et couloir selon la situation, je suis dangereux d\u00e8s la premi\u00e8re vol\u00e9e",v:4}]},
 
 {tp:'l',cat:'Niveau - 12/13',
-q:"Tu participes a des tournois officiels (P100, P250, P500...) ?",
+q:"Tu participes \u00e0 des tournois officiels (P100, P250, P500...) ?",
 os:[
 {t:"Non - je joue uniquement des matchs de loisir entre amis",v:0},
 {t:"Oui quelques fois mais je sors au premier tour la plupart du temps",v:1},
-{t:"Oui regulierement - je passe parfois les premiers tours (P100, P250)",v:2},
-{t:"Oui - je gagne en P100/P250, je joue des P500 avec de bons resultats",v:3},
-{t:"Joueur classe FFT, je joue des P500 ou plus et je performe regulierement",v:4}]},
+{t:"Oui r\u00e9guli\u00e8rement - je passe parfois les premiers tours (P100, P250)",v:2},
+{t:"Oui - je gagne en P100/P250, je joue des P500 avec de bons r\u00e9sultats",v:3},
+{t:"Joueur class\u00e9 FFT, je joue des P500 ou plus et je performe r\u00e9guli\u00e8rement",v:4}]},
 
 {tp:'l',cat:'Niveau - 13/13',
-q:"Comment tu te situes honnettement par rapport aux autres joueurs que tu croises ?",
+q:"Comment tu te situes honn\u00eatement par rapport aux autres joueurs que tu croises ?",
 os:[
-{t:"Je suis debutant - je decouvre encore le padel",v:0},
-{t:"Je suis intermediaire - je joue correctement mais j'ai encore beaucoup a apprendre",v:1},
-{t:"Je suis un bon joueur amateur - je gagne des matchs, j'ai un vrai niveau",v:2},
-{t:"Je suis un joueur experimente ou competiteur serieux avec un classement FFT",v:3},
+{t:"Je suis d\u00e9butant - je d\u00e9couvre encore le padel",v:0},
+{t:"Je suis interm\u00e9diaire - je joue correctement mais j\u2019ai encore beaucoup \u00e0 apprendre",v:1},
+{t:"Je suis un bon joueur amateur - je gagne des matchs, j\u2019ai un vrai niveau",v:2},
+{t:"Je suis un joueur exp\u00e9riment\u00e9 ou comp\u00e9titeur s\u00e9rieux avec un classement FFT",v:3},
 {t:"Je suis un joueur de haut niveau - classement FFT significatif, je joue des P1000 ou plus",v:4}]}
 ];
 
 var PR={
-muraille:{e:'&#129522;',n:'La Muraille',tl:"Tu ne perds jamais de balles. Mais tu ne gagnes jamais de points.",d:"Zero technique, zero style, mais une chose rare : tu remets tout. Tu ne fais pas de fautes directes, tu epuises l'adversaire et tu gagnes parfois des matchs que t'aurais pas du gagner. Le probleme : tu joues sans intention. Tu attends l'erreur adverse au lieu de la provoquer. Contre des joueurs qui construisent bien, tu vas finir par te faire ouvrir.",tr:['Patient','Solide mentalement','Passif dans le jeu','Frustrant a affronter'],ax:["Jouer avec des intentions - pas juste remettre","Comprendre quand et comment construire un point","Developper 2-3 coups offensifs pour conclure quand tu as l'avantage","Sortir du mode survie pour entrer dans le mode construction"]},
-brute:{e:'&#128165;',n:'Le Brute',tl:"Tu domines les 5 premieres minutes. Apres, tu es a bout.",d:"Tu entres sur le court en mode guerrier. Grip serre, tu smashs des que tu peux. Quand ca marche, c'est spectaculaire. Quand ca marche pas, tu tapes encore plus fort. Le padel recompense le placement, pas la puissance. Tu perds contre des joueurs deux fois moins athletiques parce qu'ils comprennent ca.",tr:['Explosif','Competitif','Impatient','Imprevisible'],ax:["Deconstruire le reflexe de frapper fort sur chaque balle","Apprendre a construire le point avant de le conclure","Gerer ton energie sur un match complet","Comprendre que le padel se gagne en finesse, pas en force"]},
-pousseur:{e:'&#128012;',n:'Le Pousseur',tl:"Tu fais pas de fautes. Mais tu fais pas de points non plus.",d:"Chaque balle, tu la pousses doucement au milieu. Sans intention. Tu offres des balles faciles a l'adversaire et tu t'etonnes qu'il construise des points sur toi. C'est le profil le plus frustrant a jouer - parce que tu stagnes depuis des mois sans comprendre pourquoi.",tr:['Regulier','Sans prise de risque',"Manque d'intention",'Difficile a lire'],ax:["Jouer avec une direction et une intention sur chaque balle","Developper le lob offensif et la chiquita pour creer des situations","Comprendre la difference entre jouer safe et jouer sans idee","Prendre des decisions en match - meme si tu te trompes"]},
-pile:{e:'&#9889;',n:'La Pile electrique',tl:"Tu cours partout. Mais le padel se gagne avec la tete.",d:"Tu cours sur chaque balle. Y compris celles de ton partenaire. Tu plonges, tu recuperes des trucs impossibles et tu finis le match en nage pour perdre 6-1. Tu compenses le manque de technique par l'energie. Mais au padel, bien se placer vaut mieux que beaucoup courir. Tu epuises ton partenaire autant que toi-meme.",tr:['Energique','Courageux','Desorganise','Genereux'],ax:["Se placer correctement au lieu de courir apres les balles","Respecter les zones de jeu avec son partenaire","Comprendre que moins tu cours, mieux tu joues","Developper la lecture du jeu pour anticiper, pas reagir"]}
+muraille:{e:'&#129522;',n:'La Muraille',tl:"Tu ne perds jamais de balles. Mais tu ne gagnes jamais de points.",d:"Z\u00e9ro technique, z\u00e9ro style, mais une chose rare : tu remets tout. Tu ne fais pas de fautes directes, tu \u00e9puises l\u2019adversaire et tu gagnes parfois des matchs que t\u2019aurais pas d\u00fb gagner. Le probl\u00e8me : tu joues sans intention. Tu attends l\u2019erreur adverse au lieu de la provoquer. Contre des joueurs qui construisent bien, tu vas finir par te faire ouvrir.",tr:['Patient','Solide mentalement','Passif dans le jeu','Frustrant \u00e0 affronter'],ax:["Jouer avec des intentions - pas juste remettre","Comprendre quand et comment construire un point","D\u00e9velopper 2-3 coups offensifs pour conclure quand tu as l\u2019avantage","Sortir du mode survie pour entrer dans le mode construction"]},
+brute:{e:'&#128165;',n:'La Brute',tl:"Tu domines les 5 premi\u00e8res minutes. Apr\u00e8s, tu es \u00e0 bout.",d:"Tu entres sur le court en mode guerrier. Grip serr\u00e9, tu smashs d\u00e8s que tu peux. Quand \u00e7a marche, c\u2019est spectaculaire. Quand \u00e7a marche pas, tu tapes encore plus fort. Le padel r\u00e9compense le placement, pas la puissance. Tu perds contre des joueurs deux fois moins athl\u00e9tiques parce qu\u2019ils comprennent \u00e7a.",tr:['Explosif','Comp\u00e9titif','Impatient','Impr\u00e9visible'],ax:["D\u00e9construire le r\u00e9flexe de frapper fort sur chaque balle","Apprendre \u00e0 construire le point avant de le conclure","G\u00e9rer ton \u00e9nergie sur un match complet","Comprendre que le padel se gagne en finesse, pas en force"]},
+pousseur:{e:'&#128012;',n:'Le Pousseur',tl:"Tu ne fais pas de fautes. Mais tu ne fais pas de points non plus.",d:"Chaque balle, tu la pousses doucement au milieu. Sans intention. Tu offres des balles faciles \u00e0 l\u2019adversaire et tu t\u2019\u00e9tonnes qu\u2019il construise des points sur toi. C\u2019est le profil le plus frustrant \u00e0 jouer - parce que tu stagnes depuis des mois sans comprendre pourquoi.",tr:['R\u00e9gulier','Sans prise de risque',"Manque d\u2019intention",'Difficile \u00e0 lire'],ax:["Jouer avec une direction et une intention sur chaque balle","D\u00e9velopper le lob offensif et la chiquita pour cr\u00e9er des situations","Comprendre la diff\u00e9rence entre jouer safe et jouer sans id\u00e9e","Prendre des d\u00e9cisions en match - m\u00eame si tu te trompes"]},
+pile:{e:'&#9889;',n:'La Pile \u00e9lectrique',tl:"Tu cours partout. Mais le padel se gagne avec la t\u00eate.",d:"Tu cours sur chaque balle. Y compris celles de ton partenaire. Tu plonges, tu r\u00e9cup\u00e8res des trucs impossibles et tu finis le match en nage pour perdre 6-1. Tu compenses le manque de technique par l\u2019\u00e9nergie. Mais au padel, bien se placer vaut mieux que beaucoup courir. Tu \u00e9puises ton partenaire autant que toi-m\u00eame.",tr:['\u00c9nergique','Courageux','D\u00e9sorganis\u00e9','G\u00e9n\u00e9reux'],ax:["Se placer correctement au lieu de courir apr\u00e8s les balles","Respecter les zones de jeu avec son partenaire","Comprendre que moins tu cours, mieux tu joues","D\u00e9velopper la lecture du jeu pour anticiper, pas r\u00e9agir"]}
 };
 
 // Score max niveau = 13 questions x 4 pts = 52 pts
 var LV=[
-{n:1,name:'Initiator',c:'#9B59B6',min:0,max:6,d:"Tu decouvres le padel. Les regles, la prise de raquette, le placement basique - tout ca se met en place. C'est normal, tout le monde commence ici.",nx:"Maitriser les regles, tenir un echange de 2-3 coups, jouer un premier match structure"},
-{n:2,name:'Starter',c:'#3498DB',min:7,max:13,d:"Tu sais jouer un match. Tu maitrises les coups de base - coup droit, revers, quelques volees. La regularite et le timing sont encore a construire.",nx:"Enchainer 5-7 coups sans faute, jouer a intensite stable, maitriser la trajectoire de balle"},
-{n:3,name:'Learner',c:'#2ECC71',min:14,max:20,d:"Tes echanges deviennent reguliers. Tu commences a utiliser les vitres du fond meme si c'est encore instable. Les premiers lobs et smashs apparaissent.",nx:"Defendre 2-3 balles consecutives avec la vitre, mixer les coups, alterner attaque et defense"},
-{n:4,name:'Competitor',c:'#D4AC0D',min:21,max:27,d:"Tu comprends les principes tactiques de base. Tu integres la vibora et la bandeja meme si c'est encore instable. Classement type 10 000 a 15 000.",nx:"Varier les balles en defense, ameliorer la precision vibora/bandeja, commencer a defendre les doubles vitres"},
-{n:5,name:'Grinder',c:'#E67E22',min:28,max:34,d:"Tu controles le tempo d'un match. Vitres maitrisees, chiquita, vibora, smash de finition. Tu geres la transition defense vers attaque. Classement 6 000 a 10 000.",nx:"Variation offensive complete, viser la grille, integrer les par 3/par 4 dans les bons contextes"},
-{n:6,name:'Tactician',c:'#E74C3C',min:35,max:41,d:"Tu construis strategiquement. En defense tu ne survis plus - tu fais mal. Tu maitrises vibora, bandera, gancho avec intention claire. Classement 3 000 a 6 000.",nx:"Zero balle neutre, etre dangereux des la premiere volee, lire les intentions adverses rapidement"},
-{n:7,name:'Game Master',c:'#778CA3',min:42,max:47,d:"Maitrise technique complete et lecture du jeu avancee. Tu anticipes les adversaires avant qu'ils jouent. Tu es dans l'antichambre de l'elite. Classement top 1 000 a 3 000 France.",nx:"Vitesse d'execution tactique, letalite sur balles hautes, communication quasi telepathique avec le partenaire"},
-{n:8,name:'Elite',c:'#D9F12C',min:48,max:52,d:"Top 1 000 a Top 20 France. Maitrise absolue, precision chirurgicale, constance dans les moments cles. Plus rapide, plus precis, plus efficace que tous les niveaux precedents.",nx:"Jeu signature, arme fatale, suivi pro avec coach et analyste video"}
+{n:1,name:'Initiator',c:'#9B59B6',min:0,max:6,d:"Tu d\u00e9couvres le padel. Les r\u00e8gles, la prise de raquette, le placement basique - tout \u00e7a se met en place. C\u2019est normal, tout le monde commence ici.",nx:"Ma\u00eetriser les r\u00e8gles, tenir un \u00e9change de 2-3 coups, jouer un premier match structur\u00e9"},
+{n:2,name:'Starter',c:'#3498DB',min:7,max:13,d:"Tu sais jouer un match. Tu ma\u00eetrises les coups de base - coup droit, revers, quelques vol\u00e9es. La r\u00e9gularit\u00e9 et le timing sont encore \u00e0 construire.",nx:"Encha\u00eener 5-7 coups sans faute, jouer \u00e0 intensit\u00e9 stable, ma\u00eetriser la trajectoire de balle"},
+{n:3,name:'Learner',c:'#2ECC71',min:14,max:20,d:"Tes \u00e9changes deviennent r\u00e9guliers. Tu commences \u00e0 utiliser les vitres du fond m\u00eame si c\u2019est encore instable. Les premiers lobs et smashs apparaissent.",nx:"D\u00e9fendre 2-3 balles cons\u00e9cutives avec la vitre, mixer les coups, alterner attaque et d\u00e9fense"},
+{n:4,name:'Competitor',c:'#D4AC0D',min:21,max:27,d:"Tu comprends les principes tactiques de base. Tu int\u00e8gres la vibora et la bandeja m\u00eame si c\u2019est encore instable. Classement type 10 000 \u00e0 15 000.",nx:"Varier les balles en d\u00e9fense, am\u00e9liorer la pr\u00e9cision vibora/bandeja, commencer \u00e0 d\u00e9fendre les doubles vitres"},
+{n:5,name:'Grinder',c:'#E67E22',min:28,max:34,d:"Tu contr\u00f4les le tempo d\u2019un match. Vitres ma\u00eetris\u00e9es, chiquita, vibora, smash de finition. Tu g\u00e8res la transition d\u00e9fense vers attaque. Classement 6 000 \u00e0 10 000.",nx:"Variation offensive compl\u00e8te, viser la grille, int\u00e9grer les par 3/par 4 dans les bons contextes"},
+{n:6,name:'Tactician',c:'#E74C3C',min:35,max:41,d:"Tu construis strat\u00e9giquement. En d\u00e9fense tu ne survis plus - tu fais mal. Tu ma\u00eetrises vibora, bandera, gancho avec intention claire. Classement 3 000 \u00e0 6 000.",nx:"Z\u00e9ro balle neutre, \u00eatre dangereux d\u00e8s la premi\u00e8re vol\u00e9e, lire les intentions adverses rapidement"},
+{n:7,name:'Game Master',c:'#778CA3',min:42,max:47,d:"Ma\u00eetrise technique compl\u00e8te et lecture du jeu avanc\u00e9e. Tu anticipes les adversaires avant qu\u2019ils jouent. Tu es dans l\u2019antichambre de l\u2019\u00e9lite. Classement top 1 000 \u00e0 3 000 France.",nx:"Vitesse d\u2019ex\u00e9cution tactique, l\u00e9talit\u00e9 sur balles hautes, communication quasi t\u00e9l\u00e9pathique avec le partenaire"},
+{n:8,name:'Elite',c:'#D9F12C',min:48,max:52,d:"Top 1 000 \u00e0 Top 20 France. Ma\u00eetrise absolue, pr\u00e9cision chirurgicale, constance dans les moments cl\u00e9s. Plus rapide, plus pr\u00e9cis, plus efficace que tous les niveaux pr\u00e9c\u00e9dents.",nx:"Jeu signature, arme fatale, suivi pro avec coach et analyste vid\u00e9o"}
 ];
 
 function getLv(s){for(var i=0;i<LV.length;i++){if(s>=LV[i].min&&s<=LV[i].max)return LV[i];}return s<=0?LV[0]:LV[LV.length-1];}
 
 var ans=[],cur=0,ps={muraille:0,brute:0,pousseur:0,pile:0},ls=0;
 
+var userData={};
+function openModal(){document.getElementById('optinModal').classList.add('show');}
+function closeModal(){document.getElementById('optinModal').classList.remove('show');}
+function submitOptin(e){
+  e.preventDefault();
+  var p=document.getElementById('optin-prenom').value.trim();
+  var n=document.getElementById('optin-nom').value.trim();
+  var m=document.getElementById('optin-email').value.trim();
+  var t=document.getElementById('optin-tel').value.trim();
+  if(!p||!n||!m||!t)return false;
+  userData={prenom:p,nom:n,email:m,tel:t};
+  var btn=document.querySelector('.modal-btn');
+  btn.disabled=true;btn.textContent='Envoi en cours...';
+  fetch('/api/optin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(userData)})
+  .then(function(r){return r.json();})
+  .then(function(){closeModal();go();})
+  .catch(function(){closeModal();go();})
+  .finally(function(){btn.disabled=false;btn.innerHTML='C\'est parti &rarr;';});
+  return false;
+}
 function go(){document.getElementById('intro').classList.add('hidden');document.getElementById('quiz').classList.remove('hidden');render();}
 
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
@@ -353,19 +441,17 @@ function render(){
   var b=document.getElementById('qb');b.style.animation='none';b.offsetHeight;b.style.animation='';
   var div='';
   if(q.sec===1)div='<div class="sdiv"><span>Ton profil de joueur</span></div>';
-  if(q.sec===2)div='<div class="sdiv"><span>Ton niveau reel</span></div>';
+  if(q.sec===2)div='<div class="sdiv"><span>Ton niveau r\u00e9el</span></div>';
   var sh=q.tp==='p'?shuffle(q.os.slice()):q.os;
   var opts=sh.map(function(o,i){var val=q.tp==='p'?o.p:o.v;return '<div class="opt" onclick="sel(this,\''+val+'\',\''+q.tp+'\')"><div class="ol">'+L[i]+'</div><div class="otxt">'+o.t+'</div></div>';}).join('');
   b.innerHTML=div+'<div class="qcat">'+q.cat+'</div><div class="qtxt">'+q.q+'</div><div class="opts">'+opts+'</div>';
-  var bn=document.getElementById('bn');bn.classList.remove('vis');
-  bn.textContent=cur===Qs.length-1?'Voir mon diagnostic':'Question suivante';
   ans[cur]=null;
 }
 
 function sel(el,v,t){
-  var all=document.querySelectorAll('.opt');for(var i=0;i<all.length;i++)all[i].classList.remove('sel');
+  var all=document.querySelectorAll('.opt');for(var i=0;i<all.length;i++){all[i].classList.remove('sel');all[i].style.pointerEvents='none';}
   el.classList.add('sel');ans[cur]={v:v,t:t};
-  document.getElementById('bn').classList.add('vis');
+  setTimeout(function(){nxt();},400);
 }
 
 function nxt(){
@@ -388,14 +474,14 @@ function showRes(){
       '<div class="rl" style="border:2px solid '+lv.c+';background:linear-gradient(135deg,'+lv.c+'1a 0%,transparent 70%)">'+
         '<div class="rlnum" style="color:'+lv.c+'">'+lv.n+'</div>'+
         '<div class="rlname">'+lv.name+'</div>'+
-        '<div class="rsub" style="opacity:.7">Ton niveau reel</div>'+
+        '<div class="rsub" style="opacity:.7">Ton niveau r\u00e9el</div>'+
       '</div>'+
     '</div>'+
-    '<div class="rc"><h3>Ton profil - ce que ca veut dire</h3><p>'+p.d+'</p></div>'+
+    '<div class="rc"><h3>Ton profil - ce que \u00e7a veut dire</h3><p>'+p.d+'</p></div>'+
     '<div class="rc"><h3>Tes traits de joueur</h3><div class="tg">'+p.tr.map(function(t){return '<div class="tr">'+t+'</div>';}).join('')+'</div></div>'+
-    '<div class="rc"><h3>Niveau '+lv.n+' - '+lv.name+'</h3><p style="margin-bottom:14px">'+lv.d+'</p><p style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:5px">Pour passer au niveau '+(lv.n<8?lv.n+1:'superieur')+' :</p><p style="font-size:13px;color:rgba(255,255,255,.65)">'+lv.nx+'</p></div>'+
+    '<div class="rc"><h3>Niveau '+lv.n+' - '+lv.name+'</h3><p style="margin-bottom:14px">'+lv.d+'</p><p style="font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:5px">Pour passer au niveau '+(lv.n<8?lv.n+1:'sup\u00e9rieur')+' :</p><p style="font-size:13px;color:rgba(255,255,255,.65)">'+lv.nx+'</p></div>'+
     '<div class="rc"><h3>Tes 4 axes de progression</h3><ul>'+p.ax.map(function(a){return '<li>'+a+'</li>';}).join('')+'</ul></div>'+
-    '<div class="rcta"><h3>Tu veux corriger ca maintenant ?</h3><p>Rejoins la communaute gratuite ou reserve un appel de 20 minutes pour construire ton plan personnalise selon ton profil et ton niveau.</p><div class="ctab"><a href="https://taap.it/gqfCPcU" class="c1">&#127934; Rejoindre la communaute gratuite</a><a href="https://taap.it/w19uRyL" class="c2">&#128222; Reserver mon appel gratuit (20 min)</a></div></div>'+
+    '<div class="rcta"><h3>Tu veux corriger \u00e7a maintenant ?</h3><p>Rejoins la communaut\u00e9 gratuite ou r\u00e9serve un appel de 20 minutes pour construire ton plan personnalis\u00e9 selon ton profil et ton niveau.</p><div class="ctab"><a href="https://www.skool.com/padelacademie/about" class="c1">&#127934; Rejoindre la communaut\u00e9 gratuite</a><a href="https://taap.it/w19uRyL" class="c2">&#128222; R\u00e9server mon appel gratuit (20 min)</a></div></div>'+
     '<div style="text-align:center;margin-top:22px"><button onclick="location.reload()" style="background:none;border:none;color:rgba(255,255,255,.28);font-size:12px;cursor:pointer;text-decoration:underline">Refaire le test</button></div>';
   rd.scrollIntoView({behavior:'smooth'});
 }
