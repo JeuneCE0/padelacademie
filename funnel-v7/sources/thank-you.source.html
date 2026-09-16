@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<!-- ⚠️ CHIFFRES À VÉRIFIER AVANT MISE EN LIGNE (retour Louis 29/07) :
+     nombre d'avis · note Trustpilot · joueurs coachés (450+) · joueurs transformés (150) · abonnés (10 000) -->
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ton appel est réservé : Padel Académie</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--lime:#D9F12C;--dark:#0C0E01;--dark2:#141601;--dark3:#1c1e04;--white:#fff;--wd:rgba(255,255,255,.55);--wf:rgba(255,255,255,.1)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial-gradient(circle at 10% 90%,rgba(217,241,44,.06) 0%,transparent 50%),radial-gradient(circle at 90% 10%,rgba(217,241,44,.04) 0%,transparent 45%);pointer-events:none}
+.wrap{position:relative;z-index:1;max-width:700px;margin:0 auto;padding:36px 22px 80px}
+.logo{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:34px}
+.logo svg{width:34px;height:auto}
+.logo-txt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase}
+.ph{background:rgba(217,241,44,.1);border:1px dashed rgba(217,241,44,.5);color:var(--lime);border-radius:6px;padding:1px 7px;font-size:.88em}
+
+/* ---- bloc 1 : badge ---- */
+.badge-conf{display:flex;align-items:center;justify-content:center;gap:12px;background:rgba(217,241,44,.1);border:1px solid rgba(217,241,44,.35);border-radius:14px;padding:16px 22px;margin-bottom:34px;animation:up .5s ease forwards}
+.badge-conf .rond{width:34px;height:34px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.badge-conf b{font-family:'League Spartan',sans-serif;font-weight:900;font-size:17px;letter-spacing:.3px}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ---- bloc 2 : instruction ---- */
+.instr{text-align:center;margin-bottom:26px}
+.instr h1{font-family:'League Spartan',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(26px,6vw,36px);line-height:1.12;margin-bottom:10px}
+.instr h1 span{color:var(--lime)}
+.instr p{color:var(--wd);font-size:15px;line-height:1.6;max-width:480px;margin:0 auto}
+
+/* ---- bloc 3 : vidéo ---- */
+.vsl{aspect-ratio:16/9;border-radius:16px;border:1px solid rgba(217,241,44,.25);background:var(--dark2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;margin-bottom:18px}
+.vsl .play{width:64px;height:64px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center}
+.vsl .play svg{margin-left:5px}
+.vsl .vlbl{font-family:'League Spartan',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--wd);text-align:center;padding:0 20px;line-height:1.6}
+
+/* ---- bloc 5 : cadre dur ---- */
+.important{background:linear-gradient(135deg,rgba(217,241,44,.13) 0%,rgba(217,241,44,.04) 100%);border:2px solid var(--lime);border-radius:16px;padding:24px;margin-bottom:16px}
+.important .itit{display:flex;align-items:center;gap:10px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:16px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:var(--lime)}
+.important ol{list-style:none;counter-reset:imp}
+.important ol li{counter-increment:imp;display:flex;align-items:flex-start;gap:13px;padding:10px 0;border-bottom:1px solid rgba(217,241,44,.15);font-size:14.5px;line-height:1.6}
+.important ol li:last-child{border-bottom:none}
+.important ol li::before{content:counter(imp);font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--dark);background:var(--lime);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.important .durete{margin-top:14px;padding:13px 16px;background:rgba(12,14,1,.55);border-radius:11px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.85)}
+.important .durete b{color:var(--lime)}
+
+/* ---- texte variante / script ---- */
+.script{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px;margin-bottom:40px}
+.script h3{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
+.script ol{list-style:none;counter-reset:sc}
+.script ol li{counter-increment:sc;display:flex;gap:13px;padding:9px 0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.78)}
+.script ol li::before{content:"0" counter(sc);font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;color:var(--lime);flex-shrink:0;margin-top:2px}
+.script b{color:var(--white);white-space:nowrap}
+
+/* ---- sections ---- */
+section{margin-top:52px}
+.sec-tag{font-family:'League Spartan',sans-serif;font-size:10px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:10px}
+.sec-titre{font-family:'League Spartan',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(22px,5vw,29px);line-height:1.15;text-align:center;margin-bottom:24px}
+.sec-titre span{color:var(--lime)}
+
+/* ---- bloc 6 : exercice ---- */
+.exo{display:flex;gap:18px;align-items:center;background:var(--dark2);border:1px solid rgba(217,241,44,.25);border-radius:16px;padding:22px}
+.exo .picto{flex:0 0 62px;height:62px;border-radius:14px;background:rgba(217,241,44,.12);display:flex;align-items:center;justify-content:center;font-size:28px}
+.exo b{display:block;font-family:'League Spartan',sans-serif;font-weight:900;font-size:17px;margin-bottom:4px}
+.exo p{font-size:13.5px;color:var(--wd);line-height:1.6;margin-bottom:12px}
+.btn-dl{display:inline-block;padding:12px 22px;background:var(--lime);border:none;border-radius:10px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;color:var(--dark);letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .2s;cursor:pointer}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(217,241,44,.22)}
+
+/* ---- FAQ vidéos ---- */
+.faqg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.faqv{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;transition:border-color .2s}
+.faqv:hover{border-color:rgba(217,241,44,.35)}
+.faqv .fvid{aspect-ratio:16/9;background:var(--dark3);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px}
+.faqv .fvid .miniplay{width:42px;height:42px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center}
+.faqv .fvid .miniplay svg{margin-left:3px}
+.faqv .ftxt{padding:14px 16px}
+.faqv .ftxt b{font-family:'League Spartan',sans-serif;font-weight:700;font-size:14px;line-height:1.35;display:block;margin-bottom:4px}
+.faqv .ftxt span{font-size:11.5px;color:var(--wd)}
+
+/* ---- études de cas ---- */
+.cas{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:22px;margin-bottom:12px}
+.cas .cnom{font-family:'League Spartan',sans-serif;font-weight:900;font-size:16px;margin-bottom:14px}
+.cas .cnom span{color:var(--lime);font-size:12px;font-weight:700;letter-spacing:.5px;margin-left:8px}
+.cas dl{display:grid;grid-template-columns:110px 1fr;gap:9px 14px;font-size:13.5px;line-height:1.6}
+.cas dt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--lime);padding-top:2px}
+.cas dd{color:rgba(255,255,255,.78)}
+.cas dd.verb{font-style:italic;color:var(--white);border-left:2px solid var(--lime);padding-left:12px}
+
+/* ---- mur d'avis / senja ---- */
+.senja-bloc{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--dark2);margin-bottom:14px}
+.senja-bloc iframe{display:block;width:100%;height:480px;border:0;background:transparent}
+.note-globale{text-align:center;font-size:12.5px;color:rgba(255,255,255,.45);letter-spacing:.3px}
+.note-globale b{color:var(--lime)}
+
+/* ---- comparatif ---- */
+.comp{border:1px solid rgba(255,255,255,.1);border-radius:15px;overflow:hidden}
+.comp .ligne{display:grid;grid-template-columns:1fr 1fr}
+.comp .ligne>div{padding:14px 18px;font-size:13.5px;line-height:1.55;border-bottom:1px solid rgba(255,255,255,.07)}
+.comp .ligne:last-child>div{border-bottom:none}
+.comp .col-a{background:rgba(255,255,255,.03);color:var(--wd)}
+.comp .col-b{background:rgba(217,241,44,.06);color:rgba(255,255,255,.9)}
+.comp .tete>div{font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.comp .tete .col-b{color:var(--lime)}
+.comp .col-a::before{content:'✕  ';color:rgba(255,255,255,.3)}
+.comp .col-b::before{content:'✓  ';color:var(--lime)}
+.comp .tete .col-a::before,.comp .tete .col-b::before{content:''}
+
+/* ---- équipe ---- */
+.equipe{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.membre{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:15px;padding:20px;text-align:center}
+.membre .mphoto{width:84px;height:84px;border-radius:50%;background:var(--dark3);border:1px dashed rgba(217,241,44,.4);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--lime);text-align:center;line-height:1.3;padding:6px}
+.membre b{display:block;font-family:'League Spartan',sans-serif;font-weight:900;font-size:15px;margin-bottom:3px}
+.membre span{font-size:12px;color:var(--wd);line-height:1.5;display:block}
+
+footer{margin-top:60px;padding-top:26px;border-top:1px solid var(--wf);text-align:center;color:rgba(255,255,255,.35);font-size:12px}
+.hidden{display:none!important}
+@media(max-width:520px){.faqg,.equipe{grid-template-columns:1fr}.cas dl{grid-template-columns:1fr;gap:3px 0}.cas dt{margin-top:8px}.exo{flex-direction:column;text-align:center}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="logo">
+  <svg viewBox="0 0 100 58" fill="none" aria-hidden="true"><path d="M8 38 C4 34 4 28 8 24 C12 20 18 20 22 24 L30 32 L52 6 C56 2 63 2 67 6 L94 38 C98 42 98 49 94 53 C90 57 83 57 79 53 L59 30 L37 52 C33 56 27 56 23 52 Z" fill="#D9F12C"/></svg>
+  <span class="logo-txt">Padel Académie</span>
+</div>
+
+<!-- ============ BLOC 1 · BADGE DE CONFIRMATION ============ -->
+<div class="badge-conf">
+  <div class="rond"><svg width="18" height="14" viewBox="0 0 34 26" fill="none"><path d="M2 13 L12 23 L32 3" stroke="#0C0E01" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <b>Ton appel a bien été réservé !</b>
+</div>
+
+<!-- ============ BLOC 2 · INSTRUCTION DIRECTIVE ============ -->
+<div class="instr">
+  <h1>Regarde cette vidéo <span>avant de quitter cette page</span></h1>
+  <p>Monsieur Marcel te dévoile comment garantir l'efficacité de ta session, et comment certains joueurs gagnent leur premier niveau avant même l'appel.</p>
+</div>
+
+<!-- ============ BLOC 3 · VSL N°2 ============ -->
+<!-- [Remplacer ce cadre par l'embed de la VSL n°2 (10-15 min).
+     Rappel framework : la vidéo pré-vend la TRANSFORMATION, jamais l'offre.
+     Zéro prix, zéro module, c'est l'appel qui vendra.] -->
+<div class="vsl">
+  <div class="play"><svg width="22" height="26" viewBox="0 0 22 26" fill="none"><path d="M0 0 L22 13 L0 26 Z" fill="#0C0E01"/></svg></div>
+  <span class="vlbl ph">[VSL n°2 · 10-15 min · le problème en profondeur, la méthode, les preuves]</span>
+</div>
+
+<!-- ============ BLOC 5 · CADRE DUR (immédiatement après le contenu) ============ -->
+<div class="important">
+  <div class="itit">⚠️ Important, lis ça maintenant</div>
+  <ol>
+    <li><b>Monsieur Marcel va te contacter sur WhatsApp</b> pour confirmer ta présence. Réponds à son message, c'est lui qui valide définitivement ton créneau.</li>
+    <li>Le jour J : un <b>endroit calme</b>, ton téléphone chargé, et sois <b>à l'heure</b>, la session dure 20 minutes, chacune compte.</li>
+    <li>Un vrai empêchement ? <b>Préviens à l'avance</b> sur WhatsApp, ton créneau sera redonné à un autre joueur.</li>
+  </ol>
+  <div class="durete"><b>Sans réponse de ta part au message de confirmation, l'appel sera annulé</b> et ton créneau libéré pour la liste d'attente. Pas de replanification en cas d'absence sans prévenir : Monsieur Marcel réserve son temps aux joueurs sérieux.</div>
+</div>
+
+<!-- Variante texte de la vidéo, le script des 5 temps, scannable
+     (reste utile même quand la vidéo est en ligne : les pressés lisent) -->
+<div class="script">
+  <h3>Ce qui va se passer à ton appel</h3>
+  <ol>
+    <li><b>Félicitations.</b> Tu viens de prendre une vraie décision pour ton padel. La plupart des joueurs stagnent des années sans jamais faire ce pas.</li>
+    <li><b>Le déroulé.</b> 20 minutes en visio avec Monsieur Marcel. On part de ton diagnostic : ton profil de joueur, ton niveau réel, tes réponses au quiz.</li>
+    <li><b>Ce qu'on va regarder ensemble.</b> Le maillon faible exact de ton jeu, et dans quel ordre le corriger pour gagner 1 à 2 niveaux en 75 jours.</li>
+    <li><b>Ce avec quoi tu repars, quoi qu'il arrive.</b> Ton Plan de Progression personnalisé. Même si on ne travaille jamais ensemble, tu sauras exactement quoi faire.</li>
+    <li><b>À très vite.</b> Le jour de ton appel, viens avec tes dernières défaites en tête. C'est là-dedans qu'on va trouver tes prochains niveaux.</li>
+  </ol>
+</div>
+
+<!-- ============ BLOC 6a · L'EXERCICE À TÉLÉCHARGER ============ -->
+<section>
+  <div class="sec-tag">Commence maintenant</div>
+  <h2 class="sec-titre">Ton premier exercice, <span>avant même l'appel</span></h2>
+  <div class="exo">
+    <div class="picto">📋</div>
+    <div>
+      <b>Ta Fiche de Pré-Session</b>
+      <p>Analyse tes 3 derniers matchs perdus avec la grille de Monsieur Marcel : où le point a basculé, quel coup t'a coûté le match, quel réflexe est revenu. <span class="ph">[Instructions de remplissage, texte fourni par Louis]</span> Remplis-la avant l'appel, vous démarrerez directement au cœur de ton jeu.</p>
+      <a class="btn-dl" href="#" onclick="return false"><span class="ph">[Lien PDF à brancher]</span> : Télécharger la fiche</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOC 6b · FAQ EN VIDÉOS COURTES ============ -->
+<section>
+  <div class="sec-tag">Tes doutes, en libre-service</div>
+  <h2 class="sec-titre">Les questions qu'on nous pose <span>avant l'appel</span></h2>
+  <div class="faqg">
+    <!-- [Chaque carte = une vidéo de 60-90 s. Brancher les embeds une par une,
+         au rythme d'une par semaine, la V2 se construit couche par couche.] -->
+    <div class="faqv">
+      <div class="fvid"><div class="miniplay"><svg width="13" height="16" viewBox="0 0 22 26" fill="none"><path d="M0 0 L22 13 L0 26 Z" fill="#0C0E01"/></svg></div><span class="ph" style="font-size:10px">[Vidéo 60-90 s]</span></div>
+      <div class="ftxt"><b>« Est-ce que ça marche si je joue depuis peu ? »</b><span>Monsieur Marcel répond · 1 min</span></div>
+    </div>
+    <div class="faqv">
+      <div class="fvid"><div class="miniplay"><svg width="13" height="16" viewBox="0 0 22 26" fill="none"><path d="M0 0 L22 13 L0 26 Z" fill="#0C0E01"/></svg></div><span class="ph" style="font-size:10px">[Vidéo 60-90 s]</span></div>
+      <div class="ftxt"><b>« Je n'ai pas le temps de m'entraîner plus »</b><span>Monsieur Marcel répond · 1 min</span></div>
+    </div>
+    <div class="faqv">
+      <div class="fvid"><div class="miniplay"><svg width="13" height="16" viewBox="0 0 22 26" fill="none"><path d="M0 0 L22 13 L0 26 Z" fill="#0C0E01"/></svg></div><span class="ph" style="font-size:10px">[Vidéo 60-90 s]</span></div>
+      <div class="ftxt"><b>« Le coaching à distance, ça marche vraiment pour le padel ? »</b><span>Monsieur Marcel répond · 1 min 30</span></div>
+    </div>
+    <div class="faqv">
+      <div class="fvid"><div class="miniplay"><svg width="13" height="16" viewBox="0 0 22 26" fill="none"><path d="M0 0 L22 13 L0 26 Z" fill="#0C0E01"/></svg></div><span class="ph" style="font-size:10px">[Vidéo 60-90 s]</span></div>
+      <div class="ftxt"><b>« Et si le problème, c'était mon partenaire ? »</b><span>Monsieur Marcel répond · 1 min</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOC 4 · PREUVE MONTÉE EN GAMME ============ -->
+
+<!-- 4a · Témoignages vidéo (le format confiance ultime) -->
+<section>
+  <div class="sec-tag">Ils nous ont fait confiance</div>
+  <h2 class="sec-titre">Des joueurs comme toi, <span>en vidéo</span></h2>
+  <!-- Pour un rendu propre : widget Senja "Videos only" depuis le dashboard,
+       à coller à la place de l'iframe. -->
+  <div class="senja-bloc">
+    <iframe src="https://senja.io/p/padel/eNr041E?hideNavigation=on&embed=on" title="Témoignages vidéo Padel Académie" loading="lazy" allow="autoplay; fullscreen"></iframe>
+  </div>
+</section>
+
+<!-- 4b · Études de cas structurées -->
+<section>
+  <div class="sec-tag">Une méthode éprouvée. Des jeux transformés.</div>
+  <h2 class="sec-titre">Avant / après : <span>le process en vrai</span></h2>
+
+  <div class="cas">
+    <div class="cnom">ViragePrépa <span>· avis Trustpilot vérifié</span></div>
+    <dl>
+      <dt>Avant</dt><dd>Voulait passer un niveau au padel, sans savoir quoi corriger.</dd>
+      <dt>Mis en place</dt><dd>Séances avec Monsieur Marcel, travail ciblé sur son jeu.</dd>
+      <dt>Résultat</dt><dd>Amélioration nette constatée dès la 2ᵉ séance.</dd>
+      <dt>Ce qu'il en dit</dt><dd class="verb">« Une amélioration fulgurante de mon niveau. Je recommande à 100 % pour ceux qui veulent progresser. »</dd>
+    </dl>
+  </div>
+
+  <!-- [Études de cas à compléter avec de VRAIS coachés (accord requis) :
+       parmi les 150 joueurs transformés, choisir 2 cas avec résultat concret
+       (niveau gagné, tournoi passé, classement). Structure imposée ↓] -->
+  <div class="cas">
+    <div class="cnom"><span class="ph">[Prénom du coaché n°2]</span> <span>· <span class="ph">[contexte : ville, niveau]</span></span></div>
+    <dl>
+      <dt>Avant</dt><dd><span class="ph">[Situation de départ, ex : bloqué en poules depuis 1 an]</span></dd>
+      <dt>Mis en place</dt><dd><span class="ph">[Ce qui a été travaillé, ex : plan 75 jours, focus défense vitres]</span></dd>
+      <dt>Résultat</dt><dd><span class="ph">[Résultat concret et vérifiable, ex : niveau 3 → 5, premier quart de finale]</span></dd>
+      <dt>Ce qu'il en dit</dt><dd class="verb"><span class="ph">[Citation exacte du coaché, avec son accord]</span></dd>
+    </dl>
+  </div>
+  <div class="cas">
+    <div class="cnom"><span class="ph">[Prénom du coaché n°3]</span> <span>· <span class="ph">[contexte]</span></span></div>
+    <dl>
+      <dt>Avant</dt><dd><span class="ph">[Situation de départ]</span></dd>
+      <dt>Mis en place</dt><dd><span class="ph">[Ce qui a été travaillé]</span></dd>
+      <dt>Résultat</dt><dd><span class="ph">[Résultat concret]</span></dd>
+      <dt>Ce qu'il en dit</dt><dd class="verb"><span class="ph">[Citation exacte]</span></dd>
+    </dl>
+  </div>
+</section>
+
+<!-- 4c · Mur d'avis externes (preuve tierce, statique, aucun lien sortant) -->
+<section>
+  <div class="sec-tag">La preuve qu'on ne contrôle pas</div>
+  <h2 class="sec-titre">Ce que disent les <span>plateformes d'avis</span></h2>
+  <p class="note-globale"><b>4,9/5</b> sur Trustpilot · 85+ avis · 99 % de notes 5 étoiles &nbsp;·&nbsp; <b>★</b> Avis Google vérifiés</p>
+</section>
+
+<!-- 4d · Comparatif « l'ancienne approche vs la nôtre » -->
+<section>
+  <div class="sec-tag">Une méthode différente</div>
+  <h2 class="sec-titre">Les cours classiques <span>vs Padel Académie</span></h2>
+  <div class="comp">
+    <div class="ligne tete"><div class="col-a">Les cours classiques</div><div class="col-b">La méthode Padel Académie</div></div>
+    <div class="ligne"><div class="col-a">Corrigent des coups isolés, hors contexte</div><div class="col-b">Corrige ton jeu en match, profil, réflexes, décisions</div></div>
+    <div class="ligne"><div class="col-a">Le même contenu pour tout le monde</div><div class="col-b">Un plan basé sur ton diagnostic : ton profil, ton niveau 1→8</div></div>
+    <div class="ligne"><div class="col-a">Tu progresses pendant l'heure, puis tu régresses</div><div class="col-b">Un Plan de Progression sur 75 jours, étape par étape</div></div>
+    <div class="ligne"><div class="col-a">Personne ne suit ce que tu fais entre deux cours</div><div class="col-b">Un suivi continu sur WhatsApp, entre les sessions</div></div>
+    <div class="ligne"><div class="col-a">Des tutos YouTube génériques, souvent en anglais</div><div class="col-b">≈400 vidéos padel en français déjà publiées, intégrées à la méthode</div></div>
+    <div class="ligne"><div class="col-a">Le corps est ignoré jusqu'à la blessure</div><div class="col-b">Une approche de kiné : prévention et progression durable</div></div>
+  </div>
+</section>
+
+<!-- 4e · L'équipe ============ -->
+<section>
+  <div class="sec-tag">Tu ne rejoins pas un programme</div>
+  <h2 class="sec-titre">Tu rejoins <span>des gens</span></h2>
+  <div class="equipe">
+    <div class="membre">
+      <div class="mphoto">[Photo]</div>
+      <b>Monsieur Marcel</b>
+      <span>Coach padel · Kiné de formation<br>450+ joueurs coachés : Belgique, France, Koweït, Dubaï</span>
+    </div>
+    <div class="membre">
+      <div class="mphoto">[Photo]</div>
+      <b><span class="ph">[Membre équipe / partenaire]</span></b>
+      <span><span class="ph">[Spécialité, ex : Padel One Dubaï, communauté, analyse vidéo]</span></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © Padel Académie · <span class="ph">[Mentions légales]</span> · <span class="ph">[Confidentialité]</span>
+</footer>
+
+</div>
+</body>
+</html>

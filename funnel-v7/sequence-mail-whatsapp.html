@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<!-- ⚠️ CHIFFRES À VÉRIFIER AVANT MISE EN LIGNE (retour Louis 29/07) :
+     nombre d'avis · note Trustpilot · joueurs coachés (450+) · joueurs transformés (150) · abonnés (10 000) -->
+
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Séquences WhatsApp + Emails V2 : Padel Académie</title>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--lime:#D9F12C;--dark:#0C0E01;--dark2:#141601;--dark3:#1c1e04;--white:#fff;--wd:rgba(255,255,255,.55);--wf:rgba(255,255,255,.1);--wa:#1f3d24}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--dark);color:var(--white);font-family:'DM Sans',sans-serif;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:40px 22px 90px}
+.logo{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:14px}
+.logo svg{width:32px}
+.logo-txt{font-family:'League Spartan',sans-serif;font-weight:700;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+h1{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(26px,5.5vw,36px);line-height:1.12;text-align:center;margin-bottom:10px}
+h1 span{color:var(--lime)}
+.sous{color:var(--wd);font-size:14.5px;line-height:1.7;text-align:center;max-width:560px;margin:0 auto 30px}
+.arc{max-width:600px;margin:0 auto 10px;background:var(--dark2);border:1px solid rgba(217,241,44,.25);border-radius:13px;padding:16px 20px;text-align:center;font-size:13px;line-height:1.8;color:rgba(255,255,255,.8)}
+.arc b{color:var(--lime)}
+section{margin-top:58px}
+.sec-tag{font-family:'League Spartan',sans-serif;font-size:10px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:8px}
+h2{font-family:'League Spartan',sans-serif;font-weight:900;font-size:clamp(21px,4.5vw,28px);line-height:1.15;text-align:center;margin-bottom:8px}
+h2 span{color:var(--lime)}
+.sec-note{color:var(--wd);font-size:13.5px;line-height:1.65;text-align:center;max-width:540px;margin:0 auto 28px}
+.var{background:rgba(217,241,44,.14);color:var(--lime);border-radius:5px;padding:0 5px;font-family:monospace;font-size:.9em}
+.ph{background:rgba(217,241,44,.1);border:1px dashed rgba(217,241,44,.5);color:var(--lime);border-radius:6px;padding:1px 7px;font-size:.88em}
+
+.jour{display:flex;align-items:center;gap:12px;margin:36px 0 14px}
+.jour span{font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--dark);background:var(--lime);padding:6px 13px;border-radius:20px;white-space:nowrap}
+.jour em{font-style:normal;font-size:12px;color:var(--wd)}
+.jour::after{content:'';flex:1;height:1px;background:rgba(217,241,44,.18)}
+
+/* téléphone WhatsApp */
+.tel{max-width:400px;margin:0 auto;background:#0a1a0d;border:1px solid rgba(255,255,255,.12);border-radius:26px;overflow:hidden}
+.tel-tete{display:flex;align-items:center;gap:11px;padding:13px 16px;background:#12240f;border-bottom:1px solid rgba(255,255,255,.07)}
+.tel-tete .avatar{width:34px;height:34px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--dark)}
+.tel-tete b{font-size:14px;display:block}
+.tel-tete span{font-size:11px;color:rgba(255,255,255,.45)}
+.tel-corps{padding:16px 12px;display:flex;flex-direction:column;gap:8px}
+.bulle{max-width:88%;background:var(--wa);border-radius:12px 12px 12px 3px;padding:10px 13px;font-size:13.5px;line-height:1.6;align-self:flex-start;white-space:pre-line}
+.bulle.rep{background:#1a2c40;border-radius:12px 12px 3px 12px;align-self:flex-end}
+.bulle .heure{display:block;text-align:right;font-size:10px;color:rgba(255,255,255,.35);margin-top:4px}
+.bulle a.lien{color:#7ab8ff;text-decoration:underline;word-break:break-all}
+.bulle b{color:var(--lime)}
+.bulle i{color:rgba(255,255,255,.55)}
+
+/* sélecteurs de profil */
+.selecteur{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.selp{padding:8px 15px;background:var(--dark2);border:1px solid rgba(255,255,255,.12);border-radius:20px;font-family:'League Spartan',sans-serif;font-weight:700;font-size:12px;color:var(--wd);cursor:pointer;transition:all .15s;letter-spacing:.5px}
+.selp:hover{border-color:rgba(217,241,44,.4)}
+.selp.actif{background:var(--lime);color:var(--dark);border-color:var(--lime)}
+
+/* emails */
+.mail{max-width:580px;margin:0 auto 14px;background:var(--dark2);border:1px solid rgba(255,255,255,.09);border-radius:15px;overflow:hidden}
+.mail-tete{padding:15px 20px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.mail-tete .mtag{display:inline-block;font-family:'League Spartan',sans-serif;font-size:9px;font-weight:900;letter-spacing:2px;text-transform:uppercase;padding:3px 9px;border-radius:12px;margin-bottom:8px;margin-right:5px}
+.mtag.etape{background:rgba(217,241,44,.15);color:var(--lime);border:1px solid rgba(217,241,44,.3)}
+.mtag.loop{background:rgba(122,184,255,.12);color:#7ab8ff;border:1px solid rgba(122,184,255,.3)}
+.mail-tete .objet{font-family:'League Spartan',sans-serif;font-weight:700;font-size:15.5px;line-height:1.3}
+.mail-tete .preview{font-size:12px;color:var(--wd);margin-top:3px}
+.mail-corps{padding:18px 20px;font-size:13.5px;line-height:1.8;color:rgba(255,255,255,.84);white-space:pre-line}
+.mail-corps b{color:var(--white)}
+.mail-corps .accent{color:var(--lime)}
+.mail-cta{display:inline-block;margin:8px 0;padding:11px 20px;background:var(--lime);border-radius:9px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:11.5px;color:var(--dark);letter-spacing:1px;text-transform:uppercase}
+.mail-corps blockquote{border-left:3px solid var(--lime);padding:2px 0 2px 14px;margin:6px 0;color:var(--white);font-style:italic}
+
+footer{margin-top:64px;padding-top:26px;border-top:1px solid var(--wf);text-align:center;color:rgba(255,255,255,.3);font-size:12px;line-height:1.8}
+@media(max-width:520px){.tel{max-width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="logo">
+  <svg viewBox="0 0 100 58" fill="none"><path d="M8 38 C4 34 4 28 8 24 C12 20 18 20 22 24 L30 32 L52 6 C56 2 63 2 67 6 L94 38 C98 42 98 49 94 53 C90 57 83 57 79 53 L59 30 L37 52 C33 56 27 56 23 52 Z" fill="#D9F12C"/></svg>
+  <span class="logo-txt">Padel Académie · Document interne</span>
+</div>
+<h1>La relance V2 :<br><span>une histoire en 8 emails + WhatsApp</span></h1>
+<p class="sous">Chaque email répond à une question et en ouvre une nouvelle. L'appel n'est plus une invitation, c'est la conséquence naturelle d'une série de déclics.</p>
+<div class="arc">Résultat → <b>prise de conscience</b> → <b>identification</b> → <b>déclic</b> → <b>preuve</b> → <b>méthode</b> → <b>urgence</b> → appel</div>
+<p class="sec-note" style="margin-top:14px">Toutes les <span class="var">{{variables}}</span> sont calculées par le quiz v7 et arrivent prêtes dans le webhook, le CRM n'a qu'un seul embranchement à gérer (l'email 4).</p>
+
+<!-- ================================================== WHATSAPP -->
+<section>
+  <div class="sec-tag">Canal n°1, la conversation</div>
+  <h2>La séquence <span>WhatsApp</span></h2>
+  <p class="sec-note">Le résultat + la valeur. Chaque message finit par une question : l'objectif est de faire <b>répondre</b>. Grâce au quiz v7, le message 1 est un template unique, les textes par profil arrivent pré-remplis.</p>
+
+  <div class="jour"><span>J0 · +2 min</span><em>Le résultat, template unique, contenu injecté selon le profil</em></div>
+  <div class="selecteur">
+    <button class="selp actif" onclick="chProfil(this,'muraille')">🧱 Muraille</button>
+    <button class="selp" onclick="chProfil(this,'brute')">💥 Brute</button>
+    <button class="selp" onclick="chProfil(this,'pousseur')">🐌 Pousseur</button>
+    <button class="selp" onclick="chProfil(this,'pile')">⚡ Pile</button>
+  </div>
+  <div class="tel">
+    <div class="tel-tete"><div class="avatar">MM</div><div><b>Monsieur Marcel · Padel Académie</b><span>en ligne</span></div></div>
+    <div class="tel-corps">
+      <div class="bulle" id="wa1"></div>
+      <div class="bulle rep">Ahah oui c'est exactement moi 😅<span class="heure">14:32</span></div>
+      <div class="bulle">Je le savais 😄 C'est le profil le plus courant chez les joueurs qui stagnent, et la bonne nouvelle, c'est que c'est aussi celui qui progresse le plus vite une fois qu'on sait quoi corriger.
+
+Demain je t'envoie l'histoire d'un joueur qui était exactement dans ton cas. Tu vas te reconnaître.<span class="heure">14:35</span></div>
+    </div>
+  </div>
+
+  <div class="jour"><span>J+1</span><em>La preuve, étude de cas liée au profil</em></div>
+  <div class="tel">
+    <div class="tel-tete"><div class="avatar">MM</div><div><b>Monsieur Marcel · Padel Académie</b><span>en ligne</span></div></div>
+    <div class="tel-corps">
+      <div class="bulle"><b>{{prenom}}</b>, tu te souviens de ta note d'hier ? Tu as mis <b>{{douleur_top_note}}/5</b> sur « <b>{{douleur_top}}</b> ».
+
+Ce joueur avait mis pareil 👇
+<a class="lien" href="#">padelacademie.fr/cas/{{profil}}</a>
+
+Regarde surtout le passage sur ce qu'il a changé en premier. C'est contre-intuitif, et c'est exactement par là qu'on commencerait avec toi.
+
+Dis-moi ce que tu en penses 👀<span class="heure">18:04</span></div>
+    </div>
+  </div>
+
+  <div class="jour"><span>J+2</span><em>La valeur, le conseil du profil, injecté par {{conseil_profil}}</em></div>
+  <div class="tel">
+    <div class="tel-tete"><div class="avatar">MM</div><div><b>Monsieur Marcel · Padel Académie</b><span>en ligne</span></div></div>
+    <div class="tel-corps">
+      <div class="bulle">Un truc à tester dès ton prochain match, <b>{{prenom}}</b>, spécifique aux profils <b>{{profil_nom}}</b> :
+
+🎾 <b>{{conseil_profil}}</b>
+
+J'ai filmé 2 minutes là-dessus :
+<a class="lien" href="#">padelacademie.fr/video/{{profil}}</a>
+
+Tu me diras si tu as senti la différence 💪<span class="heure">17:30</span></div>
+    </div>
+  </div>
+
+  <div class="jour"><span>J+4 · matin</span><em>L'invitation, décalée d'un jour pour ne pas doubler avec l'email 4 (J+3)</em></div>
+  <div class="tel">
+    <div class="tel-tete"><div class="avatar">MM</div><div><b>Monsieur Marcel · Padel Académie</b><span>en ligne</span></div></div>
+    <div class="tel-corps">
+      <div class="bulle"><b>{{prenom}}</b>, tu as ton profil, ton niveau, ton maillon faible. Il te manque une chose : <b>l'ordre dans lequel corriger</b>.
+
+C'est ce qu'on fait pendant l'appel de 20 min : on part de ton diagnostic et on construit ton plan des 75 prochains jours, étape par étape. Tu repars avec, quoi qu'il arrive.
+
+Je bloque des créneaux sur les 3 prochains jours :
+<a class="lien" href="#">taap.it/w19uRyL</a>
+
+Question 20 minutes, ça peut te faire gagner 6 mois d'errance 😉<span class="heure">10:15</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================== EMAILS -->
+<section>
+  <div class="sec-tag">Canal n°2, l'histoire</div>
+  <h2>Les <span>8 emails</span></h2>
+  <p class="sec-note">Un par jour. Sortie automatique du CTA dès réservation ; E8 ne part jamais à quelqu'un qui a réservé. Après J+7, plus aucun email « appel », la promesse de fermeture doit être vraie.</p>
+
+  <!-- E1 -->
+  <div class="jour"><span>E1 · J0 +30 min</span><em>Le diagnostic</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : recadrage</span><span class="mtag loop">Boucle → « ta réponse qui m'a marqué »</span>
+      <div class="objet">{{prenom}}, ton score est moins important que ce détail</div>
+      <div class="preview">92 % des joueurs regardent le mauvais chiffre.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Tu viens de recevoir ton niveau : <b>{{niveau}}/8</b>.
+
+Et je vais te dire un truc bizarre pour un coach :
+
+ce chiffre, je m'en fiche un peu.
+
+Pas parce qu'il est faux. Il est juste.
+
+Mais parce que ce n'est pas lui qui décide de tes matchs.
+
+Tu peux être niveau 6 avec un maillon faible catastrophique…
+et perdre contre des niveaux 4.
+
+Et tu peux être niveau 4, corriger LE bon point…
+et faire tomber des niveaux 6.
+
+Je le vois chaque semaine sur le terrain.
+
+C'est pour ça que ton diagnostic ne contient pas qu'un niveau. Il contient quatre choses :
+
+✔ ton profil : <b>{{profil_emoji}} {{profil_nom}}</b>
+✔ ton niveau : <b>{{niveau}}/8 ({{niveau_nom}})</b>
+✔ ton maillon faible
+✔ et ton <b class="accent">ordre de progression</b>
+
+C'est le dernier qui change tout.
+
+Et c'est exactement ce qu'on pose pendant l'appel : ton ordre, étape par étape, sur 75 jours.
+
+<span class="mail-cta">Découvrir mon plan personnalisé →</span>
+
+Demain, je t'écris à propos d'une de tes réponses.
+
+Celle qui m'a le plus marqué dans ton quiz.
+
+Monsieur Marcel 🎾</div>
+  </div>
+
+  <!-- E2 -->
+  <div class="jour"><span>E2 · J+1</span><em>La prise de conscience</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : sa douleur, ses mots</span><span class="mtag loop">Boucle → « le vrai coupable, demain »</span>
+      <div class="objet">Tu as probablement répondu « {{douleur_top_note}}/5 » à cette question…</div>
+      <div class="preview">…et c'est celle qui m'inquiète le plus.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Dans ton quiz, il y avait cinq phrases à noter.
+
+Tu as mis <b>{{douleur_top_note}}/5</b> à celle-là :
+
+<blockquote>« {{douleur_top}} »</blockquote>
+
+Je veux que tu saches deux choses.
+
+La première : tu n'es pas le seul.
+
+Chez les joueurs qui progressent vite, cette réponse revient presque toujours <b>juste avant leur déclic</b>.
+
+Pas après. Avant.
+
+La deuxième, c'est pourquoi.
+
+Cette phrase, ce n'est pas un constat. C'est un symptôme.
+
+Elle veut dire que tu as atteint la limite de ce que tu peux corriger <b>seul, de l'intérieur</b>. Tu es dans le match. Tu ne peux pas te voir jouer.
+
+Ton partenaire le voit, lui. Tes adversaires aussi, et ils s'en servent.
+
+La bonne nouvelle : un symptôme, ça se remonte jusqu'à la cause.
+
+La tienne, je l'ai déjà repérée dans tes réponses.
+
+Et ce n'est probablement pas celle que tu crois.
+
+Je t'explique demain, et je te préviens : ça va bousculer une certitude.
+
+Monsieur Marcel 🎾
+
+<i>PS : si tu veux la version courte en 20 minutes plutôt qu'en 6 emails, le lien est là.</i></div>
+  </div>
+
+  <!-- E3 -->
+  <div class="jour"><span>E3 · J+2</span><em>La croyance à casser</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : détruire « je manque de technique »</span><span class="mtag loop">Boucle → « demain, ça va piquer »</span>
+      <div class="objet">Le problème n'est pas ton revers.</div>
+      <div class="preview">C'est beaucoup plus frustrant que ça.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Quand un joueur stagne, il se dit toujours la même chose :
+
+« Je manque de technique. »
+
+Alors il fait quoi ?
+
+Des cours. Des paniers de balles. Des vidéos YouTube à 1 h du matin.
+
+Et il progresse… sur l'exercice.
+
+Puis le match arrive. Et rien ne change.
+
+Tu veux savoir pourquoi ?
+
+Parce que le problème n'était pas la technique.
+
+<b class="accent">C'était l'ordre.</b>
+
+Ton jeu, c'est une chaîne. Profil, placement, décisions, exécution. Quand tu travailles un maillon au hasard, même correctement, la chaîne casse toujours au même endroit.
+
+Dans ton cas, {{prenom}}, ton erreur principale, c'est <b>{{erreur_principale}}</b>.
+
+Tant qu'elle est là, chaque heure d'entraînement construit sur du sable.
+
+Supprime-la en premier, et tout ce que tu sais déjà faire se met enfin à compter.
+
+C'est ça, un Plan de Progression. Pas plus d'exercices.
+
+<b>Le bon maillon, au bon moment.</b>
+
+Demain, je te montre ce que ça donne face à toi, en match.
+
+Pourquoi des joueurs objectivement moins forts que toi te battent.
+
+Ça va piquer un peu. Mais tu vas tout comprendre.
+
+Monsieur Marcel 🎾</div>
+  </div>
+
+  <!-- E4 -->
+  <div class="jour"><span>E4 · J+3</span><em>L'identification, le seul embranchement (4 variantes)</em></div>
+  <div class="selecteur">
+    <button class="selp actif" onclick="chE4(this,'muraille')">🧱 Muraille</button>
+    <button class="selp" onclick="chE4(this,'brute')">💥 Brute</button>
+    <button class="selp" onclick="chE4(this,'pousseur')">🐌 Pousseur</button>
+    <button class="selp" onclick="chE4(this,'pile')">⚡ Pile</button>
+  </div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : le miroir qui fait mal</span><span class="mtag loop">Boucle → « demain, un joueur comme toi »</span>
+      <div class="objet">Pourquoi des joueurs moins forts que toi gagnent</div>
+      <div class="preview">Tu le sens déjà en match. Voilà pourquoi.</div>
+    </div>
+    <div class="mail-corps" id="e4"></div>
+  </div>
+
+  <!-- E5 -->
+  <div class="jour"><span>E5 · J+4</span><em>La preuve par ressemblance</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : « c'est possible pour quelqu'un comme moi »</span><span class="mtag loop">Boucle → « demain, je vais te décevoir »</span>
+      <div class="objet">Le joueur qui avait exactement ton profil</div>
+      <div class="preview">Même profil. Même note. Même blocage.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Je t'ai promis une histoire.
+
+<span class="ph">{{cas_client}}, l'étude de cas du profil, à produire ×4 : situation identique → l'ordre mis en place → résultat daté → verbatim exact (accord requis). Fallback réel en attendant ↓</span>
+
+Il avait noté sa frustration comme toi. Il voulait « juste passer un niveau ».
+
+On n'a pas ajouté d'entraînement. On a changé l'ordre.
+
+Son avis, vérifié, est public sur notre Trustpilot :
+
+<blockquote>« Je voulais passer un niveau en padel. Au bout de 2 séances, une amélioration fulgurante. »</blockquote>
+
+Deux séances.
+
+Pas parce qu'il était doué. Parce qu'on a travaillé <b>le bon maillon en premier</b>.
+
+Le tien est identifié depuis ton quiz, {{prenom}}. Il attend dans ton diagnostic.
+
+<span class="mail-cta">Poser mon plan en 20 min →</span>
+
+Demain, je vais probablement te décevoir. Tu comprendras en l'ouvrant.
+
+Monsieur Marcel 🎾</div>
+  </div>
+
+  <!-- E6 -->
+  <div class="jour"><span>E6 · J+5</span><em>La méthode, pattern interrupt</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : la méthode, sans magie</span><span class="mtag loop">Boucle → « les deux versions de ta saison »</span>
+      <div class="objet">Je vais probablement te décevoir.</div>
+      <div class="preview">Pas de secret. Pas de raccourci. Pire : c'est plus simple que ça.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Si tu attends que je te vende une solution spectaculaire, cet email va te décevoir.
+
+Tu n'as probablement pas besoin :
+
+— d'une raquette à 300 €
+— de plus de coaching
+— de vidéos YouTube padel en français
+
+Tu as besoin de <b class="accent">supprimer une erreur</b>.
+
+Une seule. La première de ton ordre de progression.
+
+C'est décevant, hein ? On préférerait un secret.
+
+Mais réfléchis à tes 10 derniers matchs perdus. Honnêtement.
+
+Ils ne se sont pas perdus sur 40 défauts différents. Ils se sont perdus <b>au même endroit</b>, de la même façon, tu l'as noté toi-même {{douleur_top_note}}/5 dans ton quiz.
+
+Les 75 jours, c'est ça :
+
+<b>Jours 1-25 :</b> on supprime ton erreur n°1 ({{erreur_principale}}). Rien d'autre. Le corps n'apprend qu'une chose à la fois.
+<b>Jours 26-50 :</b> on installe le réflexe qui la remplace, sous pression, en match.
+<b>Jours 51-75 :</b> on attaque le maillon n°2, qui est soudain devenu facile, parce que le n°1 ne sabote plus tout.
+
+Pas de magie. Un ordre.
+
+Demain, je te montre les deux versions de ta saison prochaine. Il n'y en a qu'une des deux que tu vas aimer.
+
+Monsieur Marcel 🎾</div>
+  </div>
+
+  <!-- E7 -->
+  <div class="jour"><span>E7 · J+6</span><em>Le coût de l'inaction</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : projection, ses propres mots</span><span class="mtag loop">Boucle → « demain, je ferme »</span>
+      <div class="objet">Voilà ce qui arrive si tu ne changes rien.</div>
+      <div class="preview">Les deux versions des 6 prochains mois. Tu choisis laquelle ?</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Fais un truc pour moi. Trente secondes.
+
+Imagine dans six mois. Tu n'as rien changé.
+
+Tu joues toujours contre les mêmes paires.
+Tu perds toujours les mêmes tie-breaks.
+Ton partenaire te lance toujours le même regard au changement de côté.
+
+Et tu dis encore la même phrase en rangeant ta raquette :
+
+« Je comprends pas. »
+
+Sauf que maintenant, tu comprends. Tu as ton diagnostic. Tu connais ton profil, ton maillon, ton erreur n°1.
+
+Dans six mois, cette phrase ne sera plus de la confusion.
+
+Ce sera un choix.
+
+—
+
+Maintenant l'autre version.
+
+Dans 75 jours.
+
+<b>{{objectif}}</b>, c'est toi qui l'as écrit dans le quiz.
+
+Et cette scène que tu as choisie, tu t'en souviens ?
+
+<blockquote>« {{projection}} »</blockquote>
+
+Elle n'est pas loin. Elle est à un maillon de toi. Le premier de ton ordre.
+
+20 minutes pour poser le plan. C'est littéralement le seul truc entre les deux versions.
+
+<span class="mail-cta">Choisir la deuxième version →</span>
+
+Monsieur Marcel 🎾
+
+<i>PS : demain, je ferme ton diagnostic. Je t'explique.</i></div>
+  </div>
+
+  <!-- E8 -->
+  <div class="jour"><span>E8 · J+7</span><em>La dernière opportunité, soft, et vraie</em></div>
+  <div class="mail">
+    <div class="mail-tete"><span class="mtag etape">Étape : fermeture élégante</span><span class="mtag loop">Ne part jamais si l'appel est réservé</span>
+      <div class="objet">Je ferme ton diagnostic.</div>
+      <div class="preview">Rien de grave. Juste une question de temps, le mien.</div>
+    </div>
+    <div class="mail-corps">{{prenom}},
+
+Dernier email de cette série, promis.
+
+Ton diagnostic reste évidemment enregistré. Ton profil {{profil_nom}}, ton niveau {{niveau}}/8, ton ordre de progression, rien ne s'efface.
+
+Mais je vais être transparent :
+
+je ne peux pas garder du temps d'analyse ouvert indéfiniment pour tous les profils. Les créneaux de la semaine sont les derniers que je réserve à cette série de diagnostics, ensuite, je passe aux joueurs suivants.
+
+Alors une dernière fois, simplement :
+
+si tu veux qu'on construise ton plan de progression ensemble : 20 minutes, tu repars avec quoi qu'il arrive —
+
+<span class="mail-cta">Réserver mes 20 minutes →</span>
+
+Et si ce n'est pas le moment, aucun souci. Sincèrement.
+
+Applique déjà ta première action (<b>{{premiere_action}}</b>), elle est gratuite, et elle marche.
+
+On se recroisera sur un terrain.
+
+Monsieur Marcel 🎾</div>
+  </div>
+</section>
+
+<footer>
+  Document de travail Padel Académie · Placeholders calculés par le quiz v7 : <span class="var">{{douleur_top}}</span> <span class="var">{{erreur_principale}}</span> <span class="var">{{premiere_action}}</span> <span class="var">{{conseil_profil}}</span> <span class="var">{{projection}}</span> …<br>
+  Reste à produire : <span class="ph">4 études de cas par profil ({{cas_client}}, E5 + WA J+1)</span> · <span class="ph">4 vidéos conseil (WA J+2)</span> · fallbacks GHL pour placeholders vides.<br>
+  Règle d'or : la fermeture du E8 doit être réellement appliquée, après J+7, plus aucun email « appel ».
+</footer>
+
+</div>
+
+<script>
+var WA1={
+muraille:"Salut {{prenom}} 🎾 Monsieur Marcel. Ton diagnostic est prêt, et il est parlant.\n\n<b>Ton profil : 🧱 La Muraille</b>\n<b>Ton niveau réel : {{niveau}}/8 ({{niveau_nom}})</b>\n\n{{phrase_profil}} → <i>Tu remets tout, tu ne rates rien… et tu ne gagnes rien. Tu joues pour ne pas perdre au lieu de jouer pour gagner.</i>\n\nPremière chose à faire dès ton prochain match : {{premiere_action}} → <i>sur une balle facile, choisis une cible AVANT de frapper. Une seule.</i>\n\nDis-moi en un mot : tu te reconnais ? 👀",
+brute:"Salut {{prenom}} 🎾 Monsieur Marcel. Ton diagnostic est prêt, et il est parlant.\n\n<b>Ton profil : 💥 La Brute</b>\n<b>Ton niveau réel : {{niveau}}/8 ({{niveau_nom}})</b>\n\n{{phrase_profil}} → <i>Tu domines 5 minutes, puis tu t'éteins. Le padel récompense le placement, pas la puissance.</i>\n\nPremière chose à tester dès ton prochain match : {{premiere_action}} → <i>un point sur deux, interdis-toi de frapper fort. Construis.</i>\n\nDis-moi en un mot : tu te reconnais ? 👀",
+pousseur:"Salut {{prenom}} 🎾 Monsieur Marcel. Ton diagnostic est prêt, et il est parlant.\n\n<b>Ton profil : 🐌 Le Pousseur</b>\n<b>Ton niveau réel : {{niveau}}/8 ({{niveau_nom}})</b>\n\n{{phrase_profil}} → <i>Zéro faute… et zéro point. Tu pousses chaque balle sans intention, et l'adversaire construit sur ton dos.</i>\n\nPremière chose à tester dès ton prochain match : {{premiere_action}} → <i>chaque balle doit avoir UNE intention, profondeur, direction ou hauteur.</i>\n\nDis-moi en un mot : tu te reconnais ? 👀",
+pile:"Salut {{prenom}} 🎾 Monsieur Marcel. Ton diagnostic est prêt, et il est parlant.\n\n<b>Ton profil : ⚡ La Pile électrique</b>\n<b>Ton niveau réel : {{niveau}}/8 ({{niveau_nom}})</b>\n\n{{phrase_profil}} → <i>Tu cours partout, y compris sur les balles de ton partenaire. Tu compenses par l'énergie ce qui se règle par le placement.</i>\n\nPremière chose à tester dès ton prochain match : {{premiere_action}} → <i>après CHAQUE frappe, replace-toi avant de penser à la balle suivante.</i>\n\nDis-moi en un mot : tu te reconnais ? 👀"};
+
+var E4={
+muraille:"{{prenom}},\n\nTu remets tout.\n\nSérieusement, j'ai vu ton profil. Défense solide, zéro panique, tu uses tout le monde.\n\nEt pourtant tu perds contre des joueurs qui ratent plus que toi.\n\nTu sais ce qu'ils ont compris ?\n\nQue tu ne décides <b>jamais</b> du point.\n\nTu le prolonges. Tu le subis magnifiquement. Mais c'est toujours l'autre paire qui choisit où, quand et comment il se termine.\n\nIls jouent. Tu réponds. Match après match.\n\nUne Muraille qui apprend à conclure, juste 2 ou 3 schémas offensifs, au bon moment, devient une horreur à affronter. Ta première action, tu la connais déjà : <b>{{premiere_action}}</b>\n\nMais dans quel ordre construire la suite ? C'est exactement ce qu'on pose à l'appel.\n\n<span class=\"mail-cta\">Poser mon plan en 20 min →</span>\n\nDemain : l'histoire d'un joueur qui avait exactement ton profil. Et ce qu'il a changé en premier.\n\nMonsieur Marcel 🎾",
+brute:"{{prenom}},\n\nTu frappes plus fort que la plupart des joueurs de ton club.\n\nEt des joueurs moins puissants que toi te battent. Régulièrement.\n\nÇa te rend fou, non ?\n\nVoilà ce qu'ils ont compris :\n\nta puissance, ils n'ont pas besoin de la contrer.\n\n<b>Ils te font jouer où ils veulent.</b>\n\nUne balle basse, molle, dans les pieds. Et ta force devient une faute. Ils ne te battent pas, ils te laissent te battre tout seul.\n\nLe pire ? Plus tu perds, plus tu frappes fort. C'est le cercle de la Brute.\n\nUne Brute qui construit avant de frapper garde toute sa puissance, mais la sort au moment où l'adversaire ne peut plus rien en faire. C'est là que les matchs basculent. Ta première action : <b>{{premiere_action}}</b>\n\nLe reste, c'est une question d'ordre. Et ça tient en 20 minutes.\n\n<span class=\"mail-cta\">Poser mon plan en 20 min →</span>\n\nDemain : un joueur qui avait exactement ton profil. Tu vas te reconnaître.\n\nMonsieur Marcel 🎾",
+pousseur:"{{prenom}},\n\nTu es le joueur le plus frustrant de ton club à affronter.\n\nZéro faute. Zéro cadeau. Tout revient.\n\nEt pourtant tu perds contre des joueurs qui prennent dix fois plus de risques que toi.\n\nVoilà ce qu'ils ont compris :\n\ntes balles sans intention, ce sont <b>leurs</b> balles de construction.\n\nTu leur donnes le temps. L'espace. Le confort. Ils montent au filet sur ton dos, tranquillement, et le point se referme sur toi.\n\nTu crois jouer safe. En réalité, tu finances leurs attaques.\n\nUn Pousseur qui met UNE intention par balle change de dimension en quelques semaines, même sans toucher à sa technique. Ta première action : <b>{{premiere_action}}</b>\n\nL'ordre des étapes suivantes, c'est le travail de l'appel.\n\n<span class=\"mail-cta\">Poser mon plan en 20 min →</span>\n\nDemain : un joueur qui avait exactement ton profil. Son déclic va te parler.\n\nMonsieur Marcel 🎾",
+pile:"{{prenom}},\n\nPersonne ne conteste ton engagement.\n\nTu cours tout. Tu plonges. Tu récupères des balles impossibles.\n\nEt tu perds contre des joueurs qui courent deux fois moins que toi.\n\nVoilà ce qu'ils ont compris :\n\ntu ne cours pas parce que tu es rapide.\n\n<b>Tu cours pour réparer de mauvaises décisions.</b>\n\nChaque sprint spectaculaire, c'est un mauvais placement trois secondes plus tôt. Eux marchent, parce qu'ils étaient déjà au bon endroit.\n\nLe padel ne récompense pas l'effort. Il récompense la position.\n\nUne Pile qui apprend à se replacer joue soudain « facile », même niveau d'énergie, deux fois plus de points. Ta première action : <b>{{premiere_action}}</b>\n\nLa suite du plan, on la pose ensemble en 20 minutes.\n\n<span class=\"mail-cta\">Poser mon plan en 20 min →</span>\n\nDemain : un joueur qui avait exactement ton profil. Même douleur, même énergie. Regarde ce qui a changé.\n\nMonsieur Marcel 🎾"};
+
+function chProfil(btn,p){
+  var bs=btn.parentNode.querySelectorAll('.selp');for(var i=0;i<bs.length;i++)bs[i].classList.remove('actif');
+  btn.classList.add('actif');
+  document.getElementById('wa1').innerHTML=WA1[p]+'<span class="heure">14:31</span>';
+}
+function chE4(btn,p){
+  var bs=btn.parentNode.querySelectorAll('.selp');for(var i=0;i<bs.length;i++)bs[i].classList.remove('actif');
+  btn.classList.add('actif');
+  document.getElementById('e4').innerHTML=E4[p];
+}
+document.getElementById('wa1').innerHTML=WA1.muraille+'<span class="heure">14:31</span>';
+document.getElementById('e4').innerHTML=E4.muraille;
+</script>
+</body>
+</html>

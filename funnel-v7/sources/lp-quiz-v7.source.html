@@ -7,12 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gagne 1 à 2 niveaux en 75 jours : Padel Académie</title>
-<meta name="description" content="Diagnostic gratuit en 3 min : ton profil de joueur, ton niveau réel entre 1 et 8, et ton Plan de Progression pour gagner 1 à 2 niveaux en 75 jours.">
-<meta property="og:title" content="Gagne 1 à 2 niveaux en 75 jours : Padel Académie">
-<meta property="og:description" content="Diagnostic gratuit en 3 min : ton profil, ton niveau réel 1→8, ton Plan de Progression.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://quizz.padelacademie.fr/">
-<link rel="icon" type="image/png" href="/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{--lime:#D9F12C;--dark:#0C0E01;--dark2:#141601;--dark3:#1c1e04;--white:#fff;--wd:rgba(255,255,255,.55);--wf:rgba(255,255,255,.1);--lg:rgba(217,241,44,.07)}
@@ -369,7 +363,7 @@ footer{margin-top:64px;padding-top:28px;border-top:1px solid var(--wf);display:f
   <div class="champ"><label for="f-wa">Ton numéro WhatsApp</label><input id="f-wa" type="tel" autocomplete="tel" placeholder="+33 6 …"></div>
   <label class="rgpd"><input type="checkbox" id="f-rgpd"><span>J'accepte de recevoir mon Plan de Progression et les conseils de Padel Académie sur WhatsApp et par email. Désinscription en un message.</span></label>
   <p class="oerr" id="f-err"></p>
-  <button class="bstart" style="width:100%" id="f-btn" onclick="submitLead()">Recevoir mon Plan de Progression →</button>
+  <button class="bstart" style="width:100%" onclick="submitLead()">Recevoir mon Plan de Progression →</button>
   <div class="olock">🔒 Tes infos restent chez nous. Zéro spam.</div>
 </div>
 
@@ -383,8 +377,11 @@ footer{margin-top:64px;padding-top:28px;border-top:1px solid var(--wf);display:f
 </div><!-- /wrap -->
 
 <script>
-/* Le lead part à /api/optin (fonction Vercel) qui pousse contact + champs + opportunité dans GHL. */
-var OPTIN_URL = "/api/optin";
+/* ==================================================
+   CONFIG, webhook CRM (GoHighLevel / Make / Zapier)
+   Vide = mode test : le lead s'affiche dans la console.
+   ================================================== */
+var WEBHOOK_URL = "";
 
 /* ==================================================
    LE PARCOURS, framework ECS, 16 blocs
@@ -711,24 +708,17 @@ function submitLead(){
     investissement:trouve('investissement'),
     reponses:rep, date:new Date().toISOString(), source:'quiz-plan-progression'
   };
-  var btn=document.getElementById('f-btn');
-  btn.disabled=true;btn.textContent='Envoi en cours…';
-  fetch(OPTIN_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)})
-  .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
-  .then(function(){
-    if(window.fbq)fbq('track','Lead',{content_name:'quiz-plan-progression',content_category:pw});
-    /* 16 · confirmation : le résultat se donne sur WhatsApp, pas à l'écran */
-    document.getElementById('optin').classList.add('hidden');
-    document.getElementById('c-prenom').textContent=' '+prenom;
-    document.getElementById('confirm').classList.remove('hidden');
-    window.scrollTo(0,0);
-  })
-  .catch(function(){
-    err.textContent="Oups, l'envoi a échoué. Vérifie ta connexion et réessaie.";err.style.display='block';
-    btn.disabled=false;btn.textContent='Recevoir mon Plan de Progression →';
-  });
+  if(WEBHOOK_URL){
+    try{fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)});}catch(e){}
+  }else{
+    console.log('LEAD (mode test : WEBHOOK_URL vide) :',lead);
+  }
+  /* 16 · confirmation : le résultat se donne sur WhatsApp, pas à l'écran */
+  document.getElementById('optin').classList.add('hidden');
+  document.getElementById('c-prenom').textContent=' '+prenom;
+  document.getElementById('confirm').classList.remove('hidden');
+  window.scrollTo(0,0);
 }
-if(/[?&]start=1/.test(location.search))go();
 </script>
 </body>
 </html>
