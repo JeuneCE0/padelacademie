@@ -34,6 +34,7 @@ Vercel `[optin] GHL customField create error`).
 | `conseil_profil` | conseil long (WA J+2) | Sur les 3 premières balles hautes… |
 | `motivation` · `objectif` · `projection` · `qualification` · `investissement` | réponses brutes | — |
 | `quiz_date` | date ISO du diagnostic | 2026-09-16 |
+| `utm_source` · `utm_medium` · `utm_campaign` · `utm_content` · `utm_term` · `fbclid` · `referrer` | attribution pub (mémorisée en session, survit au rechargement) | meta · quizv7 · … |
 
 Dans les templates GHL, `{{prenom}}` des sources = `{{contact.first_name}}`, et chaque
 `{{xxx}}` = `{{contact.xxx}}`. `{{cta}}` = le lien de réservation (taap.it/w19uRyL).
@@ -55,8 +56,24 @@ Fallbacks GHL pour champs vides : `{{contact.douleur_top | "cette frustration"}}
 ## Pixel Meta
 
 Coller le code de base du pixel dans le `<head>` de `index.html` et `merci.html`. Les événements
-sont déjà déclenchés si `fbq` existe : `Lead` à l'optin (avec `content_category` = profil),
-`Schedule` sur `/merci`.
+sont déjà déclenchés si `fbq` existe :
+
+| Événement | Quand | Type |
+|---|---|---|
+| `QuizStart` | clic « Démarrer » | custom |
+| `QuizResume` | reprise d'un quiz interrompu | custom |
+| `QuizComplete` | dernière question validée (écran d'analyse) | custom |
+| `Lead` | optin envoyé (`content_category` = profil) | standard |
+| `Schedule` | page `/merci` (après réservation) | standard |
+
+Optimiser les campagnes sur `Lead`, suivre `QuizStart → Lead` comme taux de complétion.
+
+## Comportements du quiz
+
+- Choix unique = avance automatique ; bouton retour (dans la page et sur le téléphone) = question précédente.
+- Un quiz interrompu se reprend là où il s'est arrêté pendant 24 h (« Reprendre mon diagnostic (xx %) »).
+- Écran « analyse en cours » de 2,4 s avant l'optin.
+- `?prenom=Louis` préremplit le prénom (liens WhatsApp / email vers le quiz).
 
 ## Lien direct depuis une pub
 
