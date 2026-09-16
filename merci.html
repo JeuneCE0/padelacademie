@@ -44,9 +44,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial
 .important{background:linear-gradient(135deg,rgba(217,241,44,.13) 0%,rgba(217,241,44,.04) 100%);border:2px solid var(--lime);border-radius:16px;padding:24px;margin-bottom:16px}
 .important .itit{display:flex;align-items:center;gap:10px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:16px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;color:var(--lime)}
 .important ol{list-style:none;counter-reset:imp}
-.important ol li{counter-increment:imp;display:flex;align-items:flex-start;gap:13px;padding:10px 0;border-bottom:1px solid rgba(217,241,44,.15);font-size:14.5px;line-height:1.6}
+.important ol li{counter-increment:imp;position:relative;display:block;padding:10px 0 10px 39px;border-bottom:1px solid rgba(217,241,44,.15);font-size:14.5px;line-height:1.6}
 .important ol li:last-child{border-bottom:none}
-.important ol li::before{content:counter(imp);font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--dark);background:var(--lime);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.important ol li::before{content:counter(imp);position:absolute;left:0;top:11px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:13px;color:var(--dark);background:var(--lime);border-radius:7px;width:26px;height:26px;display:flex;align-items:center;justify-content:center}
 .important .durete{margin-top:14px;padding:13px 16px;background:rgba(12,14,1,.55);border-radius:11px;font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.85)}
 .important .durete b{color:var(--lime)}
 
@@ -54,8 +54,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;background-image:radial
 .script{background:var(--dark2);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px;margin-bottom:40px}
 .script h3{font-family:'League Spartan',sans-serif;font-weight:700;font-size:11px;color:var(--lime);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px}
 .script ol{list-style:none;counter-reset:sc}
-.script ol li{counter-increment:sc;display:flex;gap:13px;padding:9px 0;font-size:14px;line-height:1.6;color:rgba(255,255,255,.78)}
-.script ol li::before{content:"0" counter(sc);font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;color:var(--lime);flex-shrink:0;margin-top:2px}
+.script ol li{counter-increment:sc;position:relative;display:block;padding:9px 0 9px 32px;font-size:14px;line-height:1.6;color:rgba(255,255,255,.78)}
+.script ol li::before{content:"0" counter(sc);position:absolute;left:0;top:11px;font-family:'League Spartan',sans-serif;font-weight:900;font-size:12px;color:var(--lime)}
 .script b{color:var(--white);white-space:nowrap}
 
 /* ---- sections ---- */
