@@ -163,11 +163,21 @@
   <button class="btn full btnn" id="bn" onclick="nxt()">Continuer <span class="arr">→</span></button>
 </div>
 
+<!-- ================================================================ ANALYSE -->
+<div id="loader" class="hidden loader up">
+  <div class="ring"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="rgba(217,241,44,.18)" stroke-width="2"/><path d="M12 2a10 10 0 0 1 10 10" fill="none" stroke="#D9F12C" stroke-width="2" stroke-linecap="round"/></svg></div>
+  <div class="qcat">Analyse en cours</div>
+  <h2 class="display">On calcule ton <em>diagnostic</em></h2>
+  <ul class="checks"><li>Profil de joueur identifié</li><li>Niveau réel calculé</li><li>Maillon faible repéré</li></ul>
+</div>
+
 <!-- ================================================================ OPTIN -->
 <div id="optin" class="hidden optin up">
   <div class="center"><div class="qcat">Dernière étape</div></div>
   <h2 class="display center">Ton Plan de Progression arrive sur <em>WhatsApp</em> dans 2 minutes.</h2>
   <p class="lead center">Ton profil de joueur, ton niveau réel entre 1 et 8, et ton plan pour gagner 1 à 2 niveaux en 75 jours. Dis-nous où l'envoyer :</p>
+  <div class="ready"><span>✓ Profil identifié</span><span>✓ Niveau calculé</span><span>✓ Maillon faible repéré</span></div>
+  <input id="f-web" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
   <div class="field"><label for="f-prenom">Ton prénom</label><div class="in"><input id="f-prenom" autocomplete="given-name" placeholder="Prénom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div></div>
   <div class="field"><label for="f-email">Ton email</label><div class="in"><input id="f-email" type="email" autocomplete="email" placeholder="toi@email.com" inputmode="email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg></div></div>
   <div class="field"><label for="f-wa">Ton numéro WhatsApp</label><div class="in"><input id="f-wa" type="tel" autocomplete="tel" placeholder="+33 6 …" inputmode="tel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-13.4 7.8L3 21l1.3-4.5A9 9 0 1 1 21 12z"/><path d="M9 10a1 1 0 0 0 0 1 6 6 0 0 0 4 4 1 1 0 0 0 1 0l1-1-2-1-1 1a4 4 0 0 1-2-2l1-1-1-2z" fill="currentColor" stroke="none"/></svg></div></div>
@@ -383,12 +393,46 @@ var LV=[
 function getLv(s){for(var i=0;i<LV.length;i++){if(s>=LV[i].min&&s<=LV[i].max)return LV[i];}return s<=0?LV[0]:LV[LV.length-1];}
 
 /* ================== MOTEUR ================== */
-var cur=0,ps={muraille:0,brute:0,pousseur:0,pile:0},ls=0,rep=[],douleurs={},courant=null,hist=[],timer=null;
+var cur=0,ps={muraille:0,brute:0,pousseur:0,pile:0},ls=0,rep=[],douleurs={},courant=null,hist=[],timer=null,ltimer=null,popping=false;
 var totalAffiche=Qs.length-1; /* une branche de réassurance sur deux n'est jamais vue */
 
 function idVers(id){for(var i=0;i<Qs.length;i++){if(Qs[i].id===id)return i;}return -1;}
 function $(id){return document.getElementById(id);}
-function go(){$('landing').classList.add('hidden');$('quiz').classList.remove('hidden');document.body.classList.add('inquiz');$('sticky').classList.remove('on');window.scrollTo(0,0);afficher(0);}
+function px(ev,data){if(window.fbq){try{fbq(ev==='Lead'?'track':'trackCustom',ev,data||{});}catch(e){}}}
+
+/* Attribution pub : UTM + fbclid mémorisés pour la session, envoyés avec le lead */
+var ATTR=(function(){
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid'],o={};
+  try{o=JSON.parse(sessionStorage.getItem('pa_attr')||'{}');}catch(e){}
+  var sp=new URLSearchParams(location.search),hit=false;
+  keys.forEach(function(k){var v=sp.get(k);if(v){o[k]=v.slice(0,200);hit=true;}});
+  if(hit){try{sessionStorage.setItem('pa_attr',JSON.stringify(o));}catch(e){}}
+  o.referrer=(document.referrer||'').slice(0,300);
+  return o;
+})();
+
+/* Reprise : un quiz interrompu se poursuit là où il s'est arrêté (24 h) */
+var KEY='pa_quiz_v7';
+function save(){try{localStorage.setItem(KEY,JSON.stringify({t:Date.now(),cur:cur,ps:ps,ls:ls,rep:rep,douleurs:douleurs,hist:hist,
+  vus:Qs.filter(function(q){return q._vu;}).map(function(q){return q.id;})}));}catch(e){}}
+function restore(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');return s&&s.hist&&s.hist.length&&Date.now()-s.t<864e5?s:null;}catch(e){return null;}}
+function clearSave(){try{localStorage.removeItem(KEY);}catch(e){}}
+
+function go(){
+  $('landing').classList.add('hidden');$('quiz').classList.remove('hidden');document.body.classList.add('inquiz');$('sticky').classList.remove('on');window.scrollTo(0,0);
+  var s=restore();
+  if(s){ps=s.ps;ls=s.ls;rep=s.rep;douleurs=s.douleurs;hist=s.hist;Qs.forEach(function(q){q._vu=s.vus.indexOf(q.id)>=0;});px('QuizResume');afficher(s.cur);}
+  else{px('QuizStart');afficher(0);}
+}
+function pushQ(state){if(popping){popping=false;return;}try{history.pushState(state,'');}catch(e){}}
+window.addEventListener('popstate',function(){
+  var inQuiz=!$('quiz').classList.contains('hidden'),inOptin=!$('optin').classList.contains('hidden')||!$('loader').classList.contains('hidden');
+  if(inOptin){clearTimeout(ltimer);$('optin').classList.add('hidden');$('loader').classList.add('hidden');$('quiz').classList.remove('hidden');popping=true;back();}
+  else if(inQuiz){
+    if(hist.length){popping=true;back();}
+    else{$('quiz').classList.add('hidden');$('landing').classList.remove('hidden');document.body.classList.remove('inquiz');window.scrollTo(0,0);}
+  }
+});
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function vus(){var n=0;for(var i=0;i<Qs.length;i++){if(Qs[i]._vu)n++;}return n;}
 function progress(){
@@ -419,8 +463,8 @@ function afficher(i){
       var all=b.querySelectorAll('.opt');for(var m=0;m<all.length;m++)all[m].classList.remove('sel');
       this.classList.add('sel');
       courant=q.os[parseInt(this.dataset.j)];
-      /* auto-avance : moins de clics, plus de complétions */
-      timer=setTimeout(nxt,solo?180:340);
+      /* auto-avance : moins de clics, plus de complétions (un seul timer, même en double clic) */
+      clearTimeout(timer);timer=setTimeout(nxt,solo?180:340);
     });}
     bn.classList.remove('vis');
   }
@@ -451,6 +495,7 @@ function afficher(i){
     bn.classList.remove('vis');bn.innerHTML='Continuer <span class="arr">→</span>';
   }
   window.scrollTo(0,0);
+  save();pushQ({q:i});
 }
 
 function nxt(){
@@ -488,8 +533,18 @@ function back(){
   afficher(e.i);
 }
 
-/* ---- 15 · OPTIN : le lead + tout le scoring partent au CRM ---- */
-function showOptin(){$('quiz').classList.add('hidden');$('optin').classList.remove('hidden');window.scrollTo(0,0);setTimeout(function(){$('f-prenom').focus();},350);}
+/* ---- 14bis · ANALYSE : 2,4 s de suspense, les 3 coches s'allument ---- */
+function showOptin(){
+  $('quiz').classList.add('hidden');$('loader').classList.remove('hidden');window.scrollTo(0,0);pushQ({q:'optin'});
+  var li=$('loader').querySelectorAll('.checks li');for(var k=0;k<li.length;k++)li[k].classList.remove('ok');
+  [500,1200,1900].forEach(function(t,k){setTimeout(function(){li[k].classList.add('ok');},t);});
+  px('QuizComplete');
+  clearTimeout(ltimer);ltimer=setTimeout(function(){
+    $('loader').classList.add('hidden');$('optin').classList.remove('hidden');window.scrollTo(0,0);
+    var sp=new URLSearchParams(location.search);if(sp.get('prenom')&&!$('f-prenom').value)$('f-prenom').value=sp.get('prenom').slice(0,60);
+    setTimeout(function(){$('f-prenom').focus();},350);
+  },2500);
+}
 
 function trouve(idq){for(var j=0;j<Qs.length;j++){if(Qs[j].id===idq&&Qs[j].q){for(var k=0;k<rep.length;k++){if(rep[k].question===Qs[j].q)return rep[k].reponse;}}}return null;}
 
@@ -516,13 +571,14 @@ function submitLead(){
     motivation:trouve('motivation'), objectif:trouve('objectif'),
     projection:trouve('projection'), qualification:trouve('qualification'),
     investissement:trouve('investissement'),
-    reponses:rep, date:new Date().toISOString(), source:'quiz-plan-progression'
+    reponses:rep, date:new Date().toISOString(), source:'quiz-plan-progression',
+    attribution:ATTR, website:$('f-web').value
   };
   var btn=$('f-btn');btn.disabled=true;btn.textContent='Envoi en cours…';
   fetch(OPTIN_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead)})
   .then(function(r){return r.ok?r.json():Promise.reject(r.status);})
   .then(function(){
-    if(window.fbq)fbq('track','Lead',{content_name:'quiz-plan-progression',content_category:pw});
+    clearSave();px('Lead',{content_name:'quiz-plan-progression',content_category:pw});
     /* 16 · confirmation : le résultat se donne sur WhatsApp, pas à l'écran */
     $('optin').classList.add('hidden');
     $('c-prenom').textContent=' '+prenom;
@@ -541,6 +597,8 @@ function submitLead(){
   if(!('IntersectionObserver' in window))return;
   new IntersectionObserver(function(en){st.classList.toggle('on',!en[0].isIntersecting&&!document.body.classList.contains('inquiz'));},{threshold:0}).observe(hero);
 })();
+(function(){var s=restore();if(!s)return;var pct=Math.round(Math.min(s.vus.length,totalAffiche)/totalAffiche*100);
+  var bs=document.querySelectorAll('#landing .btn, #sticky .btn');for(var i=0;i<bs.length;i++)bs[i].innerHTML='Reprendre mon diagnostic ('+pct+' %) <span class="arr">→</span>';})();
 if(/[?&]start=1/.test(location.search))go();
 </script>
 </body>

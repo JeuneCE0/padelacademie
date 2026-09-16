@@ -109,6 +109,21 @@ section{margin-top:64px}
 footer{margin-top:72px;padding-top:26px;border-top:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;color:var(--faint);font-size:12.5px}
 footer a{color:var(--faint)}
 
+/* ---------- analyse / prêt ---------- */
+.loader{max-width:440px;margin:0 auto;text-align:center;padding-top:60px}
+.loader .ring{width:64px;height:64px;margin:0 auto 22px;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader .qcat{display:inline-block}
+.loader h2{margin:8px 0 22px}
+.checks{list-style:none;text-align:left;max-width:320px;margin:0 auto}
+.checks li{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--faint);transition:color .3s}
+.checks li:last-child{border-bottom:1px solid var(--line)}
+.checks li::before{content:'';width:22px;height:22px;flex-shrink:0;border-radius:50%;border:1px solid var(--line);transition:all .3s;background:center/12px no-repeat}
+.checks li.ok{color:var(--txt)}
+.checks li.ok::before{background-color:var(--lime);border-color:var(--lime);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 26'%3E%3Cpath d='M2 13 L12 23 L32 3' stroke='%230B0D01' stroke-width='6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E")}
+.ready{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;margin:-8px 0 22px;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:6px}
+
 /* ---------- animations ---------- */
 @keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .up{animation:up .5s cubic-bezier(.2,.7,.2,1) both}

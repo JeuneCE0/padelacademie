@@ -12,7 +12,9 @@ const FIELDS = [
   'phrase_profil', 'erreur_principale', 'premiere_action', 'conseil_profil',
   'motivation', 'objectif', 'projection', 'qualification', 'investissement',
   'quiz_date',
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'referrer',
 ];
+const ATTR_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'referrer'];
 const PROFILS = ['muraille', 'brute', 'pousseur', 'pile'];
 
 function str(v, max = 500) { return typeof v === 'string' ? v.trim().slice(0, max) : ''; }
@@ -52,9 +54,13 @@ function parseLead(body) {
         .filter((r) => r.question)
     : [];
 
+  const attr = b.attribution && typeof b.attribution === 'object' ? b.attribution : {};
+  const attribution = {};
+  for (const k of ATTR_KEYS) attribution[k] = str(attr[k], 300);
+
   return {
     lead: {
-      prenom, email, phone, whatsapp_saisi: whatsapp, profil, niveau, reponses,
+      prenom, email, phone, whatsapp_saisi: whatsapp, profil, niveau, reponses, ...attribution,
       profil_nom: str(b.profil_nom, 60),
       profil_emoji: str(b.profil_emoji, 8),
       niveau_nom: str(b.niveau_nom, 60),
@@ -126,6 +132,7 @@ function recap(lead) {
     `Qualification : ${lead.qualification}`,
     `Investissement : ${lead.investissement}`,
     `WhatsApp saisi : ${lead.whatsapp_saisi}`,
+    `Source : ${[lead.utm_source, lead.utm_medium, lead.utm_campaign, lead.utm_content].filter(Boolean).join(' / ') || 'direct'}${lead.fbclid ? ' · fbclid ' + lead.fbclid : ''}`,
     '',
     'Réponses :',
     ...lead.reponses.map((r) => `- ${r.question} → ${r.reponse}`),
@@ -135,6 +142,8 @@ function recap(lead) {
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+  // Piège à bots : champ invisible rempli = on répond ok sans rien pousser dans le CRM.
+  if (req.body && typeof req.body.website === 'string' && req.body.website.trim()) return res.status(200).json({ ok: true });
 
   const parsed = parseLead(req.body);
   if (parsed.errors) return res.status(400).json({ error: 'Champs invalides', fields: parsed.errors });
