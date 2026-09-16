@@ -100,8 +100,8 @@ section{margin-top:64px}
 
 /* ---------- barre CTA collante (mobile) ---------- */
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
-  background:linear-gradient(180deg,rgba(11,13,1,0),rgba(11,13,1,.92) 30%);transform:translateY(110%);transition:transform .3s}
-.sticky.on{transform:none}
+  background:linear-gradient(180deg,rgba(11,13,1,0),rgba(11,13,1,.92) 30%);transform:translateY(110%);visibility:hidden;transition:transform .3s,visibility 0s .3s}
+.sticky.on{transform:none;visibility:visible;transition:transform .3s}
 .sticky .btn{width:100%;min-height:54px;font-size:14px}
 @media(min-width:700px){.sticky{display:none}}
 
