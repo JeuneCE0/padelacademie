@@ -15,8 +15,9 @@
 <link rel="icon" type="image/png" href="/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/funnel.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -25,119 +26,159 @@
   <symbol id="check" viewBox="0 0 34 26"><path d="M2 13 L12 23 L32 3" stroke="#0B0D01" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
 </svg>
 
-<div class="wrap">
-
 <!-- ================================================================ LANDING -->
-<div id="landing">
+<div id="landing" class="lp">
 
-  <div class="topbar">
+  <header class="hdr" id="hdr"><div class="in">
     <a class="logo" href="/"><svg><use href="#bounce"/></svg><span>Padel Académie</span></a>
-    <div class="trust"><span class="star">★</span> <b>4,9/5</b> Trustpilot</div>
+    <div class="hr">
+      <div class="trust"><span class="star">★</span> <b>4,9/5</b> <span class="t-hide">Trustpilot</span></div>
+      <button class="hcta" type="button" onclick="go()">Démarrer <span aria-hidden="true">→</span></button>
+    </div>
+  </div></header>
+
+  <div class="hero">
+    <div class="orb" aria-hidden="true"></div>
+    <div class="court" aria-hidden="true"><svg viewBox="0 0 200 400" preserveAspectRatio="none"><rect x="1" y="1" width="198" height="398"/><line x1="0" y1="130.5" x2="200" y2="130.5"/><line x1="0" y1="269.5" x2="200" y2="269.5"/><line x1="100" y1="130.5" x2="100" y2="269.5"/><line class="net" x1="0" y1="200" x2="200" y2="200"/></svg></div>
+
+    <div class="grid">
+      <div class="copy">
+        <div class="pill up"><i class="live"></i>Diagnostic gratuit · 3 min</div>
+        <h1 class="display up" style="--d:.06s">Complète ce diagnostic et récupère ton <em>Plan de Progression</em> pour gagner 1 à 2 niveaux en 75 jours</h1>
+        <p class="memesi up" style="--d:.14s">…même si <em>tu stagnes depuis des mois sans comprendre pourquoi.</em></p>
+      </div>
+
+      <div class="media up" style="--d:.22s">
+        <!-- [VIDÉO 1 MIN DE LOUIS : remplacer ce bloc par l'embed] -->
+        <div class="video" role="button" aria-label="Vidéo de Monsieur Marcel">
+          <div class="play"><svg width="22" height="26"><use href="#play"/></svg></div>
+          <div class="cap"><b>Monsieur Marcel</b> · <span class="ph">pourquoi ce diagnostic</span><span class="dur">1 MIN</span></div>
+        </div>
+        <!-- Aperçu de ce que le joueur reçoit : valeurs tirées du moteur (profil Muraille, niveau 4 → 6) -->
+        <div class="fcard wa" aria-hidden="true">
+          <span class="waic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.3-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span>
+          <div><b>Ton plan arrive</b><small>sur WhatsApp · 2 min</small></div>
+        </div>
+        <div class="fcard res" aria-hidden="true">
+          <div class="fh"><span>Exemple de diagnostic</span><i class="live"></i></div>
+          <div class="prof"><span class="emo">🧱</span><div><b>La Muraille</b><small>Ton profil terrain</small></div></div>
+          <div class="bars"><i class="on" style="--h:22;--n:0"></i><i class="on" style="--h:32;--n:1"></i><i class="on" style="--h:42;--n:2"></i><i class="on" style="--h:52;--n:3"></i><i class="tg" style="--h:64;--n:4"></i><i class="tg" style="--h:76;--n:5"></i><i style="--h:88;--n:6"></i><i style="--h:100;--n:7"></i></div>
+          <div class="lvl-l"><span>Niveau <b>4</b></span><span>→ <b>6</b> en 75 jours</span></div>
+        </div>
+      </div>
+
+      <div class="act up" style="--d:.3s">
+        <p class="lead">Reçois gratuitement ton <b>Plan de Progression personnalisé</b> : ton profil de joueur, ton niveau réel entre 1 et 8, et ce qui te fait défaut pour progresser.</p>
+        <div class="chips">
+          <span class="chip">Ton profil terrain</span>
+          <span class="chip">Ton niveau réel 1 → 8</span>
+          <span class="chip">Tes 4 axes de progression</span>
+        </div>
+        <button class="btn" id="cta-hero" onclick="go()">Démarrer mon diagnostic <span class="arr">→</span></button>
+        <div class="micro"><span>14 questions</span><span>Gratuit</span><span>Résultat sur WhatsApp</span></div>
+        <div class="avatars">
+          <div class="stack"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i></div>
+          <p>Déjà réalisé par <b><span class="ph">[X]</span> joueurs</b></p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="hero up">
-    <div class="eyebrow">Diagnostic gratuit · 3 min</div>
-    <h1 class="display">Complète ce diagnostic et récupère ton <em>Plan de Progression</em> pour gagner 1 à 2 niveaux en 75 jours</h1>
-    <p class="memesi">…même si <em>tu stagnes depuis des mois sans comprendre pourquoi.</em></p>
-
-    <!-- [VIDÉO 1 MIN DE LOUIS : remplacer ce bloc par l'embed] -->
-    <div class="video" role="button" aria-label="Vidéo de Monsieur Marcel">
-      <div class="play"><svg width="22" height="26"><use href="#play"/></svg></div>
-      <div class="cap"><b>Monsieur Marcel</b> · <span class="ph">pourquoi ce diagnostic</span><span class="dur">1 MIN</span></div>
-    </div>
-
-    <p class="lead">Reçois gratuitement ton <b>Plan de Progression personnalisé</b> : ton profil de joueur, ton niveau réel entre 1 et 8, et ce qui te fait défaut pour progresser.</p>
-
-    <div class="chips">
-      <span class="chip">Ton profil terrain</span>
-      <span class="chip">Ton niveau réel 1 → 8</span>
-      <span class="chip">Tes 4 axes de progression</span>
-    </div>
-
-    <button class="btn" id="cta-hero" onclick="go()">Démarrer mon diagnostic <span class="arr">→</span></button>
-    <div class="micro"><span>14 questions</span><span>Gratuit</span><span>Résultat sur WhatsApp</span></div>
-
-    <div class="avatars">
-      <div class="stack"><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i><i><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg></i></div>
-      <p>Déjà réalisé par <b><span class="ph">[X]</span> joueurs</b></p>
-    </div>
+  <!-- ======== ILS ONT ÉTÉ RENCONTRÉS OU COACHÉS ======== -->
+  <div class="strip">
+    <div class="lbl">Ils ont été rencontrés ou coachés</div>
+    <div class="marquee"><div class="names" id="names">
+      <span class="nm">Kylian Mbappé<b>129 M</b></span><i class="sep"></i><span class="nm">Shikhar Dhawan<b>19,6 M</b></span><i class="sep"></i><span class="nm">Dadju<b>9 M</b></span><i class="sep"></i><span class="nm">Sean Garnier<b>5,7 M</b></span><i class="sep"></i><span class="nm">Théo Hernandez<b>4,7 M</b></span><i class="sep"></i><span class="nm">Matt Pokora<b>3,9 M</b></span><i class="sep"></i><span class="nm">Benjamin Samat<b>2,3 M</b></span><i class="sep"></i><span class="nm">Lucas Hernandez<b>2,2 M</b></span><i class="sep"></i><span class="nm">Ryan Babel<b>2,1 M</b></span><i class="sep"></i><span class="nm">Taylor Chiche<b>1,4 M</b></span><i class="sep"></i><span class="nm">Hugo Philipp<b>1,1 M</b></span><i class="sep"></i><span class="nm">Didier Deschamps</span><i class="sep"></i><span class="nm">Théo Soggiu<b>493 K</b></span><i class="sep"></i><span class="nm">Yohan Viral<b>374 K</b></span><i class="sep"></i><span class="nm">Alec Henry<b>170 K</b></span><i class="sep"></i><span class="nm">Mike Yanguas<b>141 K</b></span><i class="sep"></i><span class="nm">Lucas Bergamini<b>59 K</b></span><i class="sep"></i><span class="nm">Thibaut Pitolin<b>52,5 K</b></span><i class="sep"></i>
+    </div></div>
   </div>
 
   <!-- ======== COMMENT ÇA MARCHE ======== -->
-  <section>
-    <div class="sec-head"><div class="eyebrow">Comment ça marche</div><h2 class="display">3 minutes, <em>3 étapes</em></h2></div>
-    <div class="steps">
-      <div class="step"><div class="n">1</div><div><b>Tu réponds à 14 questions</b><span>Tes réflexes en match, tes coups, tes frustrations.</span></div></div>
-      <div class="step"><div class="n">2</div><div><b>On calcule ton diagnostic</b><span>Ton profil de joueur et ton niveau réel sur l'échelle 1 → 8.</span></div></div>
-      <div class="step"><div class="n">3</div><div><b>Ton plan arrive sur WhatsApp</b><span>Ton maillon faible et ta première action, dès ton prochain match.</span></div></div>
-    </div>
-  </section>
-
-  <!-- ======== BIO + STATS ======== -->
-  <section>
-    <div class="sec-head"><div class="eyebrow">Qui te parle</div></div>
-    <div class="card bio">
-      <div class="photo"><div class="slot">Photo<br>Monsieur Marcel</div></div>
-      <div>
-        <h3>Moi, c'est Monsieur Marcel</h3>
-        <div class="role">Coach padel · Kiné de formation · Fondateur de Padel Académie</div>
-        <p>Le padel, j'ai commencé à l'enseigner en Belgique, c'est là que j'ai construit ma pédagogie, sur le terrain, face aux erreurs typiques des joueurs. Le coaching s'est ensuite étendu : France, Koweït, Dubaï, où j'ai coaché plus de 250 joueurs, du débutant aux cercles les plus influents du pays. Kiné de formation, j'ai bâti une méthode qui mélange compréhension du corps, prévention et progression durable. « Monsieur Marcel », c'est le surnom de mon grand-père, un homme droit, respecté. C'est en son hommage, et avec ses valeurs, qu'en 2025 j'ai structuré tout ce que le terrain m'a appris dans Padel Académie.</p>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="n">450+</div><div class="l">joueurs coachés sur le terrain<br>Dubaï, Belgique, France, Koweït</div></div>
-      <div class="stat"><div class="n">150</div><div class="l">joueurs transformés<br>avec un vrai déclic de progression</div></div>
-      <div class="stat"><div class="n">4,9/5</div><div class="l">sur Trustpilot<br>85+ avis · 99 % 5 étoiles</div></div>
-      <div class="stat"><div class="n">10 000</div><div class="l">abonnés<br>tous réseaux confondus</div></div>
+  <section class="sec">
+    <div class="sec-head" data-r><div class="eyebrow">Comment ça marche</div><h2 class="display">3 minutes, <em>3 étapes</em></h2></div>
+    <div class="steps" data-r>
+      <div class="step"><div class="n">1</div><b>Tu réponds à 14 questions</b><span>Tes réflexes en match, tes coups, tes frustrations.</span></div>
+      <div class="step"><div class="n">2</div><b>On calcule ton diagnostic</b><span>Ton profil de joueur et ton niveau réel sur l'échelle 1 → 8.</span></div>
+      <div class="step"><div class="n">3</div><b>Ton plan arrive sur WhatsApp</b><span>Ton maillon faible et ta première action, dès ton prochain match.</span></div>
     </div>
   </section>
 
   <!-- ======== LE PLAN NOMMÉ ======== -->
-  <section>
-    <div class="sec-head"><div class="eyebrow">Ton Plan de Progression</div><h2 class="display">Ce avec quoi <em>tu repars</em></h2></div>
+  <section class="sec">
+    <div class="sec-head" data-r><div class="eyebrow">Ton Plan de Progression</div><h2 class="display">Ce avec quoi <em>tu repars</em></h2></div>
     <div class="plan">
-      <div class="pl"><div class="n">01</div><div><b>Savoir enfin quel joueur tu es vraiment</b><span>Ton profil terrain, celui que tes partenaires voient, pas celui que tu crois avoir.</span></div></div>
-      <div class="pl"><div class="n">02</div><div><b>Connaître ton niveau réel entre 1 et 8</b><span>Fini le flou « intermédiaire » : un niveau précis, situé sur l'échelle des joueurs classés.</span></div></div>
-      <div class="pl"><div class="n">03</div><div><b>Comprendre ce qui te fait stagner</b><span>Le maillon faible exact de ton jeu, celui qui te coûte des matchs que tu devrais gagner.</span></div></div>
-      <div class="pl"><div class="n">04</div><div><b>Repartir avec tes 4 axes de progression</b><span>Un plan concret pour gagner 1 à 2 niveaux en 75 jours, adapté à ton profil.</span></div></div>
+      <div class="pl spot" data-r>
+        <div class="viz" aria-hidden="true"><span class="pf">🧱</span><span class="pf">💥</span><span class="pf">🐌</span><span class="pf">⚡</span></div>
+        <div class="top"><div><b>Savoir enfin quel joueur tu es vraiment</b><span>Ton profil terrain, celui que tes partenaires voient, pas celui que tu crois avoir.</span></div><div class="n">01</div></div>
+      </div>
+      <div class="pl spot" data-r style="--d:.08s">
+        <div class="viz" aria-hidden="true"><div class="scale"><i>1</i><i>2</i><i>3</i><i>4</i><i class="hit">5</i><i>6</i><i>7</i><i>8</i></div></div>
+        <div class="top"><div><b>Connaître ton niveau réel entre 1 et 8</b><span>Fini le flou « intermédiaire » : un niveau précis, situé sur l'échelle des joueurs classés.</span></div><div class="n">02</div></div>
+      </div>
+      <div class="pl spot" data-r>
+        <div class="viz" aria-hidden="true"><div class="chain"><i></i><i></i><i class="weak"></i><i></i><i></i></div><small>Maillon faible</small></div>
+        <div class="top"><div><b>Comprendre ce qui te fait stagner</b><span>Le maillon faible exact de ton jeu, celui qui te coûte des matchs que tu devrais gagner.</span></div><div class="n">03</div></div>
+      </div>
+      <div class="pl spot" data-r style="--d:.08s">
+        <div class="viz" aria-hidden="true"><div class="axes"><i style="--w:82%"></i><i style="--w:64%"></i><i style="--w:91%"></i><i style="--w:55%"></i></div></div>
+        <div class="top"><div><b>Repartir avec tes 4 axes de progression</b><span>Un plan concret pour gagner 1 à 2 niveaux en 75 jours, adapté à ton profil.</span></div><div class="n">04</div></div>
+      </div>
     </div>
-    <div class="center" style="margin-top:26px">
+    <div class="plan-cta" data-r>
       <button class="btn" onclick="go()">Démarrer mon diagnostic <span class="arr">→</span></button>
       <div class="micro"><span>3 min</span><span>Gratuit</span></div>
     </div>
   </section>
 
+  <!-- ======== BIO + STATS ======== -->
+  <section class="sec">
+    <div class="sec-head" data-r><div class="eyebrow">Qui te parle</div><h2 class="display">Moi, c'est <em>Monsieur Marcel</em></h2></div>
+    <div class="bio" data-r>
+      <div class="photo"><div class="slot">Photo<br>Monsieur Marcel</div><span class="tag">Coach · Kiné</span></div>
+      <div class="card txt spot">
+        <div class="role">Coach padel · Kiné de formation · Fondateur de Padel Académie</div>
+        <p>Le padel, j'ai commencé à l'enseigner en Belgique, c'est là que j'ai construit ma pédagogie, sur le terrain, face aux erreurs typiques des joueurs. Le coaching s'est ensuite étendu : France, Koweït, Dubaï, où j'ai coaché plus de 250 joueurs, du débutant aux cercles les plus influents du pays. Kiné de formation, j'ai bâti une méthode qui mélange compréhension du corps, prévention et progression durable. « Monsieur Marcel », c'est le surnom de mon grand-père, un homme droit, respecté. C'est en son hommage, et avec ses valeurs, qu'en 2025 j'ai structuré tout ce que le terrain m'a appris dans Padel Académie.</p>
+        <div class="sig"><svg><use href="#bounce"/></svg>Monsieur Marcel</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat" data-r><div class="n" data-count="450" data-suf="+">450+</div><div class="l">joueurs coachés sur le terrain<br>Dubaï, Belgique, France, Koweït</div></div>
+      <div class="stat" data-r style="--d:.08s"><div class="n" data-count="150">150</div><div class="l">joueurs transformés<br>avec un vrai déclic de progression</div></div>
+      <div class="stat" data-r style="--d:.16s"><div class="n" data-count="4.9" data-dec="1" data-suf="/5">4,9/5</div><div class="l">sur Trustpilot<br>85+ avis · 99 % 5 étoiles</div></div>
+      <div class="stat" data-r style="--d:.24s"><div class="n" data-count="10000">10 000</div><div class="l">abonnés<br>tous réseaux confondus</div></div>
+    </div>
+  </section>
+
   <!-- ======== PREUVE SOCIALE ======== -->
-  <section>
-    <div class="sec-head"><div class="eyebrow">Ils l'ont fait</div><h2 class="display">La preuve, <em>pas les promesses</em></h2></div>
-    <div class="chips">
+  <section class="sec">
+    <div class="sec-head" data-r><div class="eyebrow">Ils l'ont fait</div><h2 class="display">La preuve, <em>pas les promesses</em></h2></div>
+    <div class="chips proof-links" data-r>
       <a class="chip link" href="https://www.trustpilot.com/review/padeltherapy.systeme.io" target="_blank" rel="noopener">Trustpilot</a>
       <a class="chip link" href="https://maps.app.goo.gl/CaS4HRpNN4U9w8Nj6" target="_blank" rel="noopener">Avis Google</a>
       <a class="chip link" href="https://senja.io/p/padel/eNr041E" target="_blank" rel="noopener">Témoignages</a>
     </div>
+  </section>
+  <div class="marquee" aria-label="Avis clients Trustpilot" data-r>
+    <div class="piste">
+      <div class="rv"><div class="stars">★★★★★</div><p>« Je voulais passer un niveau en padel. Au bout de 2 séances, une amélioration fulgurante. Je recommande à 100 % pour ceux qui veulent progresser. »</p><div class="a">ViragePrépa · avis Trustpilot vérifié</div></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>« Malgré des niveaux différents, nous avons progressé dès la première heure. Les exercices sont clairs, avec des conseils personnalisés de A à Z. »</p><div class="a">Avis Trustpilot vérifié · Dubaï</div></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>« Très professionnel, et en même temps il rend ça fun. Une super technique, je recommande vivement. »</p><div class="a">Alejandra A. · avis Trustpilot</div></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>« Je voulais passer un niveau en padel. Au bout de 2 séances, une amélioration fulgurante. Je recommande à 100 % pour ceux qui veulent progresser. »</p><div class="a">ViragePrépa · avis Trustpilot vérifié</div></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>« Malgré des niveaux différents, nous avons progressé dès la première heure. Les exercices sont clairs, avec des conseils personnalisés de A à Z. »</p><div class="a">Avis Trustpilot vérifié · Dubaï</div></div>
+      <div class="rv"><div class="stars">★★★★★</div><p>« Très professionnel, et en même temps il rend ça fun. Une super technique, je recommande vivement. »</p><div class="a">Alejandra A. · avis Trustpilot</div></div>
+    </div>
+  </div>
+  <div class="ctn">
     <!-- Pour un rendu 100 % propre : widget Senja « Vidéos uniquement » à coller à la place de l'iframe. -->
-    <div class="senja">
+    <div class="senja" data-r>
       <iframe src="https://senja.io/p/padel/eNr041E?hideNavigation=on&embed=on" title="Témoignages vidéo Padel Académie" loading="lazy" allow="autoplay; fullscreen"></iframe>
     </div>
-    <div class="marquee" aria-label="Avis clients Trustpilot">
-      <div class="piste">
-        <div class="rv"><div class="stars">★★★★★</div><p>« Je voulais passer un niveau en padel. Au bout de 2 séances, une amélioration fulgurante. Je recommande à 100 % pour ceux qui veulent progresser. »</p><div class="a">ViragePrépa · avis Trustpilot vérifié</div></div>
-        <div class="rv"><div class="stars">★★★★★</div><p>« Malgré des niveaux différents, nous avons progressé dès la première heure. Les exercices sont clairs, avec des conseils personnalisés de A à Z. »</p><div class="a">Avis Trustpilot vérifié · Dubaï</div></div>
-        <div class="rv"><div class="stars">★★★★★</div><p>« Très professionnel, et en même temps il rend ça fun. Une super technique, je recommande vivement. »</p><div class="a">Alejandra A. · avis Trustpilot</div></div>
-        <div class="rv"><div class="stars">★★★★★</div><p>« Je voulais passer un niveau en padel. Au bout de 2 séances, une amélioration fulgurante. Je recommande à 100 % pour ceux qui veulent progresser. »</p><div class="a">ViragePrépa · avis Trustpilot vérifié</div></div>
-        <div class="rv"><div class="stars">★★★★★</div><p>« Malgré des niveaux différents, nous avons progressé dès la première heure. Les exercices sont clairs, avec des conseils personnalisés de A à Z. »</p><div class="a">Avis Trustpilot vérifié · Dubaï</div></div>
-        <div class="rv"><div class="stars">★★★★★</div><p>« Très professionnel, et en même temps il rend ça fun. Une super technique, je recommande vivement. »</p><div class="a">Alejandra A. · avis Trustpilot</div></div>
-      </div>
-    </div>
     <div class="note-globale"><b>4,9/5</b> sur 85+ avis Trustpilot · 99 % de notes 5 étoiles</div>
-    <div class="slbl">Ils ont été rencontrés ou coachés</div>
-    <div class="names">
-      <span class="nm">Kylian Mbappé<b>129 M</b></span><span class="nm">Shikhar Dhawan<b>19,6 M</b></span><span class="nm">Dadju<b>9 M</b></span><span class="nm">Sean Garnier<b>5,7 M</b></span><span class="nm">Théo Hernandez<b>4,7 M</b></span><span class="nm">Matt Pokora<b>3,9 M</b></span><span class="nm">Benjamin Samat<b>2,3 M</b></span><span class="nm">Lucas Hernandez<b>2,2 M</b></span><span class="nm">Ryan Babel<b>2,1 M</b></span><span class="nm">Taylor Chiche<b>1,4 M</b></span><span class="nm">Hugo Philipp<b>1,1 M</b></span><span class="nm">Didier Deschamps</span><span class="nm">Théo Soggiu<b>493 K</b></span><span class="nm">Yohan Viral<b>374 K</b></span><span class="nm">Alec Henry<b>170 K</b></span><span class="nm">Mike Yanguas<b>141 K</b></span><span class="nm">Lucas Bergamini<b>59 K</b></span><span class="nm">Thibaut Pitolin<b>52,5 K</b></span>
-    </div>
-  </section>
+  </div>
 
   <!-- ======== FINAL ======== -->
-  <div class="final">
+  <div class="final" data-r>
+    <div class="court" aria-hidden="true"><svg viewBox="0 0 200 400" preserveAspectRatio="none"><rect x="1" y="1" width="198" height="398"/><line x1="0" y1="130.5" x2="200" y2="130.5"/><line x1="0" y1="269.5" x2="200" y2="269.5"/><line x1="100" y1="130.5" x2="100" y2="269.5"/><line class="net" x1="0" y1="200" x2="200" y2="200"/></svg></div>
+    <svg class="mark" viewBox="0 0 100 58" aria-hidden="true"><use href="#bounce"/></svg>
     <h2 class="display">Prêt à découvrir ton <em>Plan de Progression</em> ?</h2>
     <button class="btn" onclick="go()">Démarrer mon diagnostic <span class="arr">→</span></button>
     <div class="micro"><span>3 min</span><span>Gratuit</span><span>Résultat sur WhatsApp</span></div>
@@ -148,6 +189,8 @@
     <div>© Padel Académie · <span class="ph">[Mentions légales]</span> · <span class="ph">[Confidentialité]</span></div>
   </footer>
 </div>
+
+<div class="wrap">
 
 <!-- ================================================================ QUIZ -->
 <div id="quiz" class="hidden">
@@ -161,6 +204,7 @@
   </div>
   <div id="qb" class="qcard"></div>
   <button class="btn full btnn" id="bn" onclick="nxt()">Continuer <span class="arr">→</span></button>
+  <p class="kbd" id="kbd">Astuce : réponds au clavier avec <kbd>A</kbd><kbd>B</kbd><kbd>C</kbd><kbd>D</kbd></p>
 </div>
 
 <!-- ================================================================ ANALYSE -->
@@ -177,6 +221,7 @@
   <h2 class="display center">Ton Plan de Progression arrive sur <em>WhatsApp</em> dans 2 minutes.</h2>
   <p class="lead center">Ton profil de joueur, ton niveau réel entre 1 et 8, et ton plan pour gagner 1 à 2 niveaux en 75 jours. Dis-nous où l'envoyer :</p>
   <div class="ready"><span>✓ Profil identifié</span><span>✓ Niveau calculé</span><span>✓ Maillon faible repéré</span></div>
+  <div class="form">
   <input id="f-web" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
   <div class="field"><label for="f-prenom">Ton prénom</label><div class="in"><input id="f-prenom" autocomplete="given-name" placeholder="Prénom"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div></div>
   <div class="field"><label for="f-email">Ton email</label><div class="in"><input id="f-email" type="email" autocomplete="email" placeholder="toi@email.com" inputmode="email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg></div></div>
@@ -185,6 +230,7 @@
   <p class="oerr" id="f-err"></p>
   <button class="btn full" id="f-btn" onclick="submitLead()">Recevoir mon Plan de Progression <span class="arr">→</span></button>
   <div class="lock">🔒 Tes infos restent chez nous. Zéro spam.</div>
+  </div>
 </div>
 
 <!-- ================================================================ CONFIRMATION -->
@@ -393,7 +439,7 @@ var LV=[
 function getLv(s){for(var i=0;i<LV.length;i++){if(s>=LV[i].min&&s<=LV[i].max)return LV[i];}return s<=0?LV[0]:LV[LV.length-1];}
 
 /* ================== MOTEUR ================== */
-var cur=0,ps={muraille:0,brute:0,pousseur:0,pile:0},ls=0,rep=[],douleurs={},courant=null,hist=[],timer=null,ltimer=null,popping=false;
+var arriere=false,cur=0,ps={muraille:0,brute:0,pousseur:0,pile:0},ls=0,rep=[],douleurs={},courant=null,hist=[],timer=null,ltimer=null,popping=false;
 var totalAffiche=Qs.length-1; /* une branche de réassurance sur deux n'est jamais vue */
 
 function idVers(id){for(var i=0;i<Qs.length;i++){if(Qs[i].id===id)return i;}return -1;}
@@ -446,7 +492,8 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
 
 function afficher(i){
   cur=i;var q=Qs[i];q._vu=true;courant=null;clearTimeout(timer);progress();
-  var b=$('qb');b.style.animation='none';b.offsetHeight;b.style.animation='';
+  var b=$('qb');b.classList.toggle('back',arriere);arriere=false;b.style.animation='none';b.offsetHeight;b.style.animation='';
+  $('kbd').style.display=q.type==='single'&&q.os.length>1?'':'none';
   var bn=$('bn');
   var div=q.sec?'<div class="sdiv"><span>'+q.sec+'</span></div>':'';
   var cat=q.cat?'<div class="qcat">'+q.cat+'</div>':'';
@@ -456,7 +503,7 @@ function afficher(i){
     var L=['A','B','C','D'];
     var sh=q.tp==='p'?shuffle(q.os.slice()):q.os;
     var solo=q.os.length===1;
-    var opts=sh.map(function(o,j){return '<button type="button" class="opt'+(solo?' solo':'')+'" data-j="'+q.os.indexOf(o)+'">'+(solo?'':'<div class="ol">'+L[j]+'</div>')+'<div class="otxt">'+o.t+'</div></button>';}).join('');
+    var opts=sh.map(function(o,j){return '<button type="button" class="opt'+(solo?' solo':'')+'" style="--i:'+j+'" data-j="'+q.os.indexOf(o)+'">'+(solo?'':'<div class="ol">'+L[j]+'</div>')+'<div class="otxt">'+o.t+'</div></button>';}).join('');
     b.innerHTML=div+cat+'<div class="qtxt">'+q.q+'</div><div class="opts">'+opts+'</div>';
     var els=b.querySelectorAll('.opt');
     for(var k=0;k<els.length;k++){els[k].addEventListener('click',function(){
@@ -530,7 +577,7 @@ function back(){
   if(e.p)ps[e.p]--;
   if(e.v)ls-=e.v;
   Qs[e.i]._vu=false;
-  afficher(e.i);
+  arriere=true;afficher(e.i);
 }
 
 /* ---- 14bis · ANALYSE : 2,4 s de suspense, les 3 coches s'allument ---- */
@@ -599,7 +646,17 @@ function submitLead(){
 })();
 (function(){var s=restore();if(!s)return;var pct=Math.round(Math.min(s.vus.length,totalAffiche)/totalAffiche*100);
   var bs=document.querySelectorAll('#landing .btn, #sticky .btn');for(var i=0;i<bs.length;i++)bs[i].innerHTML='Reprendre mon diagnostic ('+pct+' %) <span class="arr">→</span>';})();
+/* Clavier (desktop) : A-D ou 1-4 pour répondre, Entrée pour continuer */
+document.addEventListener('keydown',function(e){
+  if($('quiz').classList.contains('hidden')||e.metaKey||e.ctrlKey||e.altKey)return;
+  var q=Qs[cur];
+  if(e.key==='Enter'){if(e.target.tagName!=='BUTTON'&&$('bn').classList.contains('vis')){e.preventDefault();nxt();}return;}
+  if(q.type!=='single'&&q.type!=='fork')return;
+  var k=e.key.toLowerCase(),i='abcd'.indexOf(k);if(i<0)i='1234'.indexOf(k);
+  var o=$('qb').querySelectorAll('.opt');if(i>=0&&o[i]){e.preventDefault();o[i].click();}
+});
 if(/[?&]start=1/.test(location.search))go();
 </script>
+<script src="/assets/motion.js" defer></script>
 </body>
 </html>
