@@ -324,7 +324,7 @@ footer a{color:inherit}
 /* bio */
 .bio{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start}
 .bio .portrait{position:relative;aspect-ratio:4/5;border-radius:var(--r);overflow:hidden}
-.bio .portrait .slot{position:absolute;inset:0}
+.bio .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
 .bio .portrait .tag{position:absolute;left:16px;bottom:16px;padding:7px 11px;border-radius:6px;background:var(--lime);color:var(--ink);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
 .bio h2{margin-bottom:22px}
 .bio .role{font-size:14px;font-weight:600;color:var(--lime);margin-bottom:22px}
@@ -432,6 +432,7 @@ footer a{color:inherit}
 .membre{text-align:center}
 .membre .photo{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;overflow:hidden}
 .membre .photo .slot{width:100%;height:100%;border-radius:50%}
+.membre .photo img{display:block;width:100%;height:100%;object-fit:cover}
 .membre b{display:block;font-family:var(--display);font-weight:800;font-size:19px;text-transform:uppercase;margin-bottom:4px}
 .membre span{font-size:13px;color:var(--m);line-height:1.5;display:block}
 
