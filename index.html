@@ -11,33 +11,47 @@
 <meta property="og:description" content="Diagnostic gratuit en 3 min : ton profil, ton niveau réel 1→8, ton Plan de Progression.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://quizz.padelacademie.fr/">
-<meta name="theme-color" content="#0E0F0B">
-<link rel="icon" type="image/png" href="/logo.png">
+<meta property="og:image" content="https://quizz.padelacademie.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#101301">
+<link rel="icon" type="image/png" href="/assets/icon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/funnel.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="bounce" viewBox="0 0 100 58"><path d="M8 38 C4 34 4 28 8 24 C12 20 18 20 22 24 L30 32 L52 6 C56 2 63 2 67 6 L94 38 C98 42 98 49 94 53 C90 57 83 57 79 53 L59 30 L37 52 C33 56 27 56 23 52 Z" fill="#D9F12C"/></symbol>
-  <symbol id="play" viewBox="0 0 22 26"><path d="M0 0 L22 13 L0 26 Z" fill="#0B0D01"/></symbol>
-  <symbol id="check" viewBox="0 0 34 26"><path d="M2 13 L12 23 L32 3" stroke="#0B0D01" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
+  <defs>
+    <linearGradient id="pa-g" gradientUnits="userSpaceOnUse" x1="300" y1="560" x2="590" y2="480"><stop offset="0" stop-color="#D9F12C" stop-opacity="0"/><stop offset=".5" stop-color="#D9F12C" stop-opacity=".55"/><stop offset="1" stop-color="#D9F12C"/></linearGradient>
+    <linearGradient id="pa-gi" gradientUnits="userSpaceOnUse" x1="300" y1="560" x2="590" y2="480"><stop offset="0" stop-color="#101301" stop-opacity="0"/><stop offset=".5" stop-color="#101301" stop-opacity=".55"/><stop offset="1" stop-color="#101301"/></linearGradient>
+    <path id="pa-body" d="M 308.59 545.37 L 360.30 606.75 C 371.80 620.39 392.42 621.54 405.36 609.25 L 481.12 537.29 C 494.22 524.84 515.16 526.20 526.55 540.25 L 610.17 643.39 C 619.73 655.18 636.43 658.32 649.61 650.80 L 682.11 632.26 C 691.78 626.74 697.75 616.46 697.75 605.33 L 697.75 588.43 C 697.75 579.51 693.91 571.03 687.22 565.15 L 529.74 426.71 C 516.49 415.06 496.19 416.81 485.13 430.56 L 395.07 542.44 C 387.51 551.83 373.86 553.51 364.25 546.24 L 332.03 521.87 C 316.49 510.12 296.80 529.87 308.59 545.37 Z"/>
+    <path id="pa-cap" d="M 689.42 567.23 C 699.74 577.54 705.53 591.53 705.53 606.12 C 705.53 620.71 699.74 634.69 689.42 645.01 C 679.11 655.32 665.12 661.12 650.53 661.12 C 635.94 661.12 621.96 655.32 611.64 645.01 Z"/>
+  </defs>
+  <symbol id="pa-mark" viewBox="300 416 408 248"><use href="#pa-body" fill="url(#pa-g)"/><use href="#pa-cap" fill="#D9F12C"/></symbol>
+  <symbol id="pa-mark-ink" viewBox="300 416 408 248"><use href="#pa-body" fill="url(#pa-gi)"/><use href="#pa-cap" fill="#101301"/></symbol>
+  <symbol id="pa-logo" viewBox="300 390 1316 298"><use href="#pa-body" fill="url(#pa-g)"/><use href="#pa-cap" fill="#D9F12C"/><path fill="#D9F12C" d="M 677.25 453.56 C 673.92 453.56 670.96 452.81 668.37 451.30 C 665.82 449.80 663.79 447.77 662.28 445.22 C 660.78 442.62 660.03 439.66 660.03 436.34 C 660.03 433.01 660.78 430.05 662.28 427.46 C 663.79 424.86 665.82 422.83 668.37 421.37 C 670.96 419.87 673.92 419.12 677.25 419.12 C 680.58 419.12 683.54 419.87 686.13 421.37 C 688.73 422.87 690.76 424.92 692.21 427.52 C 693.72 430.07 694.47 433.01 694.47 436.34 C 694.47 439.66 693.72 442.62 692.21 445.22 C 690.71 447.77 688.66 449.80 686.07 451.30 C 683.51 452.81 680.58 453.56 677.25 453.56 Z M 677.25 449.25 C 681.21 449.25 684.31 448.09 686.54 445.77 C 688.82 443.44 689.96 440.30 689.96 436.34 C 689.96 432.37 688.82 429.23 686.54 426.91 C 684.31 424.58 681.21 423.42 677.25 423.42 C 673.29 423.42 670.17 424.58 667.89 426.91 C 665.66 429.23 664.54 432.37 664.54 436.34 C 664.54 440.30 665.66 443.44 667.89 445.77 C 670.17 448.09 673.29 449.25 677.25 449.25 Z M 670.07 444.54 L 670.07 428.14 L 679.10 428.14 C 681.19 428.14 682.74 428.57 683.74 429.44 C 684.75 430.30 685.25 431.49 685.25 432.99 C 685.25 433.99 684.97 434.88 684.42 435.66 C 683.92 436.43 683.15 437.00 682.10 437.36 L 685.72 444.19 L 685.72 444.54 L 680.46 444.54 L 677.18 438.18 L 675.07 438.18 L 675.07 444.54 Z M 675.07 434.76 L 677.73 434.76 C 678.32 434.76 678.84 434.67 679.30 434.49 C 679.76 434.26 679.98 433.81 679.98 433.12 C 679.98 432.40 679.76 431.92 679.30 431.69 C 678.84 431.46 678.32 431.35 677.73 431.35 L 675.07 431.35 Z"/><path fill="currentColor" d="M 743.84 528.85 L 743.84 393 L 800.62 393 C 818.03 393 830.75 396.71 838.76 404.14 C 846.77 411.46 850.78 421.33 850.78 433.75 C 850.78 446.17 846.77 456.10 838.76 463.53 C 830.86 470.96 818.15 474.68 800.62 474.68 L 772.75 474.68 L 772.75 528.85 Z M 772.75 452.73 L 796.26 452.73 C 804.16 452.73 810.31 451.40 814.73 448.73 C 819.25 445.94 821.52 441.01 821.52 433.92 C 821.52 426.96 819.25 422.08 814.73 419.30 C 810.31 416.39 804.16 414.94 796.26 414.94 L 772.75 414.94 Z M 832.27 528.85 L 832.27 527.80 L 873.20 393 L 919.01 393 L 960.11 527.80 L 960.11 528.85 L 930.16 528.85 L 897.24 415.64 L 893.06 415.64 L 859.79 528.85 Z M 866.24 494.88 L 872.33 472.94 L 921.91 500.5 L 930.16 528.85 Z M 960.11 528.85 L 960.11 393 L 1008.53 393 C 1032.68 393 1050.21 398.98 1061.13 410.93 C 1072.04 422.78 1077.50 439.44 1077.50 460.92 C 1077.50 482.40 1072.04 499.12 1061.13 511.08 C 1050.21 522.92 1032.68 528.85 1008.53 528.85 Z M 989.37 506.20 L 1006.79 506.20 C 1015.73 506.20 1023.16 504.87 1029.08 502.20 C 1035.12 499.41 1039.65 494.76 1042.67 488.26 C 1045.69 481.65 1047.19 472.53 1047.19 460.92 C 1047.19 449.31 1045.69 440.25 1042.67 433.75 C 1039.65 427.13 1035.12 422.49 1029.08 419.82 C 1023.16 417.03 1015.73 415.64 1006.79 415.64 L 989.37 415.64 Z M 1081.41 528.85 L 1081.41 393 L 1174.07 393 L 1174.07 415.98 L 1110.33 415.98 L 1110.33 445.94 L 1159.44 445.94 L 1159.44 467.19 L 1110.33 467.19 L 1110.33 505.85 L 1175.12 505.85 L 1175.12 528.85 Z M 1181.69 528.85 L 1181.69 393 L 1210.95 393 L 1210.95 505.85 L 1250.5 505.85 L 1212 516.5 L 1212 528.85 Z M 732 683.85 L 732 682.80 L 772.92 548 L 818.73 548 L 859.83 682.80 L 859.83 683.85 L 829.88 683.85 L 796.96 570.64 L 792.78 570.64 L 759.51 683.85 Z M 765.96 649.88 L 772.05 627.94 L 821.34 654.5 L 829.88 683.85 Z M 910.53 686.46 C 890.79 686.46 875.46 680.25 864.55 667.82 C 853.75 655.40 848.35 638.10 848.35 615.92 C 848.35 593.98 853.69 576.73 864.37 564.19 C 875.06 551.65 890.39 545.38 910.35 545.38 C 922.32 545.38 932.53 547.65 941.01 552.17 C 949.48 556.59 956.10 562.74 960.86 570.64 C 965.62 578.53 968.41 587.59 969.23 597.81 L 940.14 597.81 C 939.21 588.28 936.13 580.85 930.91 575.51 C 925.68 570.06 918.89 567.33 910.53 567.33 C 899.96 567.33 892.01 571.57 886.67 580.04 C 881.33 588.52 878.66 600.53 878.66 616.09 C 878.66 632.23 881.39 644.37 886.84 652.5 C 892.42 660.51 900.25 664.51 910.35 664.51 C 919.07 664.51 925.97 661.73 931.08 656.15 C 936.31 650.58 939.32 643.21 940.14 634.03 L 969.23 634.03 C 968.41 644.25 965.62 653.31 960.86 661.20 C 956.10 669.10 949.48 675.31 941.01 679.84 C 932.65 684.25 922.49 686.46 910.53 686.46 Z M 958.68 683.85 L 958.68 682.80 L 999.61 548 L 1045.41 548 L 1086.52 682.80 L 1086.52 683.85 L 1056.56 683.85 L 1023.64 570.64 L 1019.46 570.64 L 986.20 683.85 Z M 992.64 649.88 L 998.74 627.94 L 1048.03 654.5 L 1056.56 683.85 Z M 1086.52 683.85 L 1086.52 548 L 1134.94 548 C 1159.08 548 1176.62 553.98 1187.53 565.93 C 1198.45 577.78 1203.91 594.44 1203.91 615.92 C 1203.91 637.40 1198.45 654.12 1187.53 666.08 C 1176.62 677.92 1159.08 683.85 1134.94 683.85 Z M 1115.78 661.20 L 1133.19 661.20 C 1142.14 661.20 1149.57 659.87 1155.49 657.20 C 1161.53 654.41 1166.05 649.76 1169.07 643.26 C 1172.09 636.65 1173.60 627.53 1173.60 615.92 C 1173.60 604.31 1172.09 595.25 1169.07 588.75 C 1166.05 582.13 1161.53 577.49 1155.49 574.82 C 1149.57 572.03 1142.14 570.64 1133.19 570.64 L 1115.78 570.64 Z M 1206.77 683.85 L 1206.77 548 L 1299.43 548 L 1299.43 570.98 L 1235.69 570.98 L 1235.69 600.94 L 1284.80 600.94 L 1284.80 622.19 L 1235.69 622.19 L 1235.69 660.85 L 1300.48 660.85 L 1300.48 683.85 Z M 1308.10 683.85 L 1308.10 548 L 1359.65 548 L 1384.91 660.85 L 1391.17 660.85 L 1416.43 548 L 1467.98 548 L 1467.98 683.85 L 1440.81 683.85 L 1440.81 572.03 L 1436.28 572.03 L 1411.55 683.85 L 1363.14 683.85 L 1338.40 572.03 L 1333.87 572.03 L 1333.87 683.85 Z M 1479.81 683.85 L 1479.81 548 L 1509.07 548 L 1509.07 683.85 Z M 1520.90 683.85 L 1520.90 548 L 1613.56 548 L 1613.56 570.98 L 1549.82 570.98 L 1549.82 600.94 L 1598.93 600.94 L 1598.93 622.19 L 1549.82 622.19 L 1549.82 660.85 L 1614.60 660.85 L 1614.60 683.85 Z"/><path fill="#D9F12C" d="M 1218.5 520.41 L 1290 499 L 1290 522 L 1218.5 543.41 Z"/></symbol>
+  <symbol id="play" viewBox="0 0 22 26"><path d="M0 0 L22 13 L0 26 Z" fill="#101301"/></symbol>
+  <symbol id="check" viewBox="0 0 34 26"><path d="M2 13 L12 23 L32 3" stroke="#101301" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></symbol>
 </svg>
 
 <!-- ================================================================ LANDING -->
 <div id="landing" class="lp">
 
   <header class="hdr dark" id="hdr"><div class="in">
-    <a class="logo" href="/"><svg><use href="#bounce"/></svg><span>Padel Académie</span></a>
+    <a class="logo" href="/" aria-label="Padel Académie"><svg viewBox="0 0 1316 298"><use href="#pa-logo"/></svg></a>
     <div class="hr">
       <div class="trust"><span class="star">★</span> <b>4,9/5</b> <span class="t-hide">sur Trustpilot</span></div>
       <button class="hcta" type="button" onclick="go()">Démarrer <span aria-hidden="true">→</span></button>
     </div>
   </div></header>
 
-  <div class="dark">
+  <div class="dark brand">
+    <div class="trame" aria-hidden="true"></div>
+    <svg class="bigmark" viewBox="0 0 408 248" aria-hidden="true"><use href="#pa-mark"/></svg>
     <div class="hero ctn">
       <div class="top up"><div class="eyebrow">Diagnostic gratuit · 3 min</div></div>
       <h1 class="display up" style="--d:.05s">Complète ce diagnostic et récupère ton <em>Plan de Progression</em> pour gagner 1 à 2 niveaux en 75 jours</h1>
@@ -99,7 +113,7 @@
         <div class="phone" data-r aria-hidden="true">
           <span class="ex">Exemple</span>
           <div class="scr">
-            <div class="bar"><span class="av"><svg viewBox="0 0 100 58"><use href="#bounce"/></svg></span><div><b>Monsieur Marcel</b><small>Padel Académie</small></div></div>
+            <div class="bar"><span class="av"><svg viewBox="0 0 408 248"><use href="#pa-mark-ink"/></svg></span><div><b>Monsieur Marcel</b><small>Padel Académie</small></div></div>
             <div class="chat">
               <div class="msg">Salut Thomas 👋 Ton diagnostic est prêt.<span class="t">18:02</span></div>
               <div class="msg"><span class="k">Ton profil</span><span class="big">🧱 La Muraille</span>Tu remets tout, tu ne rates rien… et tu ne gagnes rien.<span class="t">18:02</span></div>
@@ -177,7 +191,7 @@
 
   <!-- ======== FINAL ======== -->
   <section class="final">
-    <svg class="mark" viewBox="0 0 100 58" aria-hidden="true"><use href="#bounce"/></svg>
+    <svg class="mark" viewBox="0 0 408 248" aria-hidden="true"><use href="#pa-mark-ink"/></svg>
     <div class="ctn">
       <h2 class="display" data-r>Prêt à découvrir ton <em>Plan de Progression</em> ?</h2>
       <div data-r style="--d:.08s">
@@ -188,7 +202,7 @@
   </section>
 
   <footer class="dark"><div class="in">
-    <a class="logo" href="/"><svg><use href="#bounce"/></svg><span>Padel Académie</span></a>
+    <a class="logo" href="/" aria-label="Padel Académie"><svg viewBox="0 0 1316 298"><use href="#pa-logo"/></svg></a>
     <div>© Padel Académie · <span class="ph">[Mentions légales]</span> · <span class="ph">[Confidentialité]</span></div>
   </div></footer>
 </div>
@@ -203,7 +217,7 @@
       <div class="meta"><span class="lbl" id="pl">Diagnostic</span><span class="num" id="pn"></span></div>
       <div class="bar"><div class="fill" id="pf" style="width:4%"></div></div>
     </div>
-    <svg style="width:30px" aria-hidden="true"><use href="#bounce"/></svg>
+    <svg viewBox="0 0 408 248" aria-hidden="true"><use href="#pa-mark-ink"/></svg>
   </div>
   <div id="qb" class="qcard"></div>
   <button class="btn full btnn" id="bn" onclick="nxt()">Continuer <span class="arr">→</span></button>
