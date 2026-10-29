@@ -95,9 +95,8 @@ section{margin-top:64px}
 /* ---------- preuve ---------- */
 .avatars{display:flex;align-items:center;gap:12px;margin-top:26px}
 .avatars .stack{display:flex}
-.avatars .stack i{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);margin-left:-8px;background:var(--ink3);display:flex;align-items:center;justify-content:center;color:var(--fd);font-style:normal}
-.avatars .stack i svg{width:15px;height:15px}
-.avatars .stack i:first-child{margin-left:0}
+.avatars .stack img{width:32px;height:32px;border-radius:50%;border:2px solid var(--ink);margin-left:-8px;object-fit:cover;background:var(--ink3)}
+.avatars .stack img:first-child{margin-left:0}
 .avatars p{font-size:13.5px;color:var(--md)}
 .avatars p b{color:var(--td);font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:8px 18px}
