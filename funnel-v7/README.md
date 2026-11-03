@@ -7,7 +7,7 @@
 
 ## Reste à fournir avant les ads (placeholders `.ph` dans les pages)
 
-- Vidéo 1 min de Monsieur Marcel (landing) + VSL n°2 (merci) + 4 vidéos FAQ 60-90 s.
+- Vidéo 1 min de Monsieur Marcel (landing) + 4 vidéos FAQ 60-90 s. (VSL n°2 VTurb posée sur merci le 03/11.)
 - Membre équipe n°2 (photo, prénom, spécialité) sur merci.
 - PDF « Fiche de Pré-Session » + instructions (merci).
 - 2 études de cas réelles (merci) + 4 études de cas par profil pour `{{cas_client}}` (E5 / WA J+1).

@@ -85,6 +85,7 @@ section{margin-top:64px}
 .video .cap{position:absolute;left:18px;right:18px;bottom:16px;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--md);z-index:1}
 .video .cap b{color:var(--td);font-weight:600}
 .video .dur{margin-left:auto;padding:4px 9px;border-radius:6px;background:rgba(0,0,0,.6);font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.08em;color:var(--td)}
+.vsl{border-radius:var(--r);overflow:hidden;background:#000}
 
 /* ---------- placeholders (contenus à fournir) ---------- */
 .ph{background:rgba(217,241,44,.55);color:var(--ink);border-bottom:1px dashed var(--ink);font-size:.92em;padding:0 3px}
