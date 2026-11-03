@@ -270,7 +270,7 @@ footer a{color:inherit}
 .hero .memesi em{font-style:normal;color:var(--td)}
 .hero .lead{max-width:520px;margin-bottom:24px}
 .hero .chips{gap:10px 20px;margin-bottom:28px;color:var(--td)}
-.hero .video{box-shadow:0 0 0 1px var(--lined)}
+.hero .video,.hero .vsl{box-shadow:0 0 0 1px var(--lined)}
 
 /* bandeau des noms */
 .strip{border-top:1px solid var(--lined);border-bottom:1px solid var(--lined);padding:20px 0}
