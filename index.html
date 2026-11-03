@@ -86,7 +86,13 @@
           <div class="vsl">
             <vturb-smartplayer id="vid-6ae3904ff2699dc279ce323d" style="display:block;margin:0 auto;width:100%"><div class="vturb-player-placeholder" style="position:relative;width:100%;padding:56.25% 0 0;z-index:0;background-color:black"></div></vturb-smartplayer>
           </div>
-          <script>var s=document.createElement("script");s.src="https://scripts.converteai.net/9ac87a8c-d64c-4485-bd6c-b2a77a8c43be/players/6ae3904ff2699dc279ce323d/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+          <script>
+          /* L'option autoUnmute du Smart Autoplay VTurb relance la VSL depuis le début avec le son au premier clic ou toucher
+             n'importe où sur la page (même pour défiler ou lancer le quiz). On la coupe dans la config que player.js passe
+             au lecteur via el.start(config) : seul un clic sur la vidéo lance le son. */
+          (function(el){Object.defineProperty(el,'start',{configurable:true,set:function(f){Object.defineProperty(el,'start',{configurable:true,writable:true,value:function(c){((c.smartAutoPlay||{}).items||[]).forEach(function(i){i.autoUnmute=false;});return f.call(this,c);}});}});})(document.getElementById('vid-6ae3904ff2699dc279ce323d'));
+          var s=document.createElement("script");s.src="https://scripts.converteai.net/9ac87a8c-d64c-4485-bd6c-b2a77a8c43be/players/6ae3904ff2699dc279ce323d/v4/player.js",s.async=!0,document.head.appendChild(s);
+          </script>
         </div>
       </div>
     </div>
@@ -488,6 +494,7 @@ function restore(){try{var s=JSON.parse(localStorage.getItem(KEY)||'null');retur
 function clearSave(){try{localStorage.removeItem(KEY);}catch(e){}}
 
 function go(){
+  var vsl=document.querySelector('vturb-smartplayer');if(vsl&&vsl.pause)vsl.pause();
   $('landing').classList.add('hidden');$('quiz').classList.remove('hidden');document.body.classList.add('inquiz');$('sticky').classList.remove('on');window.scrollTo(0,0);
   var s=restore();
   if(s){ps=s.ps;ls=s.ls;rep=s.rep;douleurs=s.douleurs;hist=s.hist;Qs.forEach(function(q){q._vu=s.vus.indexOf(q.id)>=0;});px('QuizResume');afficher(s.cur);}
